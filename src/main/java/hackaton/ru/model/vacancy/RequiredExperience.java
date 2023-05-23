@@ -11,13 +11,14 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "required_experience" )
+@Table(name = "required_experience")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class RequiredExperience {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

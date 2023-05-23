@@ -86,7 +86,7 @@ public class Vacancy {
 
     @NotNull(message = "Work Format should not be Empty")
     @ManyToOne()
-    @JoinColumn(name = "work_format",referencedColumnName = "id")
+    @JoinColumn(name = "work_format", referencedColumnName = "id")
     private WorkFormat workFormat;
 
     @NotNull(message = "Required Experience should not be Empty")

@@ -25,6 +25,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Candidate {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -49,7 +50,7 @@ public class Candidate {
     @Column(name = "last_name")
     private String lastName;
 
-//    заполняется на беке парсингом
+    //    заполняется на беке парсингом
     @Column(name = "fio")
     private String fio;
 

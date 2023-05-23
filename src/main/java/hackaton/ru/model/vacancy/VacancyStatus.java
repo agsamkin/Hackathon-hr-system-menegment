@@ -17,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class VacancyStatus {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

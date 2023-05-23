@@ -10,6 +10,10 @@ import java.util.Date;
 
 import static javax.persistence.TemporalType.TIMESTAMP;
 
+/*
+Класс завершен
+ */
+
 @Entity
 @Table(name = "experience")
 @Getter
@@ -18,6 +22,7 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 @NoArgsConstructor
 @Builder
 public class Experience {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

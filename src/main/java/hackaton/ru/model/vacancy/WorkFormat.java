@@ -18,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class WorkFormat {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

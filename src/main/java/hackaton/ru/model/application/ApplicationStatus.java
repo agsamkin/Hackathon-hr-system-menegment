@@ -1,10 +1,14 @@
 package hackaton.ru.model.application;
 
-import hackaton.ru.model.application.Application;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
+
+/*
+Класс завершен
+ */
 
 @Entity
 @Table(name = "statuses")
@@ -19,10 +23,12 @@ public class ApplicationStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Status Name should not be Empty")
     @Column(name = "name")
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "application_id", referencedColumnName = "id")
+//    связи
+
+    @OneToMany(mappedBy = "applicationStatus")
     private List<Application> applications;
 }
