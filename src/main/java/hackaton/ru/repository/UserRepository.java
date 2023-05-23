@@ -1,6 +1,7 @@
 package hackaton.ru.repository;
 
-import hackathon.ru.model.User;
+
+import hackaton.ru.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
