@@ -26,6 +26,8 @@ public class RequiredExperience {
     @Column(name = "name")
     private String name;
 
+    //    связи
+
     @OneToMany(mappedBy = "requiredExperience")
     private List<Vacancy> vacancies;
 }

@@ -12,6 +12,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
 
+/*
+Класс завершен
+ */
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -43,9 +47,9 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @NotBlank(message = "Phone Number should not be Empty")
-    @Column(name = "phone_number")
-    private String phoneNumber;
+    @NotBlank(message = "Phone should not be Empty")
+    @Column(name = "phone")
+    private String phone;
 
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
@@ -62,9 +66,5 @@ public class User {
 
     @OneToMany(mappedBy = "owner")
     private List<Vacancy> vacanciesOwner;
-
-    @OneToOne(mappedBy = "user")
-    private Candidate candidate;
-
 
 }

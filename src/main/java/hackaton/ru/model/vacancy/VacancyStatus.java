@@ -24,6 +24,8 @@ public class VacancyStatus {
     @Column(name = "name")
     private String name;
 
+    //    связи
+
     @OneToMany(mappedBy = "vacancyStatus")
     private List<Vacancy> vacancies;
 }

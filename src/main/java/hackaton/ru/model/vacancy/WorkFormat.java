@@ -26,6 +26,8 @@ public class WorkFormat {
     @Column(name = "name")
     private String name;
 
+    //    связи
+
     @OneToMany(mappedBy = "workFormat")
     private List<Vacancy> vacancies;
 }

@@ -94,6 +94,8 @@ public class Vacancy {
     @JoinColumn(name = "required_experience_id", referencedColumnName = "id")
     private RequiredExperience requiredExperience;
 
+//    связи
+
     @OneToMany(mappedBy = "vacancy")
     private List<Application> applications;
 }

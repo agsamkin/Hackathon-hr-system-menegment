@@ -1,35 +1,30 @@
-package hackaton.ru.model.user;
+package hackaton.ru.model.candidate;
 
-import hackaton.ru.model.user.User;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
-/*
-Класс завершен
- */
-
 @Entity
-@Table(name = "roles")
+@Table(name = "candidates")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Role {
+public class Degree {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Role Name should not be Empty")
+    @NotBlank(message = "Degree name should not be Empty")
     @Column(name = "name")
     private String name;
 
 //    связи
 
-    @OneToMany(mappedBy = "role")
-    private List<User> users;
+    @OneToMany(mappedBy = "degree")
+    private List<Education> educations;
 }
