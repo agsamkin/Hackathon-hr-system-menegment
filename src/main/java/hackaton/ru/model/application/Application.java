@@ -1,5 +1,7 @@
-package hackaton.ru.model;
+package hackaton.ru.model.application;
 
+import hackaton.ru.model.candidate.Candidate;
+import hackaton.ru.model.vacancy.Vacancy;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 

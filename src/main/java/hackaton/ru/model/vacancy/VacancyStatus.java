@@ -1,19 +1,22 @@
-package hackaton.ru.model;
+package hackaton.ru.model.vacancy;
 
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
+/*
+Класс завершен
+ */
+
 @Entity
-@Table(name = "statuses")
+@Table(name = "vacancy_status")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class ApplicationStatus {
-
+public class VacancyStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,7 +24,6 @@ public class ApplicationStatus {
     @Column(name = "name")
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "application_id", referencedColumnName = "id")
-    private List<Application> applications;
+    @OneToMany(mappedBy = "vacancyStatus")
+    private List<Vacancy> vacancies;
 }

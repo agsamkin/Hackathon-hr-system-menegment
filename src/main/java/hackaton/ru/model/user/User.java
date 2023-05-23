@@ -1,6 +1,9 @@
-package hackaton.ru.model;
+package hackaton.ru.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import hackaton.ru.model.City;
+import hackaton.ru.model.candidate.Candidate;
+import hackaton.ru.model.vacancy.Vacancy;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,16 +31,19 @@ public class User {
 
     @JsonIgnore
     @NotBlank(message = "Password should not be Empty")
-    @Size(min = 3, max = 100, message = "Password should be between at 3 to 100 symbols")
+    @Size(min = 3, max = 20, message = "Password should be between at 3 to 100 symbols")
     @Column(name = "password")
     private String password;
 
+    @NotBlank(message = "First Name should not be Empty")
     @Column(name = "first_name")
     private String firstName;
 
+    @NotBlank(message = "Last Name should not be Empty")
     @Column(name = "last_name")
     private String lastName;
 
+    @NotBlank(message = "Phone Number should not be Empty")
     @Column(name = "phone_number")
     private String phoneNumber;
 
@@ -47,14 +53,18 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "city_id", referencedColumnName = "id")
-    private City userCity;
+    private City city;
 
-    @OneToMany(mappedBy = "author")
-    private List<Vacancy> vacancies;
+    //    связи
+
+    @OneToMany(mappedBy = "hr")
+    private List<Vacancy> vacanciesAuthor;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Vacancy> vacanciesOwner;
 
     @OneToOne(mappedBy = "user")
     private Candidate candidate;
-
 
 
 }

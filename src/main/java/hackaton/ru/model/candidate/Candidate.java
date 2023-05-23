@@ -1,5 +1,8 @@
-package hackaton.ru.model;
+package hackaton.ru.model.candidate;
 
+import hackaton.ru.model.City;
+import hackaton.ru.model.application.Application;
+import hackaton.ru.model.user.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -39,4 +42,8 @@ public class Candidate {
 
     @OneToMany(mappedBy = "candidate")
     private List<Application> applications;
+
+    @ManyToOne
+    @JoinColumn(name = "city_id", referencedColumnName = "id")
+    private City city;
 }
