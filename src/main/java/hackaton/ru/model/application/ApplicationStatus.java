@@ -3,7 +3,6 @@ package hackaton.ru.model.application;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /*
@@ -23,9 +22,13 @@ public class ApplicationStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Status Name should not be Empty")
+/*    @NotBlank(message = "Status Name should not be Empty")
     @Column(name = "name")
-    private String name;
+    private String name;*/
+
+    @Column(name = "name")
+    @Enumerated(EnumType.STRING)
+    private StatusApplication statusApplication;
 
 //    связи
 
