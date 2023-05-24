@@ -37,9 +37,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User createUser(UserDto userDTO) {
-        User user = new User();
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        User user = User.builder()
+                .email(userDTO.getEmail())
+                .password(passwordEncoder.encode(userDTO.getPassword()))
+                .firstName(userDTO.getFirstName())
+                .lastName(userDTO.getLastName())
+                .phone(userDTO.getPhoneNumber())
+                .build();
+
+        System.out.println(user.getFirstName());
+
         return userRepository.save(user);
     }
 

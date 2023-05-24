@@ -1,13 +1,13 @@
 package hackathon.ru.service;
 
-import hackathon.ru.dto.VacancyDto;
-import hackathon.ru.exception.custom.VacancyNotFoundException;
-import hackathon.ru.model.Vacancy;
+import hackathon.ru.dto.vacancy.VacancyDto;
+import hackathon.ru.model.vacancy.Vacancy;
 import hackathon.ru.repository.VacancyRepository;
 import hackathon.ru.service.iService.VacancyService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,18 +18,30 @@ public class VacancyServiceImpl implements VacancyService {
 
     @Override
     public Vacancy getVacancyById(Long id) {
-        return vacancyRepository.findById(id)
-                .orElseThrow(() -> new VacancyNotFoundException("vacancy with that id is not found"));
+        return null;
     }
 
     @Override
     public List<Vacancy> getAllVacancies() {
-        return null;
+        return new ArrayList<>(vacancyRepository.findAll());
     }
 
     @Override
-    public Vacancy createVacancy(VacancyDto VacancyDto) {
-        return null;
+    public Vacancy createVacancy(VacancyDto vacancyDto) {
+        Vacancy vacancy = Vacancy.builder()
+                .name(vacancyDto.getName())
+                .minSalary(vacancyDto.getMinSalary())
+                .maxSalary(vacancyDto.getMaxSalary())
+                .publicSalary(vacancyDto.getPublicSalary())
+                .description(vacancyDto.getDescription())
+                .requirements(vacancyDto.getRequirements())
+                .responsibilities(vacancyDto.getResponsibilities())
+                .benefits(vacancyDto.getBenefits())
+                .skills(vacancyDto.getSkills())
+                .build();
+
+        return vacancyRepository.save(vacancy);
+
     }
 
     @Override

@@ -1,14 +1,13 @@
 package hackathon.ru.model.vacancy;
 
 
-import hackathon.ru.model.application.Application;
 import hackathon.ru.model.City;
+import hackathon.ru.model.application.Application;
 import hackathon.ru.model.user.User;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /*
@@ -64,32 +63,32 @@ public class Vacancy {
     @Column(name = "skills")
     private String skills;
 
-    @NotNull(message = "City should not be Empty")
+//    @NotNull(message = "City should not be Empty")
     @ManyToOne
     @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;
 
-    @NotNull(message = "Hr should not be Empty")
+//    @NotNull(message = "Hr should not be Empty")
     @ManyToOne
     @JoinColumn(name = "hr_id", referencedColumnName = "id")
     private User hr;
 
-    @NotNull(message = "Owner should not be Empty")
+//    @NotNull(message = "Owner should not be Empty")
     @ManyToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private User owner;
 
-    @NotNull(message = "Vacancy Status should not be Empty")
+//    @NotNull(message = "Vacancy Status should not be Empty")
     @ManyToOne()
     @JoinColumn(name = "vacancy_status_id", referencedColumnName = "id")
     private VacancyStatus vacancyStatus;
 
-    @NotNull(message = "Work Format should not be Empty")
+//    @NotNull(message = "Work Format should not be Empty")
     @ManyToOne()
     @JoinColumn(name = "work_format", referencedColumnName = "id")
     private WorkFormat workFormat;
 
-    @NotNull(message = "Required Experience should not be Empty")
+//    @NotNull(message = "Required Experience should not be Empty")
     @ManyToOne()
     @JoinColumn(name = "required_experience_id", referencedColumnName = "id")
     private RequiredExperience requiredExperience;

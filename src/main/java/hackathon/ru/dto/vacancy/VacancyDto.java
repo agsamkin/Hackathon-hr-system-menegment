@@ -3,7 +3,6 @@ package hackathon.ru.dto.vacancy;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
@@ -41,7 +40,6 @@ public class VacancyDto {
     @NotBlank(message = "Skills should not be Empty")
     private String skills;
 
-    @NotNull(message = "City should not be Empty")
     private Long cityId;
 
     private Long hrId;
