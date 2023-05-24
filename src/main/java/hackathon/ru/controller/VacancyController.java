@@ -24,6 +24,7 @@ public class VacancyController {
         return vacancyService.getVacancyById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping()
     public List<Vacancy> getAllVacancies() {
         return vacancyService.getAllVacancies();
