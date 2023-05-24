@@ -1,7 +1,9 @@
 package hackaton.ru.service.iService;
 
-import hackathon.ru.dto.ApplicationDto;
-import hackathon.ru.model.Application;
+
+
+import hackaton.ru.dto.application.ApplicationDto;
+import hackaton.ru.model.application.Application;
 
 import java.util.List;
 

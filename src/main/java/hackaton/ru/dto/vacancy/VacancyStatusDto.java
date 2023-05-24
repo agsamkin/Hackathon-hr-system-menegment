@@ -1,6 +1,6 @@
-package hackaton.ru.dto;
+package hackaton.ru.dto.vacancy;
 
-import hackaton.ru.model.user.UserRole;
+import hackaton.ru.model.vacancy.StatusVacancy;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,13 +15,12 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleDto {
+public class VacancyStatusDto {
 
 /*    @NotEmpty(message = "name should not be empty")
     private String name;*/
 
     @NotEmpty(message = "name should not be empty")
     @Enumerated(EnumType.STRING)
-    private UserRole userRole;
-
+    private StatusVacancy statusVacancy;
 }

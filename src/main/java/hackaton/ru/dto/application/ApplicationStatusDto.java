@@ -1,6 +1,6 @@
-package hackaton.ru.dto;
+package hackaton.ru.dto.application;
 
-import hackaton.ru.model.vacancy.StatusVacancy;
+import hackaton.ru.model.application.StatusApplication;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,18 +9,19 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class VacancyStatusDto {
+public class ApplicationStatusDto {
 
-/*    @NotEmpty(message = "name should not be empty")
+/*    @NotNull(message = "Name should not be empty")
     private String name;*/
 
-    @NotEmpty(message = "name should not be empty")
+    @NotNull(message = "Name should not be empty")
     @Enumerated(EnumType.STRING)
-    private StatusVacancy statusVacancy;
+    private StatusApplication statusApplication;
+
 }

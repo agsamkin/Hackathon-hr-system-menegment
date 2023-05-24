@@ -1,7 +1,8 @@
 package hackaton.ru.service.iService;
 
-import hackathon.ru.dto.CandidateDto;
-import hackathon.ru.model.Candidate;
+
+import hackaton.ru.dto.candidate.CandidateDto;
+import hackaton.ru.model.candidate.Candidate;
 
 import java.util.List;
 

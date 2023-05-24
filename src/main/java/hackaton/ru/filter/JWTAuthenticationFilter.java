@@ -2,7 +2,7 @@ package hackaton.ru.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hackathon.ru.component.JWTHelper;
-import hackaton.ru.dto.LoginDto;
+import hackaton.ru.dto.user.LoginDto;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
