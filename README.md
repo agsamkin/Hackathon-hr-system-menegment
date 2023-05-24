@@ -1,2 +1,4 @@
 # Hackathon-hr-system-menegment
-This project was developed to participate in the hackathon. This project is analog CRM system to HR. The project solves the problem of automating the admission and selection of candidates for company vacancies.
+The project is being developed for participation in the hackathon Sovcombank Team Challenge 2023.
+
+The application is an analogue of CRM-system, but made specifically for HR-specialists. The application solves the problem of automating the recruitment and selection of candidates for the company vacancies.
