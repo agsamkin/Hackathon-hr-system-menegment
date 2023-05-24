@@ -1,24 +1,24 @@
 package hackaton.ru.model.candidate;
 
 public enum DegreeStatus {
-    SECONDARY,
-    SECONDARY_SPECIAL,
-    INCOMPLETE_HIGHER,
-    HIGHER,
-    BACHELOR,
-    MASTER,
-    CANDIDATE,
-    PH;
+    SECONDARY("Среднее образование"),
+    SECONDARY_SPECIAL("Среднее специальное образование"),
+    INCOMPLETE_HIGHER("Неоконченное высшее образование"),
+    HIGHER("Высшее образование"),
+    BACHELOR("Бакалавр"),
+    MASTER("Магистр"),
+    CANDIDATE("Кандидат наук"),
+    PH("Доктор наук");
 
-    DegreeStatus() {
+
+    private final String value;
+
+    DegreeStatus(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 }
-
-/*Среднее образование
-Среднее специальное образование
-Неоконченное высшее образование
-Высшее образование
-Бакалавр
-Магистр
-Кандидат наук
-Доктор наук*/

@@ -1,11 +1,19 @@
 package hackaton.ru.model.application;
 
 public enum StatusApplication {
-    NOT_VIEWED,
-    VIEWED,
-    INVITATION,
-    REJECTED;
+    NOT_VIEWED("Не просмотрено"),
+    VIEWED("Просмотрено"),
+    INVITATION("Приглашение на собеседование"),
+    REJECTED("Отказ");
 
-    StatusApplication() {
+    private final String value;
+
+    StatusApplication(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 }

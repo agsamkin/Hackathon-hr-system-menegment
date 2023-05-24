@@ -1,9 +1,17 @@
 package hackaton.ru.model.user;
 
 public enum UserRole {
-    RECRUITER,
-    OWNER;
+    RECRUITER("Рекрутер"),
+    OWNER("Заказчик");
 
-    UserRole() {
+    private final String value;
+
+    UserRole(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 }
