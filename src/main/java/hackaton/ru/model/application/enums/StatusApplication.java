@@ -1,4 +1,4 @@
-package hackaton.ru.model.application;
+package hackaton.ru.model.application.enums;
 
 public enum StatusApplication {
     NOT_VIEWED("Не просмотрено"),

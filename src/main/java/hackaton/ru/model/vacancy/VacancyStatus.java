@@ -1,5 +1,6 @@
 package hackaton.ru.model.vacancy;
 
+import hackaton.ru.model.vacancy.enams.StatusVacancy;
 import lombok.*;
 
 import javax.persistence.*;

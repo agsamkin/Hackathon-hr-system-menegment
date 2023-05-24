@@ -1,12 +1,8 @@
 package hackaton.ru.dto.application;
 
-import hackaton.ru.model.application.StatusApplication;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import hackaton.ru.model.application.enums.StatusApplication;
+import lombok.*;
 
-import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
@@ -15,6 +11,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ApplicationStatusDto {
 
 /*    @NotNull(message = "Name should not be empty")

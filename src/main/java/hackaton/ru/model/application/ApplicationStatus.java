@@ -1,5 +1,6 @@
 package hackaton.ru.model.application;
 
+import hackaton.ru.model.application.enums.StatusApplication;
 import lombok.*;
 
 import javax.persistence.*;

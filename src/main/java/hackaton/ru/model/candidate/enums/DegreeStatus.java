@@ -1,4 +1,4 @@
-package hackaton.ru.model.candidate;
+package hackaton.ru.model.candidate.enums;
 
 public enum DegreeStatus {
     SECONDARY("Среднее образование"),

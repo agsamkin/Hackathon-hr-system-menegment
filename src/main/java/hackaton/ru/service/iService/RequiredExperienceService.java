@@ -1,4 +1,4 @@
 package hackaton.ru.service.iService;
 
-public class RequiredExperienceService {
+public interface RequiredExperienceService {
 }

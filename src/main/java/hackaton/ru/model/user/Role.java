@@ -1,10 +1,9 @@
 package hackaton.ru.model.user;
 
-import hackaton.ru.model.user.User;
+import hackaton.ru.model.user.enums.UserRole;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /*

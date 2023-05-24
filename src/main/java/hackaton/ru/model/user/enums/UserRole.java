@@ -1,4 +1,4 @@
-package hackaton.ru.model.user;
+package hackaton.ru.model.user.enums;
 
 public enum UserRole {
     RECRUITER("Рекрутер"),

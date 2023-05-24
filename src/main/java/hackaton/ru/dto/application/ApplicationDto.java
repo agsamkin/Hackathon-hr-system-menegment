@@ -1,9 +1,6 @@
 package hackaton.ru.dto.application;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 
@@ -11,6 +8,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ApplicationDto {
 
     private String comment;
@@ -21,9 +19,7 @@ public class ApplicationDto {
     @NotNull(message = "candidateId should not be empty")
     private Long candidateId;
 
-    @NotNull(message = "candidateId should not be empty")
     private Long applicationStatusId;
-
     // статус назначается автоматически как новая.
 
 }

@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
+import static javax.persistence.TemporalType.TIMESTAMP;
+
 /*
 Класс завершен
  */
@@ -34,6 +36,7 @@ public class Candidate {
     @Column(name = "expected_salary")
     private String expectedSalary;
 
+    @Temporal(TIMESTAMP)
     @NotBlank(message = "Birthday should not be Empty")
     @Column(name = "birthday")
     private Date birthday;

@@ -1,4 +1,4 @@
-package hackaton.ru.model.vacancy;
+package hackaton.ru.model.vacancy.enams;
 
 public enum FormatOfWork {
     FULL_TIME("Полная занятость"),

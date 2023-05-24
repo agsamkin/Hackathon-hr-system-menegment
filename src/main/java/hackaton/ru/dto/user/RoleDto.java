@@ -1,12 +1,8 @@
 package hackaton.ru.dto.user;
 
-import hackaton.ru.model.user.UserRole;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import hackaton.ru.model.user.enums.UserRole;
+import lombok.*;
 
-import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotEmpty;
@@ -15,6 +11,7 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class RoleDto {
 
 /*    @NotEmpty(message = "name should not be empty")
