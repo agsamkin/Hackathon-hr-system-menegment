@@ -34,7 +34,4 @@ public class VacancyController {
         return vacancyService.createVacancy(vacancyDto);
     }
 
-
-
-
 }

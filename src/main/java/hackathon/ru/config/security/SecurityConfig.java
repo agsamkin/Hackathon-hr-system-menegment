@@ -2,6 +2,7 @@ package hackathon.ru.config.security;
 
 import hackathon.ru.component.JWTHelper;
 import hackathon.ru.controller.UserController;
+import hackathon.ru.controller.VacancyController;
 import hackathon.ru.filter.JWTAuthenticationFilter;
 import hackathon.ru.filter.JWTAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Value;
@@ -56,6 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 loginRequest,
                 new AntPathRequestMatcher(baseUrl + UserController.USER_CONTROLLER_PATH, POST.toString()),
                 new AntPathRequestMatcher(baseUrl + UserController.USER_CONTROLLER_PATH, GET.toString()),
+                new AntPathRequestMatcher(baseUrl + VacancyController.VACANCIES_CONTROLLER_PATH, GET.toString()),
                 new NegatedRequestMatcher(new AntPathRequestMatcher(baseUrl + "/**"))
         );
 
