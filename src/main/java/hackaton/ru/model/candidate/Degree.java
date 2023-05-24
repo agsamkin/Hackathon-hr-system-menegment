@@ -23,9 +23,13 @@ public class Degree {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Degree name should not be Empty")
+/*    @NotBlank(message = "Degree name should not be Empty")
     @Column(name = "name")
-    private String name;
+    private String name;*/
+
+    @Column(name = "name")
+    @Enumerated(EnumType.STRING)
+    private DegreeStatus degreeStatus;
 
 //    связи
 

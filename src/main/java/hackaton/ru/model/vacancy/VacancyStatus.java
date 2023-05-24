@@ -22,8 +22,12 @@ public class VacancyStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+/*    @Column(name = "name")
+    private String name;*/
+
     @Column(name = "name")
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private StatusVacancy statusVacancy;
 
     //    связи
 

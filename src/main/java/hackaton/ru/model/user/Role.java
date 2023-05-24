@@ -10,7 +10,6 @@ import java.util.List;
 /*
 Класс завершен
  */
-
 @Entity
 @Table(name = "roles")
 @Getter
@@ -24,9 +23,13 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Role Name should not be Empty")
+/*  @NotBlank(message = "Role Name should not be Empty")
     @Column(name = "name")
-    private String name;
+    private String name;*/ // это не надо вроде
+
+    @Column(name = "name")
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
 
 //    связи
 

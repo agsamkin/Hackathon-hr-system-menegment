@@ -23,9 +23,13 @@ public class WorkFormat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Work Format Name should not be Empty")
+/*    @NotBlank(message = "Work Format Name should not be Empty")
     @Column(name = "name")
-    private String name;
+    private String name;*/
+
+    @Column(name = "name")
+    @Enumerated(EnumType.STRING)
+    private FormatOfWork formatOfWork;
 
     //    связи
 
