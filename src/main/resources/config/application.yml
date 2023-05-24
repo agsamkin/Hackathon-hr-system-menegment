@@ -27,4 +27,4 @@ spring:
 
 springdoc:
   api-docs:
-    path: /swagger.html
+    path:

@@ -7,4 +7,4 @@ COPY ./ .
 RUN gradle assembleFrontend
 RUN gradle installDist
 
-CMD ./build/install/app/bin/app
+CMD ./build/install/hackathon/bin/hackathon
