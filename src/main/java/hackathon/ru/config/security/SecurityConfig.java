@@ -85,6 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .requestMatchers(publicUrls).permitAll()
+                .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(authenticationFilter)
@@ -94,10 +95,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().disable()
                 .logout().disable()
                 .headers().frameOptions().disable();
-        http
-                .authorizeRequests()
-                .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                .anyRequest().authenticated()
-                .and().httpBasic();
+
     }
 }
