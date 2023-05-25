@@ -1,8 +1,8 @@
 package hackathon.ru.controller;
 
-import hackathon.ru.dto.vacancy.VacancyDto;
-import hackathon.ru.model.vacancy.Vacancy;
-import hackathon.ru.service.iService.VacancyService;
+import hackathon.ru.data.dto.vacancy.VacancyDto;
+import hackathon.ru.data.model.vacancy.Vacancy;
+import hackathon.ru.data.service.vacancy.iService.VacancyService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,7 @@ public class VacancyController {
     public Vacancy getVacanciesById(@PathVariable("id") final long id) {
         return vacancyService.getVacancyById(id);
     }
-    
+
     @GetMapping()
     public List<Vacancy> getAllVacancies() {
         return vacancyService.getAllVacancies();

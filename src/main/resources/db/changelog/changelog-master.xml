@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-1">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-1">
         <createTable tableName="applications">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="applicationsPK"/>
@@ -12,12 +12,11 @@
             <column name="vacancy_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-2">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-2">
         <createTable tableName="candidates">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="candidatesPK"/>
             </column>
-            <column name="name" type="VARCHAR(255)"/>
             <column name="birthday" type="TIMESTAMP"/>
             <column name="description" type="CLOB"/>
             <column name="email" type="VARCHAR(255)"/>
@@ -29,10 +28,11 @@
             <column name="phone" type="VARCHAR(255)"/>
             <column name="skills" type="VARCHAR(255)"/>
             <column name="telegram" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
             <column name="city_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-3">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-3">
         <createTable tableName="cities">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="citiesPK"/>
@@ -40,7 +40,7 @@
             <column name="name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-4">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-4">
         <createTable tableName="educations">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="educationsPK"/>
@@ -52,7 +52,7 @@
             <column name="degree_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-5">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-5">
         <createTable tableName="experience">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="experiencePK"/>
@@ -65,7 +65,7 @@
             <column name="candidate_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-6">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-6">
         <createTable tableName="required_experience">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="required_experiencePK"/>
@@ -73,7 +73,7 @@
             <column name="name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-7">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-7">
         <createTable tableName="roles">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="rolesPK"/>
@@ -81,7 +81,7 @@
             <column name="name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-8">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-8">
         <createTable tableName="statuses">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="statusesPK"/>
@@ -89,7 +89,7 @@
             <column name="name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-9">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-9">
         <createTable tableName="users">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="usersPK"/>
@@ -103,7 +103,7 @@
             <column name="role_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-10">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-10">
         <createTable tableName="vacancy">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="vacancyPK"/>
@@ -125,7 +125,7 @@
             <column name="work_format" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-11">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-11">
         <createTable tableName="vacancy_status">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="vacancy_statusPK"/>
@@ -133,7 +133,7 @@
             <column name="name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-12">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-12">
         <createTable tableName="work_format">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="work_formatPK"/>
@@ -141,55 +141,55 @@
             <column name="name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-13">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-13">
         <addUniqueConstraint columnNames="email" constraintName="UC_CANDIDATESEMAIL_COL" tableName="candidates"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-14">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-14">
         <addUniqueConstraint columnNames="email" constraintName="UC_USERSEMAIL_COL" tableName="users"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-15">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-15">
         <addForeignKeyConstraint baseColumnNames="degree_id" baseTableName="educations" constraintName="FK2x32c2aieovorc216py19u8g7" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="candidates" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-16">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-16">
         <addForeignKeyConstraint baseColumnNames="vacancy_status_id" baseTableName="vacancy" constraintName="FK796frnwqom1xpagju0peevkpq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="vacancy_status" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-17">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-17">
         <addForeignKeyConstraint baseColumnNames="candidate_id" baseTableName="experience" constraintName="FK86hiusttkmjri79aaq768i0j3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="candidates" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-18">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-18">
         <addForeignKeyConstraint baseColumnNames="city_id" baseTableName="vacancy" constraintName="FK94y140s0eqb2phochauxohg54" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cities" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-19">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-19">
         <addForeignKeyConstraint baseColumnNames="owner_id" baseTableName="vacancy" constraintName="FKbdey0jc96ojamsg42x13mwxs" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-20">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-20">
         <addForeignKeyConstraint baseColumnNames="required_experience_id" baseTableName="vacancy" constraintName="FKbgmpcg9cq9ygoo2d3unggog47" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="required_experience" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-21">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-21">
         <addForeignKeyConstraint baseColumnNames="candidate_id" baseTableName="applications" constraintName="FKg4e16cwk1qrad923bpx4hamdh" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="candidates" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-22">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-22">
         <addForeignKeyConstraint baseColumnNames="work_format" baseTableName="vacancy" constraintName="FKh1dqnmm5kn5a4gju45ikstdck" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="work_format" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-23">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-23">
         <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="applications" constraintName="FKiivpigg81efix9k5dhat2omgw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="statuses" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-24">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-24">
         <addForeignKeyConstraint baseColumnNames="city_id" baseTableName="users" constraintName="FKn36jwt4acj3il2ixvv2c0ncco" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cities" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-25">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-25">
         <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="users" constraintName="FKp56c1712k691lhsyewcssf40f" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="roles" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-26">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-26">
         <addForeignKeyConstraint baseColumnNames="candidate_id" baseTableName="educations" constraintName="FKqftk86h96y7tf81tor4sm5ufx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="candidates" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-27">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-27">
         <addForeignKeyConstraint baseColumnNames="vacancy_id" baseTableName="applications" constraintName="FKr6b02t3y6x6l5ubncb85t8393" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="vacancy" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-28">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-28">
         <addForeignKeyConstraint baseColumnNames="hr_id" baseTableName="vacancy" constraintName="FKruosx04fl8d4w629f0y5mhom0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users" validate="true"/>
     </changeSet>
-    <changeSet author="andreevdan83 (generated)" id="1685000332050-29">
+    <changeSet author="andreevdan83 (generated)" id="1685030098811-29">
         <addForeignKeyConstraint baseColumnNames="city_id" baseTableName="candidates" constraintName="FKtntoosq1ndrci4vveajo6dfmw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cities" validate="true"/>
     </changeSet>
 </databaseChangeLog>
