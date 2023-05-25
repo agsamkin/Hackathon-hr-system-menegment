@@ -1,0 +1,43 @@
+package hackathon.ru.data.service.application;
+
+
+import hackathon.ru.data.dto.application.ApplicationStatusDto;
+import hackathon.ru.data.model.application.ApplicationStatus;
+import hackathon.ru.data.repository.ApplicationStatusRepository;
+import hackathon.ru.data.service.application.iService.ApplicationStatusService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.NoSuchElementException;
+
+@Service
+@AllArgsConstructor
+public class ApplicationStatusServiceImpl implements ApplicationStatusService {
+    private final ApplicationStatusRepository applicationStatusRepository;
+    @Override
+    public ApplicationStatus getApplicationStatusById(Long id) {
+        return applicationStatusRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("status with that id is not found"));
+    }
+
+    @Override
+    public List<ApplicationStatus> getAllApplicationStatuses() {
+        return null;
+    }
+
+    @Override
+    public ApplicationStatus createApplicationStatus(ApplicationStatusDto applicationStatusDto) {
+        return null;
+    }
+
+    @Override
+    public ApplicationStatusDto updateApplicationStatus(Long id, ApplicationStatusDto applicationStatusDto) {
+        return null;
+    }
+
+    @Override
+    public void deleteApplicationStatusById(Long id) {
+
+    }
+}

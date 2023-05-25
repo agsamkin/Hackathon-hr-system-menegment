@@ -1,6 +1,6 @@
 FROM gradle:7.6-jdk17
 
-WORKDIR /hackaton
+WORKDIR /hackathon
 
 COPY ./ .
 

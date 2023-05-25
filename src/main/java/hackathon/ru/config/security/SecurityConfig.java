@@ -1,10 +1,8 @@
 package hackathon.ru.config.security;
 
-import hackathon.ru.component.JWTHelper;
-import hackathon.ru.controller.UserController;
-import hackathon.ru.controller.VacancyController;
-import hackathon.ru.filter.JWTAuthenticationFilter;
-import hackathon.ru.filter.JWTAuthorizationFilter;
+import hackathon.ru.config.component.JWTHelper;
+import hackathon.ru.config.filter.JWTAuthenticationFilter;
+import hackathon.ru.config.filter.JWTAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -21,10 +19,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
-import org.springframework.web.cors.CorsUtils;
 
 import java.util.List;
 
+import static hackathon.ru.controller.UserController.USER_CONTROLLER_PATH;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 
@@ -56,9 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.loginRequest = new AntPathRequestMatcher(baseUrl + LOGIN, POST.toString());
         this.publicUrls = new OrRequestMatcher(
                 loginRequest,
-                new AntPathRequestMatcher(baseUrl + UserController.USER_CONTROLLER_PATH, POST.toString()),
-                new AntPathRequestMatcher(baseUrl + UserController.USER_CONTROLLER_PATH, GET.toString()),
-                new AntPathRequestMatcher(baseUrl + VacancyController.VACANCIES_CONTROLLER_PATH, GET.toString()),
+                new AntPathRequestMatcher(baseUrl + USER_CONTROLLER_PATH, POST.toString()),
+                new AntPathRequestMatcher(baseUrl + USER_CONTROLLER_PATH, GET.toString()),
                 new NegatedRequestMatcher(new AntPathRequestMatcher(baseUrl + "/**"))
         );
 
@@ -85,7 +82,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .requestMatchers(publicUrls).permitAll()
-                .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(authenticationFilter)
@@ -95,6 +91,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().disable()
                 .logout().disable()
                 .headers().frameOptions().disable();
-
     }
 }
