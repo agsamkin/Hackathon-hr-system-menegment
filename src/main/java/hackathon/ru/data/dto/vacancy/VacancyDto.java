@@ -56,6 +56,28 @@ public class VacancyDto {
 
     private List<Long> applicationsIds;
 
+    @Override
+    public String toString() {
+        return "VacancyDto{" +
+                "name='" + name + '\'' +
+                ", minSalary='" + minSalary + '\'' +
+                ", maxSalary='" + maxSalary + '\'' +
+                ", publicSalary='" + publicSalary + '\'' +
+                ", description='" + description + '\'' +
+                ", requirements='" + requirements + '\'' +
+                ", responsibilities='" + responsibilities + '\'' +
+                ", benefits='" + benefits + '\'' +
+                ", skills='" + skills + '\'' +
+//                ", cityId=" + cityId +
+                ", hrId=" + hrId +
+                ", ownerId=" + ownerId +
+                ", vacancyStatusId=" + vacancyStatusId +
+                ", workFormatId=" + workFormatId +
+                ", requiredExperienceId=" + requiredExperienceId +
+                ", applicationsIds=" + applicationsIds +
+                '}';
+    }
+
 // Статус вакансии и автор вакансии заполняются
 // автоматически(статус новая, автор текущий пользователь)
 }

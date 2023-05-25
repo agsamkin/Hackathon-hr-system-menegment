@@ -1,5 +1,6 @@
 package hackathon.ru.data.model.vacancy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,7 +29,7 @@ public class RequiredExperience {
     private String name;
 
     //    связи
-
+    @JsonIgnore
     @OneToMany(mappedBy = "requiredExperience")
     private List<Vacancy> vacancies;
 }

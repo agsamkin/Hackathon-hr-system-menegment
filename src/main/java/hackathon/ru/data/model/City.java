@@ -1,5 +1,6 @@
 package hackathon.ru.data.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.model.user.User;
 import hackathon.ru.data.model.vacancy.Vacancy;
@@ -31,13 +32,15 @@ public class City {
     private String name;
 
     //    связи
-
+    @JsonIgnore
     @OneToMany(mappedBy = "city")
     private List<User> users;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "city")
     private List<Vacancy> vacancies;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "city")
     private List<Candidate> candidates;
 }

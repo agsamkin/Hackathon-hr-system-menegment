@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class VacancyListDto {
+public class VacancyForListDto {
     private Long id;
 
     private String name;

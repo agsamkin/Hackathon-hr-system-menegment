@@ -6,6 +6,7 @@ import hackathon.ru.data.model.City;
 import hackathon.ru.data.repository.CityRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class CityServiceImpl implements CityService {
 
     private final CityRepository cityRepository;

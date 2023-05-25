@@ -1,5 +1,6 @@
 package hackathon.ru.data.model.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,7 +29,7 @@ public class Role {
 
 
 //    связи
-
+    @JsonIgnore
     @OneToMany(mappedBy = "role")
     private List<User> users;
 }

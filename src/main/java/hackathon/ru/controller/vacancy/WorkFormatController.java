@@ -1,10 +1,12 @@
-package hackathon.ru.controller;
+package hackathon.ru.controller.vacancy;
 
+import hackathon.ru.data.dto.vacancy.WorkFormatDto;
 import hackathon.ru.data.model.vacancy.WorkFormat;
 import hackathon.ru.data.service.vacancy.iService.WorkFormatService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @AllArgsConstructor
@@ -18,13 +20,18 @@ public class WorkFormatController {
 
 
     @GetMapping(ID)
-    public WorkFormat getVacanciesById(@PathVariable("id") final long id) {
+    public WorkFormat getWorkFormatById(@PathVariable("id") final long id) {
         return workFormatService.getWorkFormatById(id);
     }
 
     @GetMapping()
-    public List<WorkFormat> getAllVacancies() {
+    public List<WorkFormat> getAllWorkFormats() {
         return workFormatService.getAllWorkFormats();
+    }
+
+    @PostMapping()
+    public WorkFormat createWorkFormat(@RequestBody @Valid WorkFormatDto workFormatDto) {
+        return workFormatService.createWorkFormat(workFormatDto);
     }
 
 }
