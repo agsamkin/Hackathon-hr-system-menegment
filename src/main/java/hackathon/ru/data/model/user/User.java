@@ -58,10 +58,11 @@ public class User {
     private City city;
 
     //    связи
-
+    @JsonIgnore
     @OneToMany(mappedBy = "hr")
     private List<Vacancy> vacanciesAuthor;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "owner")
     private List<Vacancy> vacanciesOwner;
 

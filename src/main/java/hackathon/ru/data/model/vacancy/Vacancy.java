@@ -1,13 +1,15 @@
 package hackathon.ru.data.model.vacancy;
 
 
-import hackathon.ru.data.model.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.application.Application;
+import hackathon.ru.data.model.user.User;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /*
@@ -63,12 +65,12 @@ public class Vacancy {
     @Column(name = "skills")
     private String skills;
 
-//    @NotNull(message = "City should not be Empty")
+    @NotNull(message = "City should not be Empty")
     @ManyToOne
     @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;
 
-//    @NotNull(message = "Hr should not be Empty")
+    @NotNull(message = "Hr should not be Empty")
     @ManyToOne
     @JoinColumn(name = "hr_id", referencedColumnName = "id")
     private User hr;
@@ -94,7 +96,7 @@ public class Vacancy {
     private RequiredExperience requiredExperience;
 
 //    связи
-
+    @JsonIgnore
     @OneToMany(mappedBy = "vacancy")
     private List<Application> applications;
 }

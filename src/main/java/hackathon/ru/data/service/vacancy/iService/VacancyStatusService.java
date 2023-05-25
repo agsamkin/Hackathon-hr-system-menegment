@@ -1,19 +1,19 @@
 package hackathon.ru.data.service.vacancy.iService;
 
 
-import hackathon.ru.data.dto.vacancy.VacancyDto;
-import hackathon.ru.data.model.vacancy.Vacancy;
+import hackathon.ru.data.dto.vacancy.VacancyStatusDto;
+import hackathon.ru.data.model.vacancy.VacancyStatus;
 
 import java.util.List;
 
 public interface VacancyStatusService {
-    Vacancy getVacancyStatusById(Long id);
+    VacancyStatus getVacancyStatusById(Long id);
 
-    List<Vacancy> getAllVacancyStatuses();
+    List<VacancyStatus> getAllVacancyStatuses();
 
-    Vacancy createVacancyStatus(VacancyDto vacancyDto);
+    VacancyStatus createVacancyStatus(VacancyStatusDto vacancyStatusDto);
 
-    Vacancy updateVacancyStatus(Long id, VacancyDto vacancyDto);
+    VacancyStatus updateVacancyStatus(Long id, VacancyStatusDto vacancyStatusDto);
 
     void deleteVacancyStatusById(Long id);
 }

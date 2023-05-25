@@ -1,14 +1,9 @@
 package hackathon.ru.data.model.vacancy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 /*
@@ -32,7 +27,7 @@ public class WorkFormat {
     private String name;
 
     //    связи
-
+    @JsonIgnore
     @OneToMany(mappedBy = "workFormat")
     private List<Vacancy> vacancies;
 }
