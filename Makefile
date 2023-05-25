@@ -14,7 +14,7 @@ install:
 	./gradlew installDist
 
 start-dist:
-	./build/install/hackaton/bin/hackaton
+	./build/install/hackathon/bin/hackathon
 
 lint:
 	./gradlew checkstyleMain checkstyleTest

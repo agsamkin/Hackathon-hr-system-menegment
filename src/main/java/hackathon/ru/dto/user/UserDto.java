@@ -27,5 +27,6 @@ public class UserDto {
     private String lastName;
 
     @NotBlank(message = "Phone Number should not be Empty")
-    private String phoneNumber;
+    private String phone;
 }
+

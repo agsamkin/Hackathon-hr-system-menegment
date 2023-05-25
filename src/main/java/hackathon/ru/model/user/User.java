@@ -8,7 +8,6 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 /*
@@ -35,7 +34,6 @@ public class User {
 
     @JsonIgnore
     @NotBlank(message = "Password should not be Empty")
-    @Size(min = 3, max = 20, message = "Password should be between at 3 to 100 symbols")
     @Column(name = "password")
     private String password;
 

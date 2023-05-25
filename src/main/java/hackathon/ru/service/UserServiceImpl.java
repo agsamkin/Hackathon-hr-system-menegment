@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .password(passwordEncoder.encode(userDTO.getPassword()))
                 .firstName(userDTO.getFirstName())
                 .lastName(userDTO.getLastName())
-                .phone(userDTO.getPhoneNumber())
+                .phone(userDTO.getPhone())
                 .build();
 
         System.out.println(user.getFirstName());
