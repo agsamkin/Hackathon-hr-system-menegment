@@ -30,24 +30,24 @@ public class Candidate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Expected salary should not be Empty")
+    @NotBlank(message = "Expected salary should not be empty")
     @Column(name = "expected_salary")
-    private String expectedSalary;
+    private int expectedSalary;
 
     @Temporal(TIMESTAMP)
-    @NotBlank(message = "Birthday should not be Empty")
+    @NotBlank(message = "Birthday should not be empty")
     @Column(name = "birthday")
     private Date birthday;
 
-    @NotBlank(message = "First Name should not be Empty")
+    @NotBlank(message = "First Name should not be empty")
     @Column(name = "first_name")
     private String firstName;
 
-    @NotBlank(message = "Mid Name should not be Empty")
+    @NotBlank(message = "Mid Name should not be empty")
     @Column(name = "Mid_name")
     private String midName;
 
-    @NotBlank(message = "Last Name should not be Empty")
+    @NotBlank(message = "Last Name should not be empty")
     @Column(name = "last_name")
     private String lastName;
 
@@ -55,20 +55,20 @@ public class Candidate {
     @Column(name = "fio")
     private String fio;
 
-    @NotBlank(message = "Email should not be Empty")
+    @NotBlank(message = "Email should not be empty")
     @Email(message = "Incorrect Email")
     @Column(name = "email", unique = true)
     private String email;
 
-    @NotBlank(message = "Phone should not be Empty")
+    @NotBlank(message = "Phone should not be empty")
     @Column(name = "phone")
     private String phone;
 
-    @NotBlank(message = "Telegram should not be Empty")
+    @NotBlank(message = "Telegram should not be empty")
     @Column(name = "Telegram")
     private String telegram;
 
-    @NotBlank(message = "Skills should not be Empty")
+    @NotBlank(message = "Skills should not be empty")
     @Column(name = "skills")
     private String skills;
 
@@ -76,7 +76,7 @@ public class Candidate {
     @Column(name = "description")
     private String description;
 
-    @NotNull(message = "City should not be Empty")
+    @NotNull(message = "City should not be empty")
     @ManyToOne
     @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;

@@ -22,7 +22,7 @@ public class CityServiceImpl implements CityService {
     @Override
     public City getCityById(Long id) {
         return cityRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("city with that id is not found"));
+                .orElseThrow(() -> new NoSuchElementException("City with this id is not found"));
     }
 
     @Override

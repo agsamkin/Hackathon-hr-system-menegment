@@ -21,7 +21,7 @@ public class WorkFormatServiceImpl implements WorkFormatService {
     @Override
     public WorkFormat getWorkFormatById(Long id) {
         return workFormatRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("WorkFormat with that id is not found"));
+                .orElseThrow(() -> new NoSuchElementException("WorkFormat with this id is not found"));
     }
 
     @Override
