@@ -20,7 +20,7 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 public class CandidateDto {
 
     @NotBlank(message = "Expected salary should not be Empty")
-    private String expectedSalary;
+    private int expectedSalary;
 
     @Temporal(TIMESTAMP)
     @NotBlank(message = "Birthday should not be Empty")
@@ -64,4 +64,5 @@ public class CandidateDto {
     private List<Long> experiencesIds;
 
     private List<Long> applicationsIds;
+
 }
