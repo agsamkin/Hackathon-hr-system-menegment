@@ -48,6 +48,7 @@ public class EducationServiceImpl implements EducationService {
                 .degree(degree)
                 .candidate(candidate)
                 .build();
+
         return educationRepository.save(education);
 
     }

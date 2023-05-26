@@ -1,5 +1,6 @@
 package hackathon.ru.data.model.application;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,6 +31,7 @@ public class ApplicationStatus {
 
 //    связи
 
+    @JsonIgnore
     @OneToMany(mappedBy = "applicationStatus")
     private List<Application> applications;
 }

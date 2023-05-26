@@ -1,15 +1,11 @@
 package hackathon.ru.data.dto.candidate;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import hackathon.ru.data.model.City;
+import hackathon.ru.data.model.application.Application;
+import hackathon.ru.data.model.candidate.Education;
+import hackathon.ru.data.model.candidate.Experience;
+import lombok.*;
 
-import javax.persistence.Lob;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
@@ -19,45 +15,40 @@ import java.util.List;
 @Builder
 public class CandidateCardDto {
 
-    @NotBlank(message = "Expected salary should not be Empty")
+    private String vacancyName;
+
+    private Application application;
+
     private int expectedSalary;
 
-    @NotNull(message = "City should not be Empty")
-    private Long cityId;
+    private City city;
 
     private String age;
 
-    @NotBlank(message = "First Name should not be empty")
     private String firstName;
 
-    @NotBlank(message = "Mid Name should not be empty")
     private String midName;
 
-    @NotBlank(message = "Last Name should not be empty")
     private String lastName;
 
     private String experience;
 
-    private int experienceNumber;
+    private int experienceNumber; // отправить в месяцах.
 
-    @NotBlank(message = "Skills should not be empty")
     private String skills;
 
-    private List<Long> educationsIds;
-    private List<Long> experiencesIds;
+    private List<Education> educations;
 
-    @NotBlank(message = "Email should not be empty")
-    @Email(message = "Incorrect Email")
+    private List<Experience> experiences;
+
     private String email;
 
-    @NotBlank(message = "Phone should not be empty")
     private String phone;
 
-    @NotBlank(message = "Telegram should not be empty")
     private String telegram;
 
-    @Lob
     private String description;
+
 
 }
 

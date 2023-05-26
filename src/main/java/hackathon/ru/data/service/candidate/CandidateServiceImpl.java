@@ -4,21 +4,15 @@ import hackathon.ru.data.dto.candidate.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
 import hackathon.ru.data.dto.candidate.CandidateListDto;
 import hackathon.ru.data.model.City;
-import hackathon.ru.data.model.application.Application;
 import hackathon.ru.data.model.candidate.Candidate;
-import hackathon.ru.data.model.candidate.Education;
 import hackathon.ru.data.model.candidate.Experience;
-import hackathon.ru.data.repository.CandidateCardRepository;
-import hackathon.ru.data.repository.CandidateListRepository;
 import hackathon.ru.data.repository.CandidateRepository;
 import hackathon.ru.data.repository.ExperienceRepository;
-import hackathon.ru.data.service.candidate.iservice.CandidateService;
-import hackathon.ru.data.service.candidate.iservice.EducationService;
-import hackathon.ru.data.service.candidate.iservice.ExperienceService;
+import hackathon.ru.data.service.CityService;
 import hackathon.ru.data.service.application.iService.ApplicationService;
+import hackathon.ru.data.service.candidate.iservice.CandidateService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import hackathon.ru.data.service.CityService;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -37,12 +31,9 @@ public class CandidateServiceImpl implements CandidateService {
 
     private final CandidateRepository candidateRepository;
     private final CityService cityService;
-    private final EducationService educationService;
-    private final ExperienceService experienceService;
-    private final ApplicationService applicationService;
     private final ExperienceRepository experienceRepository;
-    private final CandidateCardRepository candidateCardRepository;
-    private final CandidateListRepository candidateListRepository;
+    private final ApplicationService applicationService;
+
 
     @Override
     public Candidate getCandidateById(Long id) {
@@ -57,31 +48,7 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public Candidate createNewCandidate(CandidateDto candidateDto) {
-
         City city = cityService.getCityById(candidateDto.getCityId());
-        List<Long> educationsIds = candidateDto.getEducationsIds(); // to List<Education> education;
-        List<Long> experiencesIds = candidateDto.getExperiencesIds(); // to List<Experience> experience;
-        List<Long> applicationsIds = candidateDto.getApplicationsIds(); // to List<Application> applications;
-
-        List<Education> educations = new ArrayList<>();
-        List<Experience> experiences = new ArrayList<>();
-        List<Application> applications = new ArrayList<>();
-
-        for(Long educationsId : educationsIds) {
-            Education education = educationService.getEducationById(educationsId);
-            educations.add(education);
-        }
-
-        for(Long experiencesId : experiencesIds) {
-            Experience experience = experienceService.getExperienceById(experiencesId);
-            experiences.add(experience);
-        }
-
-        for(Long applicationsId : applicationsIds) {
-            Application application = applicationService.getApplicationById(applicationsId);
-            applications.add(application);
-        }
-
         Candidate candidate = Candidate.builder()
                 .expectedSalary(candidateDto.getExpectedSalary())
                 .birthday(candidateDto.getBirthday())
@@ -95,9 +62,6 @@ public class CandidateServiceImpl implements CandidateService {
                 .skills(candidateDto.getSkills())
                 .description(candidateDto.getDescription())
                 .city(city)
-                .education(educations)
-                .experience(experiences)
-                .applications(applications)
                 .build();
 
         return candidateRepository.save(candidate);
@@ -106,30 +70,9 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public Candidate updateCandidate(Long id, CandidateDto candidateDto) {
-        final Candidate candidateToUpdate = candidateRepository.findById(id).get();
+        final Candidate candidateToUpdate = getCandidateById(id);
         City city = cityService.getCityById(candidateDto.getCityId());
-        List<Long> educationsIds = candidateDto.getEducationsIds(); // to List<Education> education;
-        List<Long> experiencesIds = candidateDto.getExperiencesIds(); // to List<Experience> experience;
-        List<Long> applicationsIds = candidateDto.getApplicationsIds(); // to List<Application> applications;
 
-        List<Education> educations = new ArrayList<>();
-        List<Experience> experiences = new ArrayList<>();
-        List<Application> applications = new ArrayList<>();
-
-        for(Long educationsId : educationsIds) {
-            Education education = educationService.getEducationById(educationsId);
-            educations.add(education);
-        }
-
-        for(Long experiencesId : experiencesIds) {
-            Experience experience = experienceService.getExperienceById(experiencesId);
-            experiences.add(experience);
-        }
-
-        for(Long applicationsId : applicationsIds) {
-            Application application = applicationService.getApplicationById(applicationsId);
-            applications.add(application);
-        }
 
         candidateToUpdate.builder()
                 .expectedSalary(candidateDto.getExpectedSalary())
@@ -144,9 +87,6 @@ public class CandidateServiceImpl implements CandidateService {
                 .skills(candidateDto.getSkills())
                 .description(candidateDto.getDescription())
                 .city(city)
-                .education(educations)
-                .experience(experiences)
-                .applications(applications)
                 .build();
 
         return candidateRepository.save(candidateToUpdate);
@@ -156,7 +96,6 @@ public class CandidateServiceImpl implements CandidateService {
     @Override
     public void deleteCandidate(Long id) {
         candidateRepository.deleteById(id);
-
     }
 
 
@@ -165,13 +104,12 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public List<CandidateListDto> getAllCandidatesCard() {
-        return new ArrayList<>(candidateListRepository.findAll());
+        return null;
     }
 
     @Override
     public CandidateCardDto getCandidateCardById(Long id) {
-        return candidateCardRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Candidate with this id is not found"));
+        return null;
     }
 
 

@@ -1,5 +1,6 @@
 package hackathon.ru.data.model.candidate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,11 +37,13 @@ public class Education {
     private String specialization;
 
     //связи
+    @JsonIgnore
     @NotNull(message = "Degree should not be Empty")
     @ManyToOne
     @JoinColumn(name = "degree_id", referencedColumnName = "id")
     private Degree degree;
 
+    @JsonIgnore
     @NotNull(message = "Candidate should not be Empty")
     @ManyToOne
     @JoinColumn(name = "candidate_id", referencedColumnName = "id")

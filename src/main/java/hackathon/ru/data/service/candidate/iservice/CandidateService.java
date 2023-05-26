@@ -15,5 +15,5 @@ public interface CandidateService {
     Candidate updateCandidate(Long id, CandidateDto candidateDto);
     void deleteCandidate(Long id);
     List<CandidateListDto> getAllCandidatesCard();
-    public CandidateCardDto getCandidateCardById(Long id);
+    CandidateCardDto getCandidateCardById(Long id);
 }

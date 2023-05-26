@@ -68,7 +68,7 @@ public class VacancyDto {
                 ", responsibilities='" + responsibilities + '\'' +
                 ", benefits='" + benefits + '\'' +
                 ", skills='" + skills + '\'' +
-//                ", cityId=" + cityId +
+                ", cityId=" + cityId +
                 ", hrId=" + hrId +
                 ", ownerId=" + ownerId +
                 ", vacancyStatusId=" + vacancyStatusId +

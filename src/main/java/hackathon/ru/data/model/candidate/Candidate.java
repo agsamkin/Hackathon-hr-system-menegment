@@ -1,5 +1,6 @@
 package hackathon.ru.data.model.candidate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import hackathon.ru.data.model.application.Application;
 import hackathon.ru.data.model.City;
 import lombok.*;
@@ -83,13 +84,15 @@ public class Candidate {
 
 //    связи
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "candidate")
     private List<Education> education;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "candidate")
     private List<Experience> experience;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "candidate")
     private List<Application> applications;
 }
