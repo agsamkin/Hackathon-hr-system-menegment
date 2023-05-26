@@ -4,7 +4,9 @@ import hackathon.ru.data.dto.candidate.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
 import hackathon.ru.data.dto.candidate.CandidateListDto;
 import hackathon.ru.data.model.City;
+import hackathon.ru.data.model.application.Application;
 import hackathon.ru.data.model.candidate.Candidate;
+import hackathon.ru.data.model.candidate.Education;
 import hackathon.ru.data.model.candidate.Experience;
 import hackathon.ru.data.repository.CandidateCardRepository;
 import hackathon.ru.data.repository.CandidateListRepository;
@@ -13,6 +15,7 @@ import hackathon.ru.data.repository.ExperienceRepository;
 import hackathon.ru.data.service.candidate.iservice.CandidateService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import hackathon.ru.data.service.CityService;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -30,6 +33,7 @@ import java.util.NoSuchElementException;
 public class CandidateServiceImpl implements CandidateService {
 
     private final CandidateRepository candidateRepository;
+    private final CityService cityService;
     private final ExperienceRepository experienceRepository;
     private final CandidateCardRepository candidateCardRepository;
     private final CandidateListRepository candidateListRepository;
@@ -73,7 +77,18 @@ public class CandidateServiceImpl implements CandidateService {
     @Override
     public Candidate updateCandidate(Long id, CandidateDto candidateDto) {
         final Candidate candidateToUpdate = candidateRepository.findById(id).get();
-        City city = City.builder().name("dasda").build();
+        City city = cityService.getCityById(candidateDto.getCityId());
+        List<Long> educationsIds = candidateDto.getEducationsIds(); // to List<Education> education;
+        List<Long> experiencesIds = candidateDto.getExperiencesIds(); // to List<Experience> experience;
+        List<Long> applicationsIds = candidateDto.getApplicationsIds(); // to List<Application> applications;
+
+        List<Education> education = new ArrayList<>();
+        List<Experience> experience = new ArrayList<>();
+        List<Application> applications = new ArrayList<>();
+
+        for(Long educationsId : educationsIds) {
+
+        }
 
         candidateToUpdate.builder()
                 .expectedSalary(candidateDto.getExpectedSalary())
@@ -88,17 +103,39 @@ public class CandidateServiceImpl implements CandidateService {
                 .skills(candidateDto.getSkills())
                 .description(candidateDto.getDescription())
                 .city(city)
-                .cityId(candidateDto.getCityId())
                 //.educationIds(candidateDto.getEducationsIds())
                 //.experiencesIds(candidateDto.getExperiencesIds())
                 //.applicationsIds(candidateDto.getApplicationsIds())
                 .build();
 
-        candidateToUpdate.setCityId(candidateDto.getCityId());
-        candidateToUpdate.setCity(candidateDto.getCityId());
-
         return candidateRepository.save(candidateToUpdate);
     }
+
+    /*
+
+//    связи
+    private List<Long> educationsIds;
+    private List<Long> experiencesIds;
+    private List<Long> applicationsIds;
+        вытащить в
+    private List<Education> education;
+    private List<Experience> experience;
+    private List<Application> applications;
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public void deleteCandidate(Long id) {
@@ -226,3 +263,4 @@ public class CandidateServiceImpl implements CandidateService {
                 candidateDto.getMidName().charAt(0) + ".";
     }
 }
+
