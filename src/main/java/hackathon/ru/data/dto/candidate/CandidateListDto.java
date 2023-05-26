@@ -4,19 +4,24 @@ import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.application.Application;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class CandidateListDto {
+
+    private String desiredPosition;
+
     private int expectedSalary;
 
     private City city; // город кандидата
 
     private String vacancyName;
 
-    private Application application;
+    private List<Application> applications;
 
     //    заполняется на беке парсингом
     private String fio;
@@ -34,4 +39,3 @@ public class CandidateListDto {
     private String telegram;
 
 }
-/* еще наименование вакансии вытащить, на которую был отклик и дату отклика*/

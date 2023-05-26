@@ -2,6 +2,7 @@ package hackathon.ru.data.dto.candidate;
 
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.validation.constraints.Email;
@@ -21,6 +22,9 @@ public class CandidateDto {
 
     @NotBlank(message = "Expected salary should not be Empty")
     private int expectedSalary;
+
+    @NotBlank(message = "First Name should not be empty")
+    private String desiredPosition;
 
     @Temporal(TIMESTAMP)
     @NotBlank(message = "Birthday should not be Empty")

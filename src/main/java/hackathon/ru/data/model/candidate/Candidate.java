@@ -31,6 +31,10 @@ public class Candidate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "First Name should not be empty")
+    @Column(name = "desired_position")
+    private String desiredPosition;
+
     @NotBlank(message = "Expected salary should not be empty")
     @Column(name = "expected_salary")
     private int expectedSalary;

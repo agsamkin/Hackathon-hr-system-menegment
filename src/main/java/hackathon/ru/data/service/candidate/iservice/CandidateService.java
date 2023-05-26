@@ -5,6 +5,7 @@ import hackathon.ru.data.dto.candidate.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
 import hackathon.ru.data.dto.candidate.CandidateListDto;
 import hackathon.ru.data.model.candidate.Candidate;
+import hackathon.ru.data.model.vacancy.Vacancy;
 
 import java.util.List;
 
@@ -14,6 +15,6 @@ public interface CandidateService {
     Candidate createNewCandidate(CandidateDto candidateDto);
     Candidate updateCandidate(Long id, CandidateDto candidateDto);
     void deleteCandidate(Long id);
-    List<CandidateListDto> getAllCandidatesCard();
+    List<CandidateListDto> getListOfCandidates();
     CandidateCardDto getCandidateCardById(Long id);
 }

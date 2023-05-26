@@ -50,6 +50,7 @@ public class CandidateServiceImpl implements CandidateService {
     public Candidate createNewCandidate(CandidateDto candidateDto) {
         City city = cityService.getCityById(candidateDto.getCityId());
         Candidate candidate = Candidate.builder()
+                .desiredPosition(candidateDto.getDesiredPosition())
                 .expectedSalary(candidateDto.getExpectedSalary())
                 .birthday(candidateDto.getBirthday())
                 .firstName(candidateDto.getFirstName())
@@ -73,21 +74,19 @@ public class CandidateServiceImpl implements CandidateService {
         final Candidate candidateToUpdate = getCandidateById(id);
         City city = cityService.getCityById(candidateDto.getCityId());
 
-
-        candidateToUpdate.builder()
-                .expectedSalary(candidateDto.getExpectedSalary())
-                .birthday(candidateDto.getBirthday())
-                .firstName(candidateDto.getFirstName())
-                .midName(candidateDto.getMidName())
-                .lastName(candidateDto.getLastName())
-                .fio(parseFio(candidateDto))
-                .email(candidateDto.getEmail())
-                .phone(candidateDto.getPhone())
-                .telegram(candidateDto.getTelegram())
-                .skills(candidateDto.getSkills())
-                .description(candidateDto.getDescription())
-                .city(city)
-                .build();
+        candidateToUpdate.setExpectedSalary(candidateDto.getExpectedSalary());
+        candidateToUpdate.setDesiredPosition(candidateDto.getDesiredPosition());
+        candidateToUpdate.setBirthday(candidateDto.getBirthday());
+        candidateToUpdate.setFirstName(candidateDto.getFirstName());
+        candidateToUpdate.setMidName(candidateDto.getMidName());
+        candidateToUpdate.setLastName(candidateDto.getLastName());
+        candidateToUpdate.setFio(parseFio(candidateDto));
+        candidateToUpdate.setEmail(candidateDto.getEmail());
+        candidateToUpdate.setPhone(candidateDto.getPhone());
+        candidateToUpdate.setTelegram(candidateDto.getTelegram());
+        candidateToUpdate.setSkills(candidateDto.getSkills());
+        candidateToUpdate.setDescription(candidateDto.getDescription());
+        candidateToUpdate.setCity(city);
 
         return candidateRepository.save(candidateToUpdate);
     }
@@ -103,21 +102,59 @@ public class CandidateServiceImpl implements CandidateService {
     //-----------DTO-----------//
 
     @Override
-    public List<CandidateListDto> getAllCandidatesCard() {
-        return null;
+    public List<CandidateListDto> getListOfCandidates() {
+
+        List<Candidate> allCandidates = getAllCandidates();
+        List<CandidateListDto> CandidateDtos = new ArrayList<>();
+
+        for (Candidate allCandidate : allCandidates) {
+            CandidateListDto candidateForSave = CandidateListDto.builder()
+                    .desiredPosition(allCandidate.getDesiredPosition())
+                    .expectedSalary(allCandidate.getExpectedSalary())
+                    .city(allCandidate.getCity())
+                    .fio(allCandidate.getFio())
+                    .skills(allCandidate.getSkills())
+                    .phone(allCandidate.getPhone())
+                    .email(allCandidate.getEmail())
+                    .telegram(allCandidate.getTelegram())
+                    .applications(allCandidate.getApplications())
+                    .experienceNumber(calculateExperienceNumber(allCandidate))
+                    .experience(calculateExperience(allCandidate))
+                    .build();
+
+            CandidateDtos.add(candidateForSave);
+        }
+
+        return CandidateDtos;
     }
 
     @Override
     public CandidateCardDto getCandidateCardById(Long id) {
-        return null;
+        Candidate candidate = getCandidateById(id);
+
+        return CandidateCardDto.builder()
+                .age(calculateAge(candidate.getBirthday()))
+                .expectedSalary(candidate.getExpectedSalary())
+                .desiredPosition(candidate.getDesiredPosition())
+                .city(candidate.getCity())
+                .skills(candidate.getSkills())
+                .firstName(candidate.getFirstName())
+                .lastName(candidate.getLastName())
+                .midName(candidate.getMidName())
+                .phone(candidate.getPhone())
+                .telegram(candidate.getTelegram())
+                .email(candidate.getEmail())
+                .description(candidate.getDescription())
+                .educations(candidate.getEducation())
+                .experiences(candidate.getExperience())
+                .applications(candidate.getApplications())
+                .experience(calculateExperience(candidate))
+                .experienceNumber(calculateExperienceNumber(candidate))
+                .build();
     }
 
 
-
-
-
-
-    //----------utils---------//
+    //--------------------utils-------------------//
     public String calculateAge(Date birthDay) {
         LocalDate now = LocalDate.now();
         ZonedDateTime zdt = birthDay.toInstant().atZone(ZoneId.systemDefault());
@@ -138,17 +175,13 @@ public class CandidateServiceImpl implements CandidateService {
         }
     }
 
-    public String calculateExperience(CandidateDto candidateDto) {
+    public String calculateExperience(Candidate candidate) {
 
-        List<Long> experiencesIds = candidateDto.getExperiencesIds();
+        List<Experience> experiences = candidate.getExperience();
         int sumYears = 0;
         int sumMonths = 0;
 
-        for (Long id : experiencesIds) {
-            Experience experience = experienceRepository.findById(id)
-                    .orElseThrow(()
-                            -> new NoSuchElementException("Work experience with this id is not found"));
-
+        for (Experience experience : experiences) {
             Date start = experience.getStartDate();
             ZonedDateTime zdtStart = start.toInstant().atZone(ZoneId.systemDefault());
             LocalDate startDate = zdtStart.toLocalDate();
@@ -185,17 +218,13 @@ public class CandidateServiceImpl implements CandidateService {
 
     }
 
-    public double calculateExperienceNumber(CandidateDto candidateDto) {
+    public int calculateExperienceNumber(Candidate candidate) {
 
-        List<Long> experiencesIds = candidateDto.getExperiencesIds();
-        double sumYears = 0;
-        double sumMonths = 0;
+        List<Experience> experiences = candidate.getExperience();
+        int sumYears = 0;
+        int sumMonths = 0;
 
-        for (Long id : experiencesIds) {
-            Experience experience = experienceRepository.findById(id)
-                    .orElseThrow(()
-                            -> new NoSuchElementException("Work experience with this id is not found"));
-
+        for (Experience experience : experiences) {
             Date start = experience.getStartDate();
             ZonedDateTime zdtStart = start.toInstant().atZone(ZoneId.systemDefault());
             LocalDate startDate = zdtStart.toLocalDate();
@@ -205,19 +234,12 @@ public class CandidateServiceImpl implements CandidateService {
             LocalDate endDate = zdtEnd.toLocalDate();
 
             Period period = Period.between(startDate, endDate);
-            sumYears += period.getYears();
+            sumYears += period.getYears() * 12;
             sumMonths += period.getMonths();
 
         }
-        if (sumMonths >= 12) {
-            double additionalYears = (sumMonths - sumMonths % 12) / 12;
 
-            return sumYears + additionalYears + (sumMonths % 12) / 12;
-        } else {
-            return sumYears + sumMonths / 12;
-        }
-
-
+        return sumYears + sumMonths / 12;
     }
 
     public String parseFio(CandidateDto candidateDto) {
@@ -225,5 +247,5 @@ public class CandidateServiceImpl implements CandidateService {
                 candidateDto.getFirstName().charAt(0) + ". " +
                 candidateDto.getMidName().charAt(0) + ".";
     }
-}
 
+}

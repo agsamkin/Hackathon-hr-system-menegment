@@ -6,6 +6,8 @@ import hackathon.ru.data.model.candidate.Education;
 import hackathon.ru.data.model.candidate.Experience;
 import lombok.*;
 
+import javax.persistence.Column;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Getter
@@ -15,9 +17,9 @@ import java.util.List;
 @Builder
 public class CandidateCardDto {
 
-    private String vacancyName;
+    private String desiredPosition;
 
-    private Application application;
+    private List<Application> applications;
 
     private int expectedSalary;
 
@@ -48,7 +50,6 @@ public class CandidateCardDto {
     private String telegram;
 
     private String description;
-
 
 }
 
