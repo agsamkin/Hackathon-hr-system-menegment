@@ -26,5 +26,5 @@ public class EducationDto {
     private Long degreeIds;
 
     @NotNull(message = "candidate should not be Empty")
-    private Candidate candidateIds;
+    private Long candidateIds;
 }

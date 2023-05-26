@@ -10,6 +10,6 @@ public interface ApplicationStatusService {
     ApplicationStatus getApplicationStatusById(Long id);
     List<ApplicationStatus> getAllApplicationStatuses();
     ApplicationStatus createApplicationStatus(ApplicationStatusDto applicationStatusDto);
-    ApplicationStatusDto updateApplicationStatus(Long id, ApplicationStatusDto applicationStatusDto);
+    ApplicationStatus updateApplicationStatus(Long id, ApplicationStatusDto applicationStatusDto);
     void deleteApplicationStatusById(Long id);
 }

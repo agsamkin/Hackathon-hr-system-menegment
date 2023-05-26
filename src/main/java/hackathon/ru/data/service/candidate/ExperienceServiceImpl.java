@@ -8,11 +8,17 @@ import hackathon.ru.data.model.candidate.Experience;
 import hackathon.ru.data.repository.ExperienceRepository;
 import hackathon.ru.data.service.candidate.iservice.CandidateService;
 import hackathon.ru.data.service.candidate.iservice.ExperienceService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Service
+@Transactional
+@AllArgsConstructor
 public class ExperienceServiceImpl implements ExperienceService {
 
     private ExperienceRepository experienceRepository;
