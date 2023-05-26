@@ -27,7 +27,7 @@ public class CandidateListDto {
 
     private String experience;
 
-    private int experienceNumber;
+    private Integer experienceNumber;
 
     @NotBlank(message = "Skills should not be Empty")
     private String skills;
@@ -43,3 +43,4 @@ public class CandidateListDto {
     private String telegram;
 
 }
+/* еще наименование вакансии вытащить, на которую был отклик и дату отклика*/

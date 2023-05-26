@@ -6,11 +6,17 @@ import hackathon.ru.data.model.candidate.Degree;
 import hackathon.ru.data.repository.DegreeRepository;
 import hackathon.ru.data.service.candidate.iservice.DegreeService;
 import hackathon.ru.data.service.candidate.iservice.EducationService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Service
+@Transactional
+@AllArgsConstructor
 public class DegreeServiceImpl implements DegreeService {
 
     private DegreeRepository degreeRepository;

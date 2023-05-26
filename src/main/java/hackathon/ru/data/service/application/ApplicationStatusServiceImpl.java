@@ -8,13 +8,18 @@ import hackathon.ru.data.service.application.iService.ApplicationStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
 public class ApplicationStatusServiceImpl implements ApplicationStatusService {
+
+
     private final ApplicationStatusRepository applicationStatusRepository;
+
+
     @Override
     public ApplicationStatus getApplicationStatusById(Long id) {
         return applicationStatusRepository.findById(id)
@@ -23,7 +28,7 @@ public class ApplicationStatusServiceImpl implements ApplicationStatusService {
 
     @Override
     public List<ApplicationStatus> getAllApplicationStatuses() {
-        return null;
+        return new ArrayList<>(applicationStatusRepository.findAll());
     }
 
     @Override
@@ -32,12 +37,12 @@ public class ApplicationStatusServiceImpl implements ApplicationStatusService {
     }
 
     @Override
-    public ApplicationStatusDto updateApplicationStatus(Long id, ApplicationStatusDto applicationStatusDto) {
+    public ApplicationStatus updateApplicationStatus(Long id, ApplicationStatusDto applicationStatusDto) {
         return null;
     }
 
     @Override
     public void deleteApplicationStatusById(Long id) {
-
+        applicationStatusRepository.deleteById(id);
     }
 }
