@@ -35,6 +35,7 @@ public class Education {
     @Column(name = "specialization")
     private String specialization;
 
+    //связи
     @NotNull(message = "Degree should not be Empty")
     @ManyToOne
     @JoinColumn(name = "degree_id", referencedColumnName = "id")
