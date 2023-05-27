@@ -3,6 +3,7 @@ package hackathon.ru.data.dto.vacancy;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
@@ -16,14 +17,14 @@ public class VacancyDto {
     @NotBlank(message = "vacancy Name should not be Empty")
     private String name;
 
-    @NotBlank(message = "min Salary should not be Empty")
-    private String minSalary;
+    @NotNull(message = "min Salary should not be Empty")
+    private Integer minSalary;
 
-    @NotBlank(message = "max Salary should not be Empty")
-    private String maxSalary;
+    @NotNull(message = "max Salary should not be Empty")
+    private Integer maxSalary;
 
-    @NotBlank(message = "public Salary should not be Empty")
-    private String publicSalary;
+    @NotNull(message = "public Salary should not be Empty")
+    private Integer publicSalary;
 
     @NotBlank(message = "description should not be Empty")
     private String description;

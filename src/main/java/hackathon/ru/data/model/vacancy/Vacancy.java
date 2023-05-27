@@ -33,17 +33,17 @@ public class Vacancy {
     @Column(name = "name")
     private String name;
 
-    @NotBlank(message = "Min Salary should not be Empty")
+    @NotNull(message = "Min Salary should not be Empty")
     @Column(name = "min_salary")
-    private String minSalary;
+    private Integer minSalary;
 
-    @NotBlank(message = "Max Salary should not be Empty")
+    @NotNull(message = "Max Salary should not be Empty")
     @Column(name = "max_salary")
-    private String maxSalary;
+    private Integer maxSalary;
 
-    @NotBlank(message = "Public Salary should not be Empty")
+    @NotNull(message = "Public Salary should not be Empty")
     @Column(name = "public_salary")
-    private String publicSalary;
+    private Integer publicSalary;
 
     @NotBlank(message = "Description should not be Empty")
     @Column(name = "description")
