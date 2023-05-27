@@ -1,17 +1,14 @@
 package hackathon.ru.data.dto.candidate;
 
 import hackathon.ru.data.model.City;
-import hackathon.ru.data.model.application.Application;
 import lombok.*;
-
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CandidateListDto {
+public class CandidateForListDto {
 
     private String desiredPosition;
 
@@ -20,8 +17,6 @@ public class CandidateListDto {
     private City city; // город кандидата
 
     private String vacancyName;
-
-    private List<Application> applications;
 
     //    заполняется на беке парсингом
     private String fio;
@@ -37,5 +32,7 @@ public class CandidateListDto {
     private String email;
 
     private String telegram;
+
+//    private List<Application> applications;
 
 }

@@ -2,14 +2,12 @@ package hackathon.ru.data.service.candidate;
 
 import hackathon.ru.data.dto.candidate.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
-import hackathon.ru.data.dto.candidate.CandidateListDto;
+import hackathon.ru.data.dto.candidate.CandidateForListDto;
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.model.candidate.Experience;
 import hackathon.ru.data.repository.CandidateRepository;
-import hackathon.ru.data.repository.ExperienceRepository;
 import hackathon.ru.data.service.CityService;
-import hackathon.ru.data.service.application.iService.ApplicationService;
 import hackathon.ru.data.service.candidate.iservice.CandidateService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,9 +29,6 @@ public class CandidateServiceImpl implements CandidateService {
 
     private final CandidateRepository candidateRepository;
     private final CityService cityService;
-    private final ExperienceRepository experienceRepository;
-    private final ApplicationService applicationService;
-
 
     @Override
     public Candidate getCandidateById(Long id) {
@@ -102,30 +97,30 @@ public class CandidateServiceImpl implements CandidateService {
     //-----------DTO-----------//
 
     @Override
-    public List<CandidateListDto> getListOfCandidates() {
+    public List<CandidateForListDto> getListOfCandidates() {
 
         List<Candidate> allCandidates = getAllCandidates();
-        List<CandidateListDto> CandidateDtos = new ArrayList<>();
+        List<CandidateForListDto> candidateList = new ArrayList<>();
 
-        for (Candidate allCandidate : allCandidates) {
-            CandidateListDto candidateForSave = CandidateListDto.builder()
-                    .desiredPosition(allCandidate.getDesiredPosition())
-                    .expectedSalary(allCandidate.getExpectedSalary())
-                    .city(allCandidate.getCity())
-                    .fio(allCandidate.getFio())
-                    .skills(allCandidate.getSkills())
-                    .phone(allCandidate.getPhone())
-                    .email(allCandidate.getEmail())
-                    .telegram(allCandidate.getTelegram())
-                    .applications(allCandidate.getApplications())
-                    .experienceNumber(calculateExperienceNumber(allCandidate))
-                    .experience(calculateExperience(allCandidate))
+        for (Candidate candidate : allCandidates) {
+            CandidateForListDto candidateForSave = CandidateForListDto.builder()
+                    .desiredPosition(candidate.getDesiredPosition())
+                    .expectedSalary(candidate.getExpectedSalary())
+                    .city(candidate.getCity())
+                    .fio(candidate.getFio())
+                    .skills(candidate.getSkills())
+                    .phone(candidate.getPhone())
+                    .email(candidate.getEmail())
+                    .telegram(candidate.getTelegram())
+//                    .applications(candidate.getApplications())
+                    .experienceNumber(calculateExperienceNumber(candidate))
+                    .experience(calculateExperience(candidate))
                     .build();
 
-            CandidateDtos.add(candidateForSave);
+            candidateList.add(candidateForSave);
         }
 
-        return CandidateDtos;
+        return candidateList;
     }
 
     @Override
@@ -147,7 +142,7 @@ public class CandidateServiceImpl implements CandidateService {
                 .description(candidate.getDescription())
                 .educations(candidate.getEducation())
                 .experiences(candidate.getExperience())
-                .applications(candidate.getApplications())
+//                .applications(candidate.getApplications())
                 .experience(calculateExperience(candidate))
                 .experienceNumber(calculateExperienceNumber(candidate))
                 .build();
@@ -239,7 +234,7 @@ public class CandidateServiceImpl implements CandidateService {
 
         }
 
-        return sumYears + sumMonths / 12;
+        return sumYears + sumMonths;
     }
 
     public String parseFio(CandidateDto candidateDto) {

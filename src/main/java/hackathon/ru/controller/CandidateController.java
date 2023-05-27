@@ -2,7 +2,7 @@ package hackathon.ru.controller;
 
 import hackathon.ru.data.dto.candidate.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
-import hackathon.ru.data.dto.candidate.CandidateListDto;
+import hackathon.ru.data.dto.candidate.CandidateForListDto;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.service.candidate.iservice.CandidateService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,21 +12,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
-import static org.springframework.http.HttpStatus.CREATED;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @Tag(name = "Candidate controller")
 @AllArgsConstructor
@@ -36,6 +27,7 @@ public class CandidateController {
 
     public static final String CANDIDATE_CONTROLLER_PATH = "/candidates";
     public static final String ID = "/{id}";
+    public static final String HR = "hr";
     private final CandidateService candidateService;
 
 
@@ -106,8 +98,8 @@ public class CandidateController {
     @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Get all candidates")
     @ApiResponse(responseCode = "200", description = "List of candidates was successfully found")
-    @GetMapping()
-    public List<CandidateListDto> getAllCandidatesList() {
+    @GetMapping(HR)
+    public List<CandidateForListDto> getAllCandidatesList() {
         return candidateService.getListOfCandidates();
     }
 
@@ -118,7 +110,7 @@ public class CandidateController {
             @ApiResponse(responseCode = "200", description = "Candidate was found"),
             @ApiResponse(responseCode = "404", description = "Candidate with this ID does not exist")
     })
-    @GetMapping(ID)
+    @GetMapping(HR + ID)
     public CandidateCardDto getCandidateCardById(@PathVariable("id") final Long id) {
         return candidateService.getCandidateCardById(id);
     }
