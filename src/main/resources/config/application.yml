@@ -11,6 +11,7 @@ spring:
   application:
     name: hrManager
 
+
   liquibase:
     enabled: true
     change-log: classpath:db/changelog/changelog-master.xml
@@ -28,3 +29,7 @@ spring:
 springdoc:
   api-docs:
     path:
+
+google:
+  clientId: ${GOOGLE_CLIENT_ID:}
+  redirect-url: ${GOOGLE_REDIRECT_URL:}

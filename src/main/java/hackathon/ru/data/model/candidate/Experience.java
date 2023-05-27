@@ -1,14 +1,13 @@
 package hackathon.ru.data.model.candidate;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-
-import static javax.persistence.TemporalType.TIMESTAMP;
 
 /*
 Класс завершен
@@ -35,13 +34,13 @@ public class Experience {
     @Column(name = "position_name")
     private String positionName;
 
-    @Temporal(TIMESTAMP)
-    @NotBlank(message = "Start date should not be Empty")
+    @NotNull(message = "Start Date should not be Empty")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
     @Column(name = "start_date")
     private Date startDate;
 
-    @Temporal(TIMESTAMP)
-    @NotBlank(message = "End Date should not be Empty")
+    @NotNull(message = "End Date should not be Empty")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
     @Column(name = "end_date")
     private Date endDate;
 
