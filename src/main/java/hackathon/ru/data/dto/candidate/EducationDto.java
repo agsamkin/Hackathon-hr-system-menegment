@@ -1,6 +1,5 @@
 package hackathon.ru.data.dto.candidate;
 
-import hackathon.ru.data.model.candidate.Candidate;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
@@ -16,7 +15,7 @@ public class EducationDto {
     @NotBlank(message = "university should not be Empty")
     private String university;
 
-    @NotBlank(message = "graduation year should not be Empty")
+    @NotNull(message = "graduation year should not be Empty")
     private Integer graduationYear;
 
     @NotBlank(message = "specialization salary should not be Empty")

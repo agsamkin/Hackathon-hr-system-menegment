@@ -1,14 +1,17 @@
 package hackathon.ru.data.service.candidate;
 
-import hackathon.ru.data.dto.candidate.CandidateCardDto;
+import hackathon.ru.data.dto.candidate.custom.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
-import hackathon.ru.data.dto.candidate.CandidateForListDto;
-import hackathon.ru.data.dto.candidate.EducationForCandidateCardDto;
+import hackathon.ru.data.dto.candidate.custom.CandidateForListDto;
+import hackathon.ru.data.dto.candidate.custom.EducationForCandidateCardDto;
+import hackathon.ru.data.dto.candidate.custom.ExperienceForCandidateCardDto;
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.candidate.Candidate;
+import hackathon.ru.data.model.candidate.Education;
 import hackathon.ru.data.model.candidate.Experience;
 import hackathon.ru.data.repository.CandidateRepository;
 import hackathon.ru.data.repository.EducationRepository;
+import hackathon.ru.data.repository.ExperienceRepository;
 import hackathon.ru.data.service.CityService;
 import hackathon.ru.data.service.candidate.iservice.CandidateService;
 import lombok.AllArgsConstructor;
@@ -32,6 +35,7 @@ public class CandidateServiceImpl implements CandidateService {
     private final CandidateRepository candidateRepository;
     private final CityService cityService;
     private final EducationRepository educationRepository;
+    private final ExperienceRepository experienceRepository;
 
     @Override
     public Candidate getCandidateById(Long id) {
@@ -96,7 +100,6 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
 
-
     //-----------DTO-----------//
 
     @Override
@@ -115,7 +118,6 @@ public class CandidateServiceImpl implements CandidateService {
                     .phone(candidate.getPhone())
                     .email(candidate.getEmail())
                     .telegram(candidate.getTelegram())
-//                    .applications(candidate.getApplications())
                     .experienceNumber(calculateExperienceNumber(candidate))
                     .experience(calculateExperience(candidate))
                     .build();
@@ -129,7 +131,8 @@ public class CandidateServiceImpl implements CandidateService {
     @Override
     public CandidateCardDto getCandidateCardById(Long id) {
         Candidate candidate = getCandidateById(id);
-        List<EducationForCandidateCardDto> educations = educationRepository.getAllByCandidateId(id);
+        List<Education> educations = educationRepository.getAllByCandidateId(id);
+        List<Experience> experiences = experienceRepository.getAllByCandidateId(id);
 
         return CandidateCardDto.builder()
                 .age(calculateAge(candidate.getBirthday()))
@@ -144,9 +147,8 @@ public class CandidateServiceImpl implements CandidateService {
                 .telegram(candidate.getTelegram())
                 .email(candidate.getEmail())
                 .description(candidate.getDescription())
-                .educations(educations)
-                .experiences(candidate.getExperience())
-//                .applications(candidate.getApplications())
+                .educations(convertEdToEdDto(educations))
+                .experiences(convertExpToExpDto(experiences))
                 .experience(calculateExperience(candidate))
                 .experienceNumber(calculateExperienceNumber(candidate))
                 .build();
@@ -154,7 +156,7 @@ public class CandidateServiceImpl implements CandidateService {
 
 
     //--------------------utils-------------------//
-    public String calculateAge(Date birthDay) {
+    private String calculateAge(Date birthDay) {
         LocalDate now = LocalDate.now();
         ZonedDateTime zdt = birthDay.toInstant().atZone(ZoneId.systemDefault());
         LocalDate birth = zdt.toLocalDate();
@@ -174,7 +176,7 @@ public class CandidateServiceImpl implements CandidateService {
         }
     }
 
-    public String calculateExperience(Candidate candidate) {
+    private String calculateExperience(Candidate candidate) {
 
         List<Experience> experiences = candidate.getExperience();
         int sumYears = 0;
@@ -217,7 +219,7 @@ public class CandidateServiceImpl implements CandidateService {
 
     }
 
-    public int calculateExperienceNumber(Candidate candidate) {
+    private int calculateExperienceNumber(Candidate candidate) {
 
         List<Experience> experiences = candidate.getExperience();
         int sumYears = 0;
@@ -241,10 +243,47 @@ public class CandidateServiceImpl implements CandidateService {
         return sumYears + sumMonths;
     }
 
-    public String parseFio(CandidateDto candidateDto) {
+    private String parseFio(CandidateDto candidateDto) {
         return candidateDto.getLastName() + " " +
                 candidateDto.getFirstName().charAt(0) + ". " +
                 candidateDto.getMidName().charAt(0) + ".";
     }
+
+    private List<EducationForCandidateCardDto> convertEdToEdDto(List<Education> educations) {
+        List<EducationForCandidateCardDto> educationsForCandidateCardDto = new ArrayList<>();
+
+        for (Education education : educations) {
+            EducationForCandidateCardDto educationForCandidateCardDto = EducationForCandidateCardDto.builder()
+                    .id(education.getId())
+                    .university(education.getUniversity())
+                    .graduationYear(education.getGraduationYear())
+                    .specialization(education.getSpecialization())
+                    .degree(education.getDegree())
+                    .build();
+
+            educationsForCandidateCardDto.add(educationForCandidateCardDto);
+        }
+        return educationsForCandidateCardDto;
+    }
+
+    private List<ExperienceForCandidateCardDto> convertExpToExpDto(List<Experience> experiences) {
+        List<ExperienceForCandidateCardDto> experiencesForCandidateCardDto = new ArrayList<>();
+
+        for (Experience experience : experiences) {
+            ExperienceForCandidateCardDto experienceForCandidateCardDto = ExperienceForCandidateCardDto.builder()
+                    .id(experience.getId())
+                    .companyName(experience.getCompanyName())
+                    .positionName(experience.getPositionName())
+                    .startDate(experience.getStartDate())
+                    .endDate(experience.getEndDate())
+                    .description(experience.getDescription())
+                    .build();
+
+
+            experiencesForCandidateCardDto.add(experienceForCandidateCardDto);
+        }
+        return experiencesForCandidateCardDto;
+    }
+
 
 }

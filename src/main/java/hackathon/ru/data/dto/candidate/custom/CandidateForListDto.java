@@ -1,4 +1,4 @@
-package hackathon.ru.data.dto.candidate;
+package hackathon.ru.data.dto.candidate.custom;
 
 import hackathon.ru.data.model.City;
 import lombok.*;
@@ -15,8 +15,6 @@ public class CandidateForListDto {
     private int expectedSalary;
 
     private City city; // город кандидата
-
-    private String vacancyName;
 
     //    заполняется на беке парсингом
     private String fio;

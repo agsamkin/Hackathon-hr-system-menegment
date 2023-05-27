@@ -22,33 +22,34 @@ public class VacancyController {
 
     private final VacancyService vacancyService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
+
     @PostMapping()
     public Vacancy createVacancy(@RequestBody @Valid VacancyDto vacancyDto) {
         return vacancyService.createVacancy(vacancyDto);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping()
     public List<VacancyForListDto> getVacanciesListForCandidate() {
         return vacancyService.getVacanciesListForCandidates();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(HR)
     public List<VacancyForListDto> getVacanciesListForHr() {
         return vacancyService.getVacanciesListForHr();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(ID)
     public VacancyCardForCandidateDto getVacancyForCandidateById(@PathVariable("id") final long id) {
         return vacancyService.getVacancyCardForCandidateById(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(HR + ID)
     public VacancyCardForHrDto getVacancyForHrById(@PathVariable("id") final long id) {
         return vacancyService.getVacancyCardForHrById(id);
     }
 }
+

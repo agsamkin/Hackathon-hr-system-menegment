@@ -1,5 +1,6 @@
 package hackathon.ru.data.dto.candidate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.Temporal;
@@ -21,12 +22,12 @@ public class ExperienceDto {
     @NotBlank(message = "position name should not be Empty")
     private String positionName;
 
-    @Temporal(TIMESTAMP)
-    @NotBlank(message = "start date should not be Empty")
+    @NotNull(message = "Start Date should not be Empty")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
     private Date startDate;
 
-    @Temporal(TIMESTAMP)
-    @NotBlank(message = "end Date should not be Empty")
+    @NotNull(message = "End Date should not be Empty")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
     private Date endDate;
 
     @NotBlank(message = "description should not be Empty")

@@ -28,7 +28,7 @@ public class Education {
     @Column(name = "university")
     private String university;
 
-    @NotBlank(message = "Graduation year should not be Empty")
+    @NotNull(message = "Graduation year should not be Empty")
     @Column(name = "graduation_year")
     private Integer graduationYear;
 
