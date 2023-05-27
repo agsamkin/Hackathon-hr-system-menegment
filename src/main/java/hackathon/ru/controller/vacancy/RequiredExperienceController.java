@@ -18,7 +18,6 @@ public class RequiredExperienceController {
 
     private final RequiredExperienceService requiredExperienceService;
 
-
     @GetMapping(ID)
     public RequiredExperience getWorkFormatById(@PathVariable("id") final long id) {
         return requiredExperienceService.getRequiredExperienceById(id);
