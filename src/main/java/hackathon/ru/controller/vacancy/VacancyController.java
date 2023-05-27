@@ -22,7 +22,7 @@ public class VacancyController {
 
     private final VacancyService vacancyService;
 
-//    @CrossOrigin(origins = "http://localhost:4200")
+
     @PostMapping()
     public Vacancy createVacancy(@RequestBody @Valid VacancyDto vacancyDto) {
         return vacancyService.createVacancy(vacancyDto);
@@ -52,3 +52,4 @@ public class VacancyController {
         return vacancyService.getVacancyCardForHrById(id);
     }
 }
+
