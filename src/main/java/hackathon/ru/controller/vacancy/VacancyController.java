@@ -37,7 +37,7 @@ public class VacancyController {
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(HR)
     public List<VacancyForListDto> getVacanciesListForHr() {
-        return vacancyService.getVacanciesListForCandidates();
+        return vacancyService.getVacanciesListForHr();
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

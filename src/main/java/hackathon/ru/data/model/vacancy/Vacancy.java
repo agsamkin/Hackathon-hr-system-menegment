@@ -29,7 +29,7 @@ public class Vacancy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "Vacancy Name should not be Empty")
+    @NotBlank(message = "vacancy name should not be Empty")
     @Column(name = "name")
     private String name;
 
@@ -95,7 +95,7 @@ public class Vacancy {
 
 //    @NotNull(message = "Work Format should not be Empty")
     @ManyToOne()
-    @JoinColumn(name = "work_format", referencedColumnName = "id")
+    @JoinColumn(name = "work_format_id", referencedColumnName = "id")
     private WorkFormat workFormat;
 
 //    @NotNull(message = "Required Experience should not be Empty")

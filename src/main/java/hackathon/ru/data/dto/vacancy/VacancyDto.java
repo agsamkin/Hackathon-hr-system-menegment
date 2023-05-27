@@ -2,6 +2,7 @@ package hackathon.ru.data.dto.vacancy;
 
 import lombok.*;
 
+import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -14,30 +15,35 @@ import java.util.List;
 public class VacancyDto {
 
 
-    @NotBlank(message = "vacancy Name should not be Empty")
+    @NotBlank(message = "vacancy name should not be Empty")
     private String name;
 
-    @NotBlank(message = "department Name should not be Empty")
+    @NotBlank(message = "unit name should not be Empty")
     private String unitName;
 
-    @NotNull(message = "min Salary should not be Empty")
+    @NotNull(message = "min salary should not be Empty")
     private Integer minSalary;
 
-    @NotNull(message = "max Salary should not be Empty")
+    @NotNull(message = "max salary should not be Empty")
     private Integer maxSalary;
 
-    @NotNull(message = "public Salary should not be Empty")
+    @Lob
+    @NotNull(message = "public salary should not be Empty")
     private Integer publicSalary;
 
+    @Lob
     @NotBlank(message = "description should not be Empty")
     private String description;
 
+    @Lob
     @NotBlank(message = "requirement should not be Empty")
     private String requirements;
 
+    @Lob
     @NotBlank(message = "responsibility should not be Empty")
     private String responsibilities;
 
+    @Lob
     @NotBlank(message = "benefit should not be Empty")
     private String benefits;
 
@@ -59,29 +65,6 @@ public class VacancyDto {
 //    связи
 
     private List<Long> applicationsIds;
-
-    @Override
-    public String toString() {
-        return "VacancyDto{" +
-                "name='" + name + '\'' +
-                ", minSalary='" + minSalary + '\'' +
-                ", maxSalary='" + maxSalary + '\'' +
-                ", publicSalary='" + publicSalary + '\'' +
-                ", description='" + description + '\'' +
-                ", requirements='" + requirements + '\'' +
-                ", responsibilities='" + responsibilities + '\'' +
-                ", benefits='" + benefits + '\'' +
-                ", skills='" + skills + '\'' +
-                ", cityId=" + cityId +
-                ", hrId=" + hrId +
-                ", ownerId=" + ownerId +
-                ", vacancyStatusId=" + vacancyStatusId +
-                ", workFormatId=" + workFormatId +
-                ", requiredExperienceId=" + requiredExperienceId +
-                ", applicationsIds=" + applicationsIds +
-                '}';
-    }
-
 // Статус вакансии и автор вакансии заполняются
 // автоматически(статус новая, автор текущий пользователь)
 }

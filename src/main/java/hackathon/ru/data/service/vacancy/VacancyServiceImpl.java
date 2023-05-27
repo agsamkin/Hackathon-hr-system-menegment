@@ -57,6 +57,7 @@ public class VacancyServiceImpl implements VacancyService {
 
         Vacancy vacancy = Vacancy.builder()
                 .name(vacancyDto.getName())
+                .unitName(vacancyDto.getUnitName())
                 .minSalary(vacancyDto.getMinSalary())
                 .maxSalary(vacancyDto.getMaxSalary())
                 .publicSalary(vacancyDto.getPublicSalary())
@@ -86,6 +87,7 @@ public class VacancyServiceImpl implements VacancyService {
 
         Vacancy vacancy = Vacancy.builder()
                 .name(vacancyDto.getName())
+                .unitName(vacancyDto.getUnitName())
                 .minSalary(vacancyDto.getMinSalary())
                 .maxSalary(vacancyDto.getMaxSalary())
                 .publicSalary(vacancyDto.getPublicSalary())
@@ -112,13 +114,14 @@ public class VacancyServiceImpl implements VacancyService {
     @Override
     public List<VacancyForListDto> getVacanciesListForCandidates() {
 //        получаем только открытые вакансии для кандидатов
-        List<Vacancy> vacancies = vacancyRepository.getVacanciesByVacancyStatusName("открыта");
+        List<Vacancy> vacancies = vacancyRepository.getVacanciesByVacancyStatusName("Открыта");
         List<VacancyForListDto> listVacancyForListDto = new ArrayList<>();
 
         for (Vacancy vacancy : vacancies) {
             VacancyForListDto vacancyForListDto = VacancyForListDto.builder()
                     .id(vacancy.getId())
                     .name(vacancy.getName())
+                    .unitName(vacancy.getUnitName())
                     .requiredExperience(vacancy.getRequiredExperience())
                     .city(vacancy.getCity())
                     .workFormat(vacancy.getWorkFormat())
@@ -131,12 +134,14 @@ public class VacancyServiceImpl implements VacancyService {
     //    получить список вакансий для hr(только его вакансии
     @Override
     public List<VacancyForListDto> getVacanciesListForHr() {
+        System.out.println(userService.getCurrentUser().getId());
         List<Vacancy> vacancies = vacancyRepository.getVacanciesByHrId(userService.getCurrentUser().getId());
         List<VacancyForListDto> listVacancyForListDto = new ArrayList<>();
         for (Vacancy vacancy : vacancies) {
             VacancyForListDto vacancyForListDto = VacancyForListDto.builder()
                     .id(vacancy.getId())
                     .name(vacancy.getName())
+                    .unitName(vacancy.getUnitName())
                     .requiredExperience(vacancy.getRequiredExperience())
                     .city(vacancy.getCity())
                     .workFormat(vacancy.getWorkFormat())
@@ -154,6 +159,7 @@ public class VacancyServiceImpl implements VacancyService {
         return VacancyCardForCandidateDto.builder()
                 .id(vacancy.getId())
                 .name(vacancy.getName())
+                .unitName(vacancy.getUnitName())
                 .publicSalary(vacancy.getPublicSalary())
                 .description(vacancy.getDescription())
                 .requirements(vacancy.getRequirements())
@@ -173,6 +179,8 @@ public class VacancyServiceImpl implements VacancyService {
 
         return VacancyCardForHrDto.builder()
                 .id(vacancy.getId())
+                .name(vacancy.getName())
+                .unitName(vacancy.getUnitName())
                 .minSalary(vacancy.getMinSalary())
                 .maxSalary(vacancy.getMaxSalary())
                 .publicSalary(vacancy.getPublicSalary())
