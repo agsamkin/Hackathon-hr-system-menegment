@@ -1,14 +1,16 @@
 package hackathon.ru.data.service.candidate;
 
-import hackathon.ru.data.dto.candidate.CandidateCardDto;
+import hackathon.ru.data.dto.candidate.custom.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
-import hackathon.ru.data.dto.candidate.CandidateForListDto;
-import hackathon.ru.data.dto.candidate.EducationForCandidateCardDto;
+import hackathon.ru.data.dto.candidate.custom.CandidateForListDto;
+import hackathon.ru.data.dto.candidate.custom.EducationForCandidateCardDto;
+import hackathon.ru.data.dto.candidate.custom.ExperienceForCandidateCardDto;
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.model.candidate.Experience;
 import hackathon.ru.data.repository.CandidateRepository;
 import hackathon.ru.data.repository.EducationRepository;
+import hackathon.ru.data.repository.ExperienceRepository;
 import hackathon.ru.data.service.CityService;
 import hackathon.ru.data.service.candidate.iservice.CandidateService;
 import lombok.AllArgsConstructor;
@@ -32,6 +34,7 @@ public class CandidateServiceImpl implements CandidateService {
     private final CandidateRepository candidateRepository;
     private final CityService cityService;
     private final EducationRepository educationRepository;
+    private final ExperienceRepository experienceRepository;
 
     @Override
     public Candidate getCandidateById(Long id) {
@@ -115,7 +118,6 @@ public class CandidateServiceImpl implements CandidateService {
                     .phone(candidate.getPhone())
                     .email(candidate.getEmail())
                     .telegram(candidate.getTelegram())
-//                    .applications(candidate.getApplications())
                     .experienceNumber(calculateExperienceNumber(candidate))
                     .experience(calculateExperience(candidate))
                     .build();
@@ -130,6 +132,7 @@ public class CandidateServiceImpl implements CandidateService {
     public CandidateCardDto getCandidateCardById(Long id) {
         Candidate candidate = getCandidateById(id);
         List<EducationForCandidateCardDto> educations = educationRepository.getAllByCandidateId(id);
+        List<ExperienceForCandidateCardDto> experience = experienceRepository.getAllByCandidateId(id);
 
         return CandidateCardDto.builder()
                 .age(calculateAge(candidate.getBirthday()))
@@ -145,8 +148,7 @@ public class CandidateServiceImpl implements CandidateService {
                 .email(candidate.getEmail())
                 .description(candidate.getDescription())
                 .educations(educations)
-                .experiences(candidate.getExperience())
-//                .applications(candidate.getApplications())
+                .experiences(experience)
                 .experience(calculateExperience(candidate))
                 .experienceNumber(calculateExperienceNumber(candidate))
                 .build();

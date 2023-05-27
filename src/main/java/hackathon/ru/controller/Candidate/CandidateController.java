@@ -1,8 +1,8 @@
-package hackathon.ru.controller;
+package hackathon.ru.controller.Candidate;
 
-import hackathon.ru.data.dto.candidate.CandidateCardDto;
+import hackathon.ru.data.dto.candidate.custom.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
-import hackathon.ru.data.dto.candidate.CandidateForListDto;
+import hackathon.ru.data.dto.candidate.custom.CandidateForListDto;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.service.candidate.iservice.CandidateService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -47,7 +47,7 @@ public class CandidateController {
     // POST /api/candidates - создание нового кандидата
     @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Create new candidate")
-    @ApiResponse(responseCode = "201", description = "Task created")
+    @ApiResponse(responseCode = "201", description = "Candidate created")
     @PostMapping()
     @ResponseStatus(CREATED)
     public Candidate createCandidate(

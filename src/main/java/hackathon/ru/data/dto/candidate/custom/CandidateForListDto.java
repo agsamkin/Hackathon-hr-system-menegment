@@ -1,4 +1,4 @@
-package hackathon.ru.data.dto.candidate;
+package hackathon.ru.data.dto.candidate.custom;
 
 import hackathon.ru.data.model.City;
 import lombok.*;

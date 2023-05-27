@@ -1,4 +1,4 @@
-package hackathon.ru.data.dto.candidate;
+package hackathon.ru.data.dto.candidate.custom;
 
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.candidate.Experience;
@@ -37,7 +37,7 @@ public class CandidateCardDto {
 
     private List<EducationForCandidateCardDto> educations;
 
-    private List<Experience> experiences;
+    private List<ExperienceForCandidateCardDto> experiences;
 
     private String email;
 
