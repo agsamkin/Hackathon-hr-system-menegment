@@ -3,7 +3,7 @@ package hackathon.ru.data.service.application.iService;
 
 
 import hackathon.ru.data.dto.application.ApplicationDto;
-import hackathon.ru.data.dto.application.ApplicationForListDto;
+import hackathon.ru.data.dto.application.customDto.ApplicationForListDto;
 import hackathon.ru.data.model.application.Application;
 
 import java.util.List;

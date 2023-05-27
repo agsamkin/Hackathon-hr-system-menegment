@@ -1,15 +1,8 @@
-package hackathon.ru.data.dto.application;
+package hackathon.ru.data.dto.application.customDto;
 
-import hackathon.ru.data.dto.candidate.custom.CandidateForListDto;
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.application.ApplicationStatus;
-import hackathon.ru.data.model.candidate.Candidate;
-import hackathon.ru.data.service.candidate.iservice.CandidateService;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 

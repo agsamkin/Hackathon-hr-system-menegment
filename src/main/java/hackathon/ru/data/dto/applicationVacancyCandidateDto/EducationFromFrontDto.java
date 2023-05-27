@@ -1,5 +1,6 @@
-package hackathon.ru.data.dto.candidate;
+package hackathon.ru.data.dto.applicationVacancyCandidateDto;
 
+import hackathon.ru.data.model.candidate.Degree;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
@@ -10,8 +11,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class EducationDto {
-
+public class EducationFromFrontDto {
     @NotBlank(message = "university should not be Empty")
     private String university;
 
@@ -22,8 +22,5 @@ public class EducationDto {
     private String specialization;
 
     @NotNull(message = "degree should not be Empty")
-    private Long degreeId;
-
-    @NotNull(message = "candidate should not be Empty")
-    private Long candidateId;
+    private Degree degree;
 }

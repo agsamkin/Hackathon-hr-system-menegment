@@ -1,17 +1,18 @@
 package hackathon.ru.data.service.application;
 
 import hackathon.ru.data.dto.application.ApplicationDto;
-import hackathon.ru.data.dto.application.ApplicationForListDto;
+import hackathon.ru.data.dto.application.customDto.ApplicationForListDto;
 import hackathon.ru.data.model.application.Application;
 import hackathon.ru.data.model.application.ApplicationStatus;
+import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.model.candidate.Experience;
 import hackathon.ru.data.model.vacancy.Vacancy;
-import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.repository.ApplicationRepository;
 import hackathon.ru.data.service.application.iService.ApplicationService;
 import hackathon.ru.data.service.application.iService.ApplicationStatusService;
-import hackathon.ru.data.service.vacancy.iService.VacancyService;
 import hackathon.ru.data.service.candidate.iservice.CandidateService;
+import hackathon.ru.data.service.candidate.iservice.EducationService;
+import hackathon.ru.data.service.vacancy.iService.VacancyService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     private final VacancyService vacancyService;
     private final CandidateService candidateService;
     private final ApplicationStatusService applicationStatusService;
+    private final EducationService educationService;
 
     @Override
     public Application getApplicationById(Long id) {
@@ -46,7 +48,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public Application createApplication(ApplicationDto applicationDto) {
-
         Vacancy vacancy = vacancyService.getVacancyById(applicationDto.getVacancyId());
         Candidate candidate = candidateService.getCandidateById(applicationDto.getCandidateId());
         ApplicationStatus applicationStatus = applicationStatusService

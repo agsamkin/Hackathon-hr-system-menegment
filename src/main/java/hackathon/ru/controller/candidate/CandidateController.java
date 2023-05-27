@@ -1,15 +1,12 @@
 package hackathon.ru.controller.candidate;
 
-import hackathon.ru.data.dto.candidate.custom.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
+import hackathon.ru.data.dto.candidate.custom.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.custom.CandidateForListDto;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.service.candidate.iservice.CandidateService;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -32,12 +29,6 @@ public class CandidateController {
 
 
     // GET /api/candidates/{id} - получение кандидата по идентификатору
-    @CrossOrigin(origins = "http://localhost:4200")
-    @Operation(summary = "Get candidate by ID")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Candidate was found"),
-        @ApiResponse(responseCode = "404", description = "Candidate with this ID does not exist")
-    })
     @GetMapping(ID)
     public Candidate getCandidateById(@PathVariable("id") final Long id) {
         return candidateService.getCandidateById(id);
@@ -45,9 +36,6 @@ public class CandidateController {
 
 
     // POST /api/candidates - создание нового кандидата
-    @CrossOrigin(origins = "http://localhost:4200")
-    @Operation(summary = "Create new candidate")
-    @ApiResponse(responseCode = "201", description = "Candidate created")
     @PostMapping()
     @ResponseStatus(CREATED)
     public Candidate createCandidate(
@@ -58,9 +46,6 @@ public class CandidateController {
 
 
     // GET /api/candidates - получение списка кандидатов
-    @CrossOrigin(origins = "http://localhost:4200")
-    @Operation(summary = "Get all candidates")
-    @ApiResponse(responseCode = "200", description = "List of candidates was successfully found")
     @GetMapping()
     public List<Candidate> getAllCandidates() {
         return candidateService.getAllCandidates();
@@ -68,12 +53,6 @@ public class CandidateController {
 
 
     // PUT /api/candidates/{id} - обновление кандидата
-    @CrossOrigin(origins = "http://localhost:4200")
-    @Operation(summary = "Update candidate by ID")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Candidate updated"),
-        @ApiResponse(responseCode = "404", description = "Candidate with this ID not found")
-    })
     @PutMapping(ID)
     public Candidate updateCandidate(@PathVariable("id") final Long id,
                                      @RequestBody @Valid final CandidateDto candidateDto) {
@@ -82,12 +61,6 @@ public class CandidateController {
 
 
     // DELETE /api/candidates/{id} - удаление кандидата
-    @CrossOrigin(origins = "http://localhost:4200")
-    @Operation(summary = "Delete candidate by ID")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Candidate deleted"),
-        @ApiResponse(responseCode = "404", description = "Candidate with this ID is not found")
-    })
     @DeleteMapping(ID)
     public void deleteCandidate(@PathVariable("id") final Long id) {
         candidateService.deleteCandidate(id);
@@ -99,9 +72,6 @@ public class CandidateController {
 
 
     // GET /api/candidates/hr - получение списка кандидатов
-    @CrossOrigin(origins = "http://localhost:4200")
-    @Operation(summary = "Get all candidates")
-    @ApiResponse(responseCode = "200", description = "List of candidates was successfully found")
     @GetMapping(HR)
     public List<CandidateForListDto> getAllCandidatesList() {
         return candidateService.getListOfCandidates();
@@ -109,12 +79,6 @@ public class CandidateController {
 
 
     // GET /api/candidates/hr/{id} - получение кандидата по идентификатору
-    @CrossOrigin(origins = "http://localhost:4200")
-    @Operation(summary = "Get candidate by ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Candidate was found"),
-            @ApiResponse(responseCode = "404", description = "Candidate with this ID does not exist")
-    })
     @GetMapping(HR + ID)
     public CandidateCardDto getCandidateCardById(@PathVariable("id") final Long id) {
         return candidateService.getCandidateCardById(id);
