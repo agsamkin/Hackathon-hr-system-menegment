@@ -27,7 +27,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.List;
 
 import static hackathon.ru.controller.UserController.USER_CONTROLLER_PATH;
-import static hackathon.ru.controller.vacancy.VacancyController.ID;
 import static hackathon.ru.controller.vacancy.VacancyController.VACANCY_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.dictionaries.RequiredExperienceController.REQUIRED_EXPERIENCE_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.dictionaries.VacancyStatusController.VACANCY_STATUS_CONTROLLER_PATH;
@@ -65,8 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 loginRequest,
                 new AntPathRequestMatcher(baseUrl + USER_CONTROLLER_PATH, POST.toString()),
                 new AntPathRequestMatcher(baseUrl + USER_CONTROLLER_PATH, GET.toString()),
-                new AntPathRequestMatcher(baseUrl + VACANCY_CONTROLLER_PATH, GET.toString()),
-                new AntPathRequestMatcher(baseUrl + VACANCY_CONTROLLER_PATH + ID, GET.toString()),
+                new AntPathRequestMatcher(baseUrl + VACANCY_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + VACANCY_STATUS_CONTROLLER_PATH, GET.toString()),
                 new AntPathRequestMatcher(baseUrl + REQUIRED_EXPERIENCE_CONTROLLER_PATH, GET.toString()),
                 new AntPathRequestMatcher(baseUrl + WORK_FORMAT_CONTROLLER_PATH, GET.toString()),
