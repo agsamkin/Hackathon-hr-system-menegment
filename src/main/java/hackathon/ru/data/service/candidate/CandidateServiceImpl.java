@@ -210,11 +210,23 @@ public class CandidateServiceImpl implements CandidateService {
         }
 
         if (years % 10 == 1) {
-            return years + " год " + months + " мес.";
+            if (months == 0) {
+                return years + " год ";
+            } else {
+                return years + " год " + months + " мес.";
+            }
         } else if (years % 10 == 2) {
-            return years + " года " + months + " мес.";
+            if (months == 0) {
+                return years + " года ";
+            } else {
+                return years + " года " + months + " мес.";
+            }
         } else {
-            return years + " лет " + months + " мес.";
+            if (months == 0) {
+                return years + " лет ";
+            } else {
+                return years + " лет " + months + " мес.";
+            }
         }
 
     }
