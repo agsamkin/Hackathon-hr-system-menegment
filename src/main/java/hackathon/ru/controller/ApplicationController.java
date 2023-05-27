@@ -1,7 +1,10 @@
 package hackathon.ru.controller;
 
 import hackathon.ru.data.dto.application.ApplicationDto;
+
 import hackathon.ru.data.dto.application.customDto.ApplicationForListDto;
+
+import hackathon.ru.data.dto.application.ApplicationForCardDto;
 import hackathon.ru.data.model.application.Application;
 import hackathon.ru.data.service.application.iService.ApplicationService;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -24,16 +27,18 @@ public class ApplicationController {
     public static final String APPLICATION_CONTROLLER_PATH = "/applications";
     public static final String ID = "/{id}";
     public static final String HR = "/hr";
+    public static final String APPLICATION = "/application";
     private final ApplicationService applicationService;
 
+
     // GET /api/applications/{id} - получение кандидата по идентификатору
+    // GET /api/applications/{id} - получение по идентификатору
     @GetMapping(ID)
     public Application getApplicationById(@PathVariable("id") final Long id) {
         return applicationService.getApplicationById(id);
     }
 
 
-    // POST /api/applications - создание нового кандидата
     @PostMapping()
     @ResponseStatus(CREATED)
     public Application createApplication(
@@ -43,14 +48,12 @@ public class ApplicationController {
     }
 
 
-    // GET /api/applications - получение списка кандидатов
     @GetMapping()
     public List<Application> getAllApplications() {
         return applicationService.getAllApplications();
     }
 
 
-    // PUT /api/applications/{id} - обновление кандидата
     @PutMapping(ID)
     public Application updateApplication(@PathVariable("id") final Long id,
                                      @RequestBody @Valid final ApplicationDto applicationDto) {
@@ -58,7 +61,6 @@ public class ApplicationController {
     }
 
 
-    // DELETE /api/applications/{id} - удаление кандидата
     @DeleteMapping(ID)
     public void deleteApplication(@PathVariable("id") final Long id) {
         applicationService.deleteApplicationById(id);
@@ -67,10 +69,16 @@ public class ApplicationController {
 
     //----------------------HR----------------------//
 
-    // GET /api/applications/hr/id - получение списка заявок по id юзера
     @GetMapping(HR + ID)
     public List<ApplicationForListDto> getAllApplicationsList(@PathVariable("id") final Long id) {
         return applicationService.getListOfCandidateApplication(id);
+    }
+
+
+    // GET /api/applications/hr/application/{id} - получение кандидата по id заявки
+    @GetMapping(HR + APPLICATION + ID)
+    public ApplicationForCardDto getApplicationCardById(@PathVariable("id") final Long id) {
+        return applicationService.getApplicationForCardDto(id);
     }
 
 }
