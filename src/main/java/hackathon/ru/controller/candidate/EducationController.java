@@ -2,7 +2,7 @@ package hackathon.ru.controller.candidate;
 
 import hackathon.ru.data.dto.candidate.EducationDto;
 import hackathon.ru.data.model.candidate.Education;
-import hackathon.ru.data.service.candidate.iservice.EducationService;
+import hackathon.ru.service.candidate.iservice.EducationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;

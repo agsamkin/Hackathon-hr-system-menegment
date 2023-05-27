@@ -3,7 +3,7 @@ package hackathon.ru.controller;
 
 import hackathon.ru.data.dto.CityDto;
 import hackathon.ru.data.model.City;
-import hackathon.ru.data.service.CityService;
+import hackathon.ru.service.CityService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

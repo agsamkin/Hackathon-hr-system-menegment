@@ -1,7 +1,7 @@
 package hackathon.ru.controller.vacancy.dictionaries;
 
 import hackathon.ru.data.model.vacancy.VacancyStatus;
-import hackathon.ru.data.service.vacancy.iService.VacancyStatusService;
+import hackathon.ru.service.vacancy.iService.VacancyStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

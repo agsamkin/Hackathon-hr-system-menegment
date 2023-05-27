@@ -2,7 +2,7 @@ package hackathon.ru.controller.calendar;
 
 import hackathon.ru.data.dto.calendar.EventDto;
 import hackathon.ru.data.model.calendar.Event;
-import hackathon.ru.data.service.calendar.EventService;
+import hackathon.ru.service.calendar.EventService;
 
 import lombok.RequiredArgsConstructor;
 

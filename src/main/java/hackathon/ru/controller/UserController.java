@@ -3,7 +3,7 @@ package hackathon.ru.controller;
 
 import hackathon.ru.data.dto.user.UserDto;
 import hackathon.ru.data.model.user.User;
-import hackathon.ru.data.service.user.iService.UserService;
+import hackathon.ru.service.user.iService.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

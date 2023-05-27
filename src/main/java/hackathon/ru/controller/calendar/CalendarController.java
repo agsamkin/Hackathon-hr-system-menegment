@@ -2,7 +2,7 @@ package hackathon.ru.controller.calendar;
 
 import hackathon.ru.data.dto.calendar.TokenDto;
 import hackathon.ru.data.model.calendar.Calendar;
-import hackathon.ru.data.service.calendar.CalendarService;
+import hackathon.ru.service.calendar.CalendarService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -5,7 +5,7 @@ import hackathon.ru.data.dto.vacancy.customDto.VacancyCardForHrDto;
 import hackathon.ru.data.dto.vacancy.VacancyDto;
 import hackathon.ru.data.dto.vacancy.customDto.VacancyForListDto;
 import hackathon.ru.data.model.vacancy.Vacancy;
-import hackathon.ru.data.service.vacancy.iService.VacancyService;
+import hackathon.ru.service.vacancy.iService.VacancyService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

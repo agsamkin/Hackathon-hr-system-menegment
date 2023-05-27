@@ -1,14 +1,14 @@
 package hackathon.ru.config.component;
 
-import hackathon.ru.data.service.CityService;
-import hackathon.ru.data.service.application.iService.ApplicationStatusService;
-import hackathon.ru.data.service.candidate.iservice.DegreeService;
-import hackathon.ru.data.service.user.iService.RoleService;
-import hackathon.ru.data.service.user.iService.UserService;
-import hackathon.ru.data.service.vacancy.iService.RequiredExperienceService;
-import hackathon.ru.data.service.vacancy.iService.VacancyService;
-import hackathon.ru.data.service.vacancy.iService.VacancyStatusService;
-import hackathon.ru.data.service.vacancy.iService.WorkFormatService;
+import hackathon.ru.service.CityService;
+import hackathon.ru.service.application.iService.ApplicationStatusService;
+import hackathon.ru.service.candidate.iservice.DegreeService;
+import hackathon.ru.service.user.iService.RoleService;
+import hackathon.ru.service.user.iService.UserService;
+import hackathon.ru.service.vacancy.iService.RequiredExperienceService;
+import hackathon.ru.service.vacancy.iService.VacancyService;
+import hackathon.ru.service.vacancy.iService.VacancyStatusService;
+import hackathon.ru.service.vacancy.iService.WorkFormatService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;

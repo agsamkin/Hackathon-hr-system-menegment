@@ -3,12 +3,9 @@ package hackathon.ru.data.dto.candidate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
-import javax.persistence.Temporal;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-
-import static javax.persistence.TemporalType.TIMESTAMP;
 
 @Getter
 @Setter
@@ -34,5 +31,5 @@ public class ExperienceDto {
     private String description;
 
     @NotNull(message = "candidate should not be Empty")
-    private Long candidateIds;
+    private Long candidateId;
 }

@@ -2,15 +2,7 @@ package hackathon.ru.data.dto.application.customDto;
 
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.application.ApplicationStatus;
-<<<<<<< HEAD:src/main/java/hackathon/ru/data/dto/application/customDto/ApplicationForListDto.java
 import lombok.*;
-=======
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
->>>>>>> 45c709a040462ec29bdf555b5833609f4d02e310:src/main/java/hackathon/ru/data/dto/application/ApplicationForListDto.java
 
 import java.util.Date;
 

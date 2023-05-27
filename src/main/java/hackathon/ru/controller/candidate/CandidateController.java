@@ -4,7 +4,7 @@ import hackathon.ru.data.dto.candidate.CandidateDto;
 import hackathon.ru.data.dto.candidate.custom.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.custom.CandidateForListDto;
 import hackathon.ru.data.model.candidate.Candidate;
-import hackathon.ru.data.service.candidate.iservice.CandidateService;
+import hackathon.ru.service.candidate.iservice.CandidateService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -34,8 +34,13 @@ public class CandidateController {
         return candidateService.getCandidateById(id);
     }
 
+    @GetMapping()
+    public List<Candidate> getAllCandidates() {
+        return candidateService.getAllCandidates();
+    }
 
     // POST /api/candidates - создание нового кандидата
+
     @PostMapping()
     @ResponseStatus(CREATED)
     public Candidate createCandidate(
@@ -44,12 +49,7 @@ public class CandidateController {
         return candidateService.createNewCandidate(candidateDto);
     }
 
-
     // GET /api/candidates - получение списка кандидатов
-    @GetMapping()
-    public List<Candidate> getAllCandidates() {
-        return candidateService.getAllCandidates();
-    }
 
 
     // PUT /api/candidates/{id} - обновление кандидата

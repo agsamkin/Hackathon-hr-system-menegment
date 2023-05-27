@@ -1,14 +1,12 @@
 package hackathon.ru.controller;
 
 import hackathon.ru.data.dto.application.ApplicationDto;
-
-import hackathon.ru.data.dto.application.customDto.ApplicationForListDto;
-
 import hackathon.ru.data.dto.application.ApplicationForCardDto;
+import hackathon.ru.data.dto.application.customDto.ApplicationForListDto;
+import hackathon.ru.data.dto.application.customDto.ApplicationResponseDto;
+import hackathon.ru.data.dto.applicationVacancyCandidateDto.ApplicationVacancyCandidateDto;
 import hackathon.ru.data.model.application.Application;
-import hackathon.ru.data.service.application.iService.ApplicationService;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Schema;
+import hackathon.ru.service.application.iService.ApplicationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -41,10 +39,9 @@ public class ApplicationController {
 
     @PostMapping()
     @ResponseStatus(CREATED)
-    public Application createApplication(
-            @Parameter(schema = @Schema(implementation = ApplicationDto.class))
-            @RequestBody @Valid ApplicationDto applicationDto) {
-        return applicationService.createApplication(applicationDto);
+    public ApplicationResponseDto createApplication(
+            @RequestBody @Valid ApplicationVacancyCandidateDto applicationVacancyCandidateDto) {
+        return applicationService.createApplication(applicationVacancyCandidateDto);
     }
 
 
@@ -56,7 +53,7 @@ public class ApplicationController {
 
     @PutMapping(ID)
     public Application updateApplication(@PathVariable("id") final Long id,
-                                     @RequestBody @Valid final ApplicationDto applicationDto) {
+                                         @RequestBody @Valid final ApplicationDto applicationDto) {
         return applicationService.updateApplication(id, applicationDto);
     }
 

@@ -64,7 +64,7 @@ public class Candidate {
 
     @NotBlank(message = "Email should not be empty")
     @Email(message = "Incorrect Email")
-    @Column(name = "email", unique = true)
+    @Column(name = "email")
     private String email;
 
     @NotBlank(message = "Phone should not be empty")
@@ -101,4 +101,28 @@ public class Candidate {
     @JsonIgnore
     @OneToMany(mappedBy = "candidate")
     private List<Application> applications;
+
+
+    @Override
+    public String toString() {
+        return "Candidate{" +
+                "id=" + id +
+                ", desiredPosition='" + desiredPosition + '\'' +
+                ", expectedSalary=" + expectedSalary +
+                ", birthday=" + birthday +
+                ", firstName='" + firstName + '\'' +
+                ", midName='" + midName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", fio='" + fio + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", telegram='" + telegram + '\'' +
+                ", skills='" + skills + '\'' +
+                ", description='" + description + '\'' +
+                ", city=" + city +
+                ", education=" + education +
+                ", experience=" + experience +
+                ", applications=" + applications +
+                '}';
+    }
 }
