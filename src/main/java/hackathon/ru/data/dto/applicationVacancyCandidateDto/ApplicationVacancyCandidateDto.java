@@ -23,8 +23,8 @@ public class ApplicationVacancyCandidateDto {
 
 //    Данные Кандидата
     @NotNull(message = "Expected salary should not be Empty")
-    private int expectedSalary;
-    @NotBlank(message = "First Name should not be empty")
+    private Integer expectedSalary;
+    @NotBlank(message = "desired position should not be empty")
     private String desiredPosition;
     @NotNull(message = "Birthday should not be Empty")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")

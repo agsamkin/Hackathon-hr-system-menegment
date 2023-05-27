@@ -26,6 +26,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
+import static hackathon.ru.controller.ApplicationController.APPLICATION_CONTROLLER_PATH;
 import static hackathon.ru.controller.CityController.CITIES_CONTROLLER_PATH;
 import static hackathon.ru.controller.UserController.USER_CONTROLLER_PATH;
 import static hackathon.ru.controller.candidate.DegreeController.DEGREE_CONTROLLER_PATH;
@@ -75,6 +76,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 new AntPathRequestMatcher(baseUrl + WORK_FORMAT_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + VACANCY_CONTROLLER_PATH, GET.toString()),
                 new AntPathRequestMatcher(baseUrl + VACANCY_CONTROLLER_PATH + ID, GET.toString()),
+                new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH + "**", GET.toString()),
+                new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH + "**", POST.toString()),
                 new NegatedRequestMatcher(new AntPathRequestMatcher(baseUrl + "/**"))
         );
 
