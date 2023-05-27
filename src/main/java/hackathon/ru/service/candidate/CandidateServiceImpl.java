@@ -118,6 +118,9 @@ public class CandidateServiceImpl implements CandidateService {
                     .experience(Utils.calculateExperience(candidate))
                     .build();
 
+            System.out.println(candidateForSave.toString());
+
+
             candidateList.add(candidateForSave);
         }
 

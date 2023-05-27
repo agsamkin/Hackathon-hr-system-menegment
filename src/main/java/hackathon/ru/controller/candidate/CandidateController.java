@@ -28,19 +28,6 @@ public class CandidateController {
     private final CandidateService candidateService;
 
 
-    // GET /api/candidates/{id} - получение кандидата по идентификатору
-    @GetMapping(ID)
-    public Candidate getCandidateById(@PathVariable("id") final Long id) {
-        return candidateService.getCandidateById(id);
-    }
-
-    @GetMapping()
-    public List<Candidate> getAllCandidates() {
-        return candidateService.getAllCandidates();
-    }
-
-    // POST /api/candidates - создание нового кандидата
-
     @PostMapping()
     @ResponseStatus(CREATED)
     public Candidate createCandidate(
@@ -72,14 +59,14 @@ public class CandidateController {
 
 
     // GET /api/candidates/hr - получение списка кандидатов
-    @GetMapping(HR)
+    @GetMapping()
     public List<CandidateForListDto> getAllCandidatesList() {
         return candidateService.getListOfCandidates();
     }
 
 
     // GET /api/candidates/hr/{id} - получение кандидата по идентификатору
-    @GetMapping(HR + ID)
+    @GetMapping(ID)
     public CandidateCardDto getCandidateCardById(@PathVariable("id") final Long id) {
         return candidateService.getCandidateCardById(id);
     }

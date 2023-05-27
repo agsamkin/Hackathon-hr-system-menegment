@@ -33,4 +33,20 @@ public class CandidateForListDto {
 
 //    private List<Application> applications;
 
+
+    @Override
+    public String toString() {
+        return "CandidateForListDto{" +
+                "desiredPosition='" + desiredPosition + '\'' +
+                ", expectedSalary=" + expectedSalary +
+                ", city=" + city +
+                ", fio='" + fio + '\'' +
+                ", experience='" + experience + '\'' +
+                ", experienceNumber=" + experienceNumber +
+                ", skills='" + skills + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", telegram='" + telegram + '\'' +
+                '}';
+    }
 }

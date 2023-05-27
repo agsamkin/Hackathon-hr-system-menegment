@@ -68,16 +68,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 loginRequest,
                 new AntPathRequestMatcher(baseUrl + USER_CONTROLLER_PATH, POST.toString()),
                 new AntPathRequestMatcher(baseUrl + USER_CONTROLLER_PATH, GET.toString()),
-
                 new AntPathRequestMatcher(baseUrl + CITIES_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + DEGREE_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + REQUIRED_EXPERIENCE_CONTROLLER_PATH+ "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + VACANCY_STATUS_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + WORK_FORMAT_CONTROLLER_PATH + "/**", GET.toString()),
-                new AntPathRequestMatcher(baseUrl + VACANCY_CONTROLLER_PATH, GET.toString()),
-                new AntPathRequestMatcher(baseUrl + VACANCY_CONTROLLER_PATH + ID, GET.toString()),
                 new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH + "**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH + "**", POST.toString()),
+                new AntPathRequestMatcher(baseUrl + VACANCY_CONTROLLER_PATH, GET.toString()),
+                new AntPathRequestMatcher(baseUrl + VACANCY_CONTROLLER_PATH + ID, GET.toString()),
+
                 new NegatedRequestMatcher(new AntPathRequestMatcher(baseUrl + "/**"))
         );
 
