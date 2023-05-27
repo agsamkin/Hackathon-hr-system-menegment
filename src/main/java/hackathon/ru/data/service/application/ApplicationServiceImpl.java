@@ -110,7 +110,6 @@ public class ApplicationServiceImpl implements ApplicationService {
                     .createdAt(application.getCreatedAt())
                     .comment(application.getComment())
                     .vacancyName(application.getVacancy().getName())
-                    .candidate(application.getCandidate())
                     .applicationStatus(application.getApplicationStatus())
                     .build();
 

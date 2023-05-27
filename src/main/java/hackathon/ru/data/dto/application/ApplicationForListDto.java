@@ -38,7 +38,6 @@ public class ApplicationForListDto {
     private Date createdAt;
     private String comment;
     private String vacancyName; //from Vacancy vacancy;
-    private Candidate candidate;
     private ApplicationStatus applicationStatus;
 
 

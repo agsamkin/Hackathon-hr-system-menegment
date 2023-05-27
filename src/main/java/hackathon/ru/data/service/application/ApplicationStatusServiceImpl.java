@@ -23,7 +23,7 @@ public class ApplicationStatusServiceImpl implements ApplicationStatusService {
     @Override
     public ApplicationStatus getApplicationStatusById(Long id) {
         return applicationStatusRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("status with that id is not found"));
+                .orElseThrow(() -> new NoSuchElementException("Application status with this id is not found"));
     }
 
     @Override
