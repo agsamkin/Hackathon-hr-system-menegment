@@ -23,6 +23,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 import java.util.List;
 
 import static hackathon.ru.controller.UserController.USER_CONTROLLER_PATH;
+import static hackathon.ru.controller.calendar.GoogleOAuth2Controller.GOOGLE_OAUTH2_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.VacancyController.VACANCY_CONTROLLER_PATH;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;

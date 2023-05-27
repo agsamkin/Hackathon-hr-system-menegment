@@ -2,6 +2,7 @@ package hackathon.ru.data.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import hackathon.ru.data.model.City;
+import hackathon.ru.data.model.calendar.Calendar;
 import hackathon.ru.data.model.vacancy.Vacancy;
 import lombok.*;
 
@@ -9,6 +10,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
+
+import static javax.persistence.CascadeType.ALL;
 
 /*
 Класс завершен
@@ -66,4 +69,7 @@ public class User {
     @OneToMany(mappedBy = "owner")
     private List<Vacancy> vacanciesOwner;
 
+    @JsonIgnore
+    @OneToOne(mappedBy = "user", cascade = ALL)
+    private Calendar calendar;
 }
