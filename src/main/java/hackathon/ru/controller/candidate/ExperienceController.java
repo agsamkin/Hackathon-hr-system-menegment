@@ -1,11 +1,7 @@
-package hackathon.ru.controller.Candidate;
+package hackathon.ru.controller.candidate;
 
-import hackathon.ru.data.dto.candidate.CandidateDto;
-import hackathon.ru.data.dto.candidate.EducationDto;
 import hackathon.ru.data.dto.candidate.ExperienceDto;
-import hackathon.ru.data.model.candidate.Education;
 import hackathon.ru.data.model.candidate.Experience;
-import hackathon.ru.data.service.candidate.iservice.EducationService;
 import hackathon.ru.data.service.candidate.iservice.ExperienceService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

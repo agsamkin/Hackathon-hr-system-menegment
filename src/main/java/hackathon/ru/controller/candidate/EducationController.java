@@ -1,4 +1,4 @@
-package hackathon.ru.controller.Candidate;
+package hackathon.ru.controller.candidate;
 
 import hackathon.ru.data.dto.candidate.EducationDto;
 import hackathon.ru.data.model.candidate.Education;
