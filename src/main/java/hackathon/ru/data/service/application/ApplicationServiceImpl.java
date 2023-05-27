@@ -1,26 +1,26 @@
 package hackathon.ru.data.service.application;
 
 import hackathon.ru.data.dto.application.ApplicationDto;
+import hackathon.ru.data.dto.application.ApplicationForCardDto;
 import hackathon.ru.data.dto.application.ApplicationForListDto;
 import hackathon.ru.data.model.application.Application;
 import hackathon.ru.data.model.application.ApplicationStatus;
+import hackathon.ru.data.model.candidate.Education;
 import hackathon.ru.data.model.candidate.Experience;
 import hackathon.ru.data.model.vacancy.Vacancy;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.repository.ApplicationRepository;
+import hackathon.ru.data.repository.EducationRepository;
+import hackathon.ru.data.repository.ExperienceRepository;
 import hackathon.ru.data.service.application.iService.ApplicationService;
 import hackathon.ru.data.service.application.iService.ApplicationStatusService;
 import hackathon.ru.data.service.vacancy.iService.VacancyService;
 import hackathon.ru.data.service.candidate.iservice.CandidateService;
+import hackathon.ru.data.service.Utils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -32,6 +32,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     private final VacancyService vacancyService;
     private final CandidateService candidateService;
     private final ApplicationStatusService applicationStatusService;
+    private final EducationRepository educationRepository;
+    private final ExperienceRepository experienceRepository;
 
     @Override
     public Application getApplicationById(Long id) {
@@ -78,6 +80,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         applicationToUpdate.setComment(applicationDto.getComment());
 
         return applicationToUpdate;
+
     }
 
     @Override
@@ -100,8 +103,8 @@ public class ApplicationServiceImpl implements ApplicationService {
                     .expectedSalary(candidate.getExpectedSalary())
                     .city(candidate.getCity())
                     .fio(candidate.getFio())
-                    .experience(calculateExperience(candidate))
-                    .experienceNumber(calculateExperienceNumber(candidate))
+                    .experience(Utils.calculateExperience(candidate))
+                    .experienceNumber(Utils.calculateExperienceNumber(candidate))
                     .skills(candidate.getSkills())
                     .phone(candidate.getPhone())
                     .email(candidate.getEmail())
@@ -117,89 +120,46 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
 
         return applicationsForListDtos;
-    }
-
-    //--------------------utils-------------------//
-
-    private String calculateExperience(Candidate candidate) {
-
-        List<Experience> experiences = candidate.getExperience();
-        int sumYears = 0;
-        int sumMonths = 0;
-
-        for (Experience experience : experiences) {
-            Date start = experience.getStartDate();
-            ZonedDateTime zdtStart = start.toInstant().atZone(ZoneId.systemDefault());
-            LocalDate startDate = zdtStart.toLocalDate();
-
-            Date end = experience.getEndDate();
-            ZonedDateTime zdtEnd = end.toInstant().atZone(ZoneId.systemDefault());
-            LocalDate endDate = zdtEnd.toLocalDate();
-
-            Period period = Period.between(startDate, endDate);
-            sumYears += period.getYears();
-            sumMonths += period.getMonths();
-
-        }
-
-        int years = 0;
-        int months = 0;
-
-        if (sumMonths >= 12) {
-            int additionalYears = (sumMonths - sumMonths % 12) / 12;
-            years = sumYears + additionalYears;
-            months = sumMonths % 12;
-        } else {
-            years = sumYears;
-            months = sumMonths;
-        }
-
-        if (years % 10 == 1) {
-            if (months == 0) {
-                return years + " год ";
-            } else {
-                return years + " год " + months + " мес.";
-            }
-        } else if (years % 10 == 2) {
-            if (months == 0) {
-                return years + " года ";
-            } else {
-                return years + " года " + months + " мес.";
-            }
-        } else {
-            if (months == 0) {
-                return years + " лет ";
-            } else {
-                return years + " лет " + months + " мес.";
-            }
-        }
 
     }
 
-    private int calculateExperienceNumber(Candidate candidate) {
 
-        List<Experience> experiences = candidate.getExperience();
-        int sumYears = 0;
-        int sumMonths = 0;
+    @Override
+    public ApplicationForCardDto getApplicationForCardDto(Long id) {
 
-        for (Experience experience : experiences) {
-            Date start = experience.getStartDate();
-            ZonedDateTime zdtStart = start.toInstant().atZone(ZoneId.systemDefault());
-            LocalDate startDate = zdtStart.toLocalDate();
+        Application application = getApplicationById(id);
+        Candidate candidate = application.getCandidate();
 
-            Date end = experience.getEndDate();
-            ZonedDateTime zdtEnd = end.toInstant().atZone(ZoneId.systemDefault());
-            LocalDate endDate = zdtEnd.toLocalDate();
+        List<Education> educations = educationRepository.getAllByCandidateId(candidate.getId());
+        List<Experience> experiences = experienceRepository.getAllByCandidateId(candidate.getId());
 
-            Period period = Period.between(startDate, endDate);
-            sumYears += period.getYears() * 12;
-            sumMonths += period.getMonths();
+        return ApplicationForCardDto.builder()
+                .candidateId(id)
+                .expectedSalary(candidate.getExpectedSalary())
+                .city(candidate.getCity())
+                .firstName(candidate.getFirstName())
+                .midName(candidate.getMidName())
+                .lastName(candidate.getLastName())
+                .age(Utils.calculateAge(candidate.getBirthday()))
+                .ageNumber(Utils.calculateAgeNumber(candidate.getBirthday()))
+                .experience(Utils.calculateExperience(candidate))
+                .experienceNumber(Utils.calculateExperienceNumber(candidate))
+                .skills(candidate.getSkills())
+                .description(candidate.getDescription())
+                .phone(candidate.getPhone())
+                .email(candidate.getEmail())
+                .telegram(candidate.getTelegram())
 
-        }
+                .applicationId(application.getId())
+                .createdAt(application.getCreatedAt())
+                .comment(application.getComment())
+                .vacancyName(application.getVacancy().getName())
+                .applicationStatus(application.getApplicationStatus())
+                .educations(Utils.convertEdToEdDto(educations))
+                .experiences(Utils.convertExpToExpDto(experiences))
+                .build();
 
-        return sumYears + sumMonths;
     }
-
 
 }
 

@@ -1,6 +1,7 @@
 package hackathon.ru.controller;
 
 import hackathon.ru.data.dto.application.ApplicationDto;
+import hackathon.ru.data.dto.application.ApplicationForCardDto;
 import hackathon.ru.data.dto.application.ApplicationForListDto;
 import hackathon.ru.data.model.application.Application;
 import hackathon.ru.data.service.application.iService.ApplicationService;
@@ -36,9 +37,10 @@ public class ApplicationController {
     public static final String APPLICATION_CONTROLLER_PATH = "/applications";
     public static final String ID = "/{id}";
     public static final String HR = "/hr";
+    public static final String APPLICATION = "/application";
     private final ApplicationService applicationService;
 
-    // GET /api/applications/{id} - получение кандидата по идентификатору
+    // GET /api/applications/{id} - получение по идентификатору
     @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Get application by ID")
     @ApiResponses(value = {
@@ -51,7 +53,7 @@ public class ApplicationController {
     }
 
 
-    // POST /api/applications - создание нового кандидата
+    // POST /api/applications - создание нового
     @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Create new application")
     @ApiResponse(responseCode = "201", description = "Application created")
@@ -64,7 +66,7 @@ public class ApplicationController {
     }
 
 
-    // GET /api/applications - получение списка кандидатов
+    // GET /api/applications - получение списка
     @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Get all applications")
     @ApiResponse(responseCode = "200", description = "List of applications was successfully found")
@@ -74,7 +76,7 @@ public class ApplicationController {
     }
 
 
-    // PUT /api/applications/{id} - обновление кандидата
+    // PUT /api/applications/{id} - обновление
     @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Update application by ID")
     @ApiResponses(value = {
@@ -88,7 +90,7 @@ public class ApplicationController {
     }
 
 
-    // DELETE /api/applications/{id} - удаление кандидата
+    // DELETE /api/applications/{id} - удаление
     @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Delete candidate by ID")
     @ApiResponses(value = {
@@ -103,13 +105,26 @@ public class ApplicationController {
 
     //----------------------HR----------------------//
 
-    // GET /api/applications/hr/id - получение списка заявок по id юзера
+    // GET /api/applications/hr/{id} - получение списка заявок по id юзера
     @CrossOrigin(origins = "http://localhost:4200")
-    @Operation(summary = "Get all applications")
+    @Operation(summary = "Get all applications by user id")
     @ApiResponse(responseCode = "200", description = "List of applications was successfully found")
     @GetMapping(HR + ID)
     public List<ApplicationForListDto> getAllApplicationsList(@PathVariable("id") final Long id) {
         return applicationService.getListOfCandidateApplication(id);
+    }
+
+
+    // GET /api/applications/hr/application/{id} - получение кандидата по id заявки
+    @CrossOrigin(origins = "http://localhost:4200")
+    @Operation(summary = "Get application by ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Application was found"),
+            @ApiResponse(responseCode = "404", description = "Application with this ID does not exist")
+    })
+    @GetMapping(HR + APPLICATION + ID)
+    public ApplicationForCardDto getApplicationCardById(@PathVariable("id") final Long id) {
+        return applicationService.getApplicationForCardDto(id);
     }
 
 }
