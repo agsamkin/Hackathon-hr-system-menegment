@@ -1,17 +1,18 @@
 package hackathon.ru.data.dto.candidate;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Column;
 import javax.persistence.Lob;
-import javax.persistence.Temporal;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
-
-import static javax.persistence.TemporalType.TIMESTAMP;
 
 @Getter
 @Setter
@@ -20,14 +21,14 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 @Builder
 public class CandidateDto {
 
-    @NotBlank(message = "Expected salary should not be Empty")
+    @NotNull(message = "Expected salary should not be Empty")
     private int expectedSalary;
 
     @NotBlank(message = "First Name should not be empty")
     private String desiredPosition;
 
-    @Temporal(TIMESTAMP)
-    @NotBlank(message = "Birthday should not be Empty")
+    @NotNull(message = "Birthday should not be Empty")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
     private Date birthday;
 
     @NotBlank(message = "First Name should not be Empty")

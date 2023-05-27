@@ -1,5 +1,6 @@
 package hackathon.ru.data.model.candidate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import hackathon.ru.data.model.application.Application;
 import hackathon.ru.data.model.City;
@@ -35,12 +36,13 @@ public class Candidate {
     @Column(name = "desired_position")
     private String desiredPosition;
 
-    @NotBlank(message = "Expected salary should not be empty")
+    @NotNull(message = "Expected salary should not be empty")
     @Column(name = "expected_salary")
     private int expectedSalary;
 
     @Temporal(TIMESTAMP)
-    @NotBlank(message = "Birthday should not be empty")
+    @NotNull(message = "Birthday should not be Empty")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
     @Column(name = "birthday")
     private Date birthday;
 
