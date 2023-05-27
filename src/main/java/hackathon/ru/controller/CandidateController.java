@@ -27,11 +27,12 @@ public class CandidateController {
 
     public static final String CANDIDATE_CONTROLLER_PATH = "/candidates";
     public static final String ID = "/{id}";
-    public static final String HR = "hr";
+    public static final String HR = "/hr";
     private final CandidateService candidateService;
 
 
     // GET /api/candidates/{id} - получение кандидата по идентификатору
+    @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Get candidate by ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Candidate was found"),
@@ -44,6 +45,7 @@ public class CandidateController {
 
 
     // POST /api/candidates - создание нового кандидата
+    @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Create new candidate")
     @ApiResponse(responseCode = "201", description = "Task created")
     @PostMapping()
@@ -66,6 +68,7 @@ public class CandidateController {
 
 
     // PUT /api/candidates/{id} - обновление кандидата
+    @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Update candidate by ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Candidate updated"),
@@ -79,6 +82,7 @@ public class CandidateController {
 
 
     // DELETE /api/candidates/{id} - удаление кандидата
+    @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Delete candidate by ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Candidate deleted"),
@@ -94,7 +98,7 @@ public class CandidateController {
     //-----------DTO-----------//
 
 
-    // GET /api/candidates(???) - получение списка кандидатов
+    // GET /api/candidates/hr - получение списка кандидатов
     @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Get all candidates")
     @ApiResponse(responseCode = "200", description = "List of candidates was successfully found")
@@ -104,7 +108,8 @@ public class CandidateController {
     }
 
 
-    // GET /api/candidates/{id}(???) - получение кандидата по идентификатору
+    // GET /api/candidates/hr/{id} - получение кандидата по идентификатору
+    @CrossOrigin(origins = "http://localhost:4200")
     @Operation(summary = "Get candidate by ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Candidate was found"),
