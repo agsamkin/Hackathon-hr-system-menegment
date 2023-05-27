@@ -12,12 +12,9 @@ import lombok.*;
 @Builder
 public class VacancyForListDto {
     private Long id;
-
     private String name;
-
+    private String unitName;
     private RequiredExperience requiredExperience;
-
     private City city;
-
     private WorkFormat workFormat;
 }

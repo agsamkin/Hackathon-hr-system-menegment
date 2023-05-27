@@ -17,6 +17,9 @@ public class VacancyDto {
     @NotBlank(message = "vacancy Name should not be Empty")
     private String name;
 
+    @NotBlank(message = "department Name should not be Empty")
+    private String unitName;
+
     @NotNull(message = "min Salary should not be Empty")
     private Integer minSalary;
 

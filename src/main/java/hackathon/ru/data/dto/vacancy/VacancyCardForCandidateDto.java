@@ -13,6 +13,7 @@ import lombok.*;
 public class VacancyCardForCandidateDto {
     private Long id;
     private String name;
+    private String unitName;
     private Integer publicSalary;
     private String description;
     private String requirements;

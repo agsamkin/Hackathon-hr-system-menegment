@@ -33,6 +33,10 @@ public class Vacancy {
     @Column(name = "name")
     private String name;
 
+    @NotBlank(message = "unit name should not be Empty")
+    @Column(name = "unit_name")
+    private String unitName;
+
     @NotNull(message = "Min Salary should not be Empty")
     @Column(name = "min_salary")
     private Integer minSalary;
@@ -45,18 +49,22 @@ public class Vacancy {
     @Column(name = "public_salary")
     private Integer publicSalary;
 
+    @Lob
     @NotBlank(message = "Description should not be Empty")
     @Column(name = "description")
     private String description;
 
+    @Lob
     @NotBlank(message = "Requirement should not be Empty")
     @Column(name = "requirements")
     private String requirements;
 
+    @Lob
     @NotBlank(message = "Responsibility should not be Empty")
     @Column(name = "responsibilities")
     private String responsibilities;
 
+    @Lob
     @NotBlank(message = "Benefit should not be Empty")
     @Column(name = "benefits")
     private String benefits;

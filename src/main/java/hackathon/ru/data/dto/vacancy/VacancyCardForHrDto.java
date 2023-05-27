@@ -13,6 +13,8 @@ import lombok.*;
 @Builder
 public class VacancyCardForHrDto {
     private Long id;
+    private String name;
+    private String unitName;
     private Integer minSalary;
     private Integer maxSalary;
     private Integer publicSalary;

@@ -13,7 +13,6 @@ import java.util.List;
 @Builder
 public class VacancyStatusDto {
 
-
     @Column(name = "name")
     private String name;
 

@@ -6,6 +6,7 @@ import hackathon.ru.data.service.candidate.iservice.DegreeService;
 import hackathon.ru.data.service.user.iService.RoleService;
 import hackathon.ru.data.service.user.iService.UserService;
 import hackathon.ru.data.service.vacancy.iService.RequiredExperienceService;
+import hackathon.ru.data.service.vacancy.iService.VacancyService;
 import hackathon.ru.data.service.vacancy.iService.VacancyStatusService;
 import hackathon.ru.data.service.vacancy.iService.WorkFormatService;
 import lombok.AllArgsConstructor;
@@ -29,6 +30,7 @@ public class AppDataInitializer {
     private final VacancyStatusService vacancyStatusService;
     private final WorkFormatService workFormatService;
     private final UserService userService;
+    private final VacancyService vacancyService;
 
     @EventListener(ApplicationReadyEvent.class)
     public void initDictionaries() {
@@ -81,6 +83,13 @@ public class AppDataInitializer {
                     "UTF-8", new ClassPathResource("sql/data/insert_user.sql"));
             resourceDatabasePopulator.execute(dataSource);
         }
+
+//        if (vacancyService.getAllVacancies().isEmpty()) {
+//            ResourceDatabasePopulator resourceDatabasePopulator
+//                    = new ResourceDatabasePopulator(false, false,
+//                    "UTF-8", new ClassPathResource("sql/data/insert_vacancy.sql"));
+//            resourceDatabasePopulator.execute(dataSource);
+//        }
 
     }
 

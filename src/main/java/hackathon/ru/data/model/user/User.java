@@ -32,7 +32,7 @@ public class User {
     @Column(name = "email", unique = true)
     private String email;
 
-
+    @JsonIgnore
     @NotBlank(message = "Password should not be Empty")
     @Column(name = "password")
     private String password;

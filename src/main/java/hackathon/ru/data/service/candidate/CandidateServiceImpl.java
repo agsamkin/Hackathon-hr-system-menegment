@@ -3,10 +3,12 @@ package hackathon.ru.data.service.candidate;
 import hackathon.ru.data.dto.candidate.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
 import hackathon.ru.data.dto.candidate.CandidateForListDto;
+import hackathon.ru.data.dto.candidate.EducationForCandidateCardDto;
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.model.candidate.Experience;
 import hackathon.ru.data.repository.CandidateRepository;
+import hackathon.ru.data.repository.EducationRepository;
 import hackathon.ru.data.service.CityService;
 import hackathon.ru.data.service.candidate.iservice.CandidateService;
 import lombok.AllArgsConstructor;
@@ -29,6 +31,7 @@ public class CandidateServiceImpl implements CandidateService {
 
     private final CandidateRepository candidateRepository;
     private final CityService cityService;
+    private final EducationRepository educationRepository;
 
     @Override
     public Candidate getCandidateById(Long id) {
@@ -126,6 +129,7 @@ public class CandidateServiceImpl implements CandidateService {
     @Override
     public CandidateCardDto getCandidateCardById(Long id) {
         Candidate candidate = getCandidateById(id);
+        List<EducationForCandidateCardDto> educations = educationRepository.getAllByCandidateId(id);
 
         return CandidateCardDto.builder()
                 .age(calculateAge(candidate.getBirthday()))
@@ -140,7 +144,7 @@ public class CandidateServiceImpl implements CandidateService {
                 .telegram(candidate.getTelegram())
                 .email(candidate.getEmail())
                 .description(candidate.getDescription())
-                .educations(candidate.getEducation())
+                .educations(educations)
                 .experiences(candidate.getExperience())
 //                .applications(candidate.getApplications())
                 .experience(calculateExperience(candidate))
