@@ -1,4 +1,4 @@
-INSERT INTO work_format (name)
+ggINSERT INTO work_format (name)
 VALUES ('Полная занятость'),
        ('Частичная занятость'),
        ('Проектная работа'),
