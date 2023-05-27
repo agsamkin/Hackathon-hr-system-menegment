@@ -19,7 +19,7 @@ import static javax.persistence.TemporalType.TIMESTAMP;
  */
 
 @Entity
-@Table(name = "candidates")
+@Table(name = "candidate")
 @Getter
 @Setter
 @AllArgsConstructor

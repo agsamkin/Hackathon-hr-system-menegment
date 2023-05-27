@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "cities")
+@Table(name = "city")
 @Getter
 @Setter
 @AllArgsConstructor

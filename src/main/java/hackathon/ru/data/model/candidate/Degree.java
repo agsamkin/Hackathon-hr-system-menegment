@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "candidates")
+@Table(name = "degree")
 @Getter
 @Setter
 @AllArgsConstructor

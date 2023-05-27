@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "statuses")
+@Table(name = "application_status")
 @Getter
 @Setter
 @AllArgsConstructor

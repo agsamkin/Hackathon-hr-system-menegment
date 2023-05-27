@@ -11,7 +11,7 @@ import java.util.List;
 Класс завершен
  */
 @Entity
-@Table(name = "roles")
+@Table(name = "role")
 @Getter
 @Setter
 @AllArgsConstructor
