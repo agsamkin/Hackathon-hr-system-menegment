@@ -24,7 +24,7 @@ public class Education {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "University should not be Empty")
+    @NotNull(message = "University should not be Empty")
     @Column(name = "university")
     private String university;
 
