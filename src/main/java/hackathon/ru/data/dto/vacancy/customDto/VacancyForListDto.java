@@ -1,4 +1,4 @@
-package hackathon.ru.data.dto.vacancy;
+package hackathon.ru.data.dto.vacancy.customDto;
 
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.vacancy.RequiredExperience;
@@ -14,6 +14,7 @@ public class VacancyForListDto {
     private Long id;
     private String name;
     private String unitName;
+    private Integer publicSalary;
     private RequiredExperience requiredExperience;
     private City city;
     private WorkFormat workFormat;

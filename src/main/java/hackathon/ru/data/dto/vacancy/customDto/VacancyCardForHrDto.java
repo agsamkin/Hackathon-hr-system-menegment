@@ -1,7 +1,8 @@
-package hackathon.ru.data.dto.vacancy;
+package hackathon.ru.data.dto.vacancy.customDto;
 
-import hackathon.ru.data.model.City;
+import hackathon.ru.data.model.user.User;
 import hackathon.ru.data.model.vacancy.RequiredExperience;
+import hackathon.ru.data.model.vacancy.VacancyStatus;
 import hackathon.ru.data.model.vacancy.WorkFormat;
 import lombok.*;
 
@@ -10,17 +11,20 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class VacancyCardForCandidateDto {
+public class VacancyCardForHrDto {
     private Long id;
     private String name;
     private String unitName;
+    private Integer minSalary;
+    private Integer maxSalary;
     private Integer publicSalary;
     private String description;
     private String requirements;
     private String responsibilities;
     private String benefits;
     private String skills;
-    private City city;
-    private RequiredExperience requiredExperience;
+    private User owner;
+    private VacancyStatus vacancyStatus;
     private WorkFormat workFormat;
+    private RequiredExperience requiredExperience;
 }

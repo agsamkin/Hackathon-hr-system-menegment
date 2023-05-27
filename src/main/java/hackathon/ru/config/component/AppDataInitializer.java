@@ -33,7 +33,7 @@ public class AppDataInitializer {
     private final VacancyService vacancyService;
 
     @EventListener(ApplicationReadyEvent.class)
-    public void initDictionaries() {
+    public void initData() {
         if (vacancyStatusService.getAllVacancyStatuses().isEmpty()) {
             ResourceDatabasePopulator resourceDatabasePopulator
                     = new ResourceDatabasePopulator(false, false,
