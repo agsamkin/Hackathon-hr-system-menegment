@@ -24,11 +24,11 @@ public class Education {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "University should not be Empty")
+    @NotBlank(message = "University should not be Empty")
     @Column(name = "university")
     private String university;
 
-    @NotBlank(message = "Graduation year should not be Empty")
+    @NotNull(message = "Graduation year should not be Empty")
     @Column(name = "graduation_year")
     private Integer graduationYear;
 

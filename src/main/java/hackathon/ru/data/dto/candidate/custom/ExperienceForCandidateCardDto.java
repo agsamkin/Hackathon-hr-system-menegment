@@ -1,29 +1,20 @@
 package hackathon.ru.data.dto.candidate.custom;
 
-import hackathon.ru.data.model.candidate.Candidate;
+import lombok.*;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-import static javax.persistence.TemporalType.TIMESTAMP;
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ExperienceForCandidateCardDto {
-
+    private Long id;
     private String companyName;
-
     private String positionName;
-
     private Date startDate;
-
     private Date endDate;
-
     private String description;
 
-/*
-    @NotNull(message = "Candidate should not be Empty")
-    @ManyToOne
-    @JoinColumn(name = "candidate_id", referencedColumnName = "id")
-    private Candidate candidate;*/
 }

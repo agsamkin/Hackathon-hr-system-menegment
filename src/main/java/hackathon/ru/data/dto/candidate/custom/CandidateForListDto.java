@@ -16,8 +16,6 @@ public class CandidateForListDto {
 
     private City city; // город кандидата
 
-    private String vacancyName;
-
     //    заполняется на беке парсингом
     private String fio;
 
