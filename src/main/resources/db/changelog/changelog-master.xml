@@ -201,4 +201,51 @@
     <changeSet author="andreevdan83 (generated)" id="1685194255867-30">
         <addForeignKeyConstraint baseColumnNames="city_id" baseTableName="vacancy" constraintName="FKti8g3xyjmn7ludf27or7pibxh" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="city" validate="true"/>
     </changeSet>
+    <changeSet author="ags (generated)" id="1685194379735-1">
+        <createTable tableName="attendees">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="attendeesPK"/>
+            </column>
+            <column name="attendee_id" type="VARCHAR(255)"/>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="response_status" type="VARCHAR(255)"/>
+            <column name="event_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ags (generated)" id="1685194379735-2">
+        <createTable tableName="calendars">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="calendarsPK"/>
+            </column>
+            <column name="calendar_id" type="VARCHAR(255)"/>
+            <column name="description" type="CLOB"/>
+            <column name="summery" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ags (generated)" id="1685194379735-3">
+        <createTable tableName="events">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="eventsPK"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="creator" type="VARCHAR(255)"/>
+            <column name="description" type="CLOB"/>
+            <column name="end" type="TIMESTAMP"/>
+            <column name="event_id" type="VARCHAR(255)"/>
+            <column name="html_link" type="VARCHAR(255)"/>
+            <column name="organizer" type="VARCHAR(255)"/>
+            <column name="start" type="TIMESTAMP"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="calendar_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ags (generated)" id="1685194379735-4">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="attendees" constraintName="FKgf6p1osteer5pa826gv0c32d1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="events" validate="true"/>
+    </changeSet>
+    <changeSet author="ags (generated)" id="1685194379735-5">
+        <addForeignKeyConstraint baseColumnNames="calendar_id" baseTableName="events" constraintName="FKsr217wml5c5jdpgd2ro6k8omx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="calendars" validate="true"/>
+    </changeSet>
 </databaseChangeLog>
