@@ -1,9 +1,9 @@
 package hackathon.ru.data.service.vacancy;
 
-import hackathon.ru.data.dto.vacancy.VacancyCardForCandidateDto;
-import hackathon.ru.data.dto.vacancy.VacancyCardForHrDto;
+import hackathon.ru.data.dto.vacancy.customDto.VacancyCardForCandidateDto;
+import hackathon.ru.data.dto.vacancy.customDto.VacancyCardForHrDto;
 import hackathon.ru.data.dto.vacancy.VacancyDto;
-import hackathon.ru.data.dto.vacancy.VacancyForListDto;
+import hackathon.ru.data.dto.vacancy.customDto.VacancyForListDto;
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.user.User;
 import hackathon.ru.data.model.vacancy.RequiredExperience;
@@ -126,6 +126,7 @@ public class VacancyServiceImpl implements VacancyService {
                     .id(vacancy.getId())
                     .name(vacancy.getName())
                     .unitName(vacancy.getUnitName())
+                    .publicSalary(vacancy.getPublicSalary())
                     .requiredExperience(vacancy.getRequiredExperience())
                     .city(vacancy.getCity())
                     .workFormat(vacancy.getWorkFormat())
@@ -141,11 +142,13 @@ public class VacancyServiceImpl implements VacancyService {
         System.out.println(userService.getCurrentUser().getId());
         List<Vacancy> vacancies = vacancyRepository.getVacanciesByHrId(userService.getCurrentUser().getId());
         List<VacancyForListDto> listVacancyForListDto = new ArrayList<>();
+
         for (Vacancy vacancy : vacancies) {
             VacancyForListDto vacancyForListDto = VacancyForListDto.builder()
                     .id(vacancy.getId())
                     .name(vacancy.getName())
                     .unitName(vacancy.getUnitName())
+                    .publicSalary(vacancy.getPublicSalary())
                     .requiredExperience(vacancy.getRequiredExperience())
                     .city(vacancy.getCity())
                     .workFormat(vacancy.getWorkFormat())
