@@ -4,6 +4,7 @@ import hackathon.ru.config.component.JWTHelper;
 import hackathon.ru.config.filter.JWTAuthenticationFilter;
 import hackathon.ru.config.filter.JWTAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,10 +20,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
 import static hackathon.ru.controller.UserController.USER_CONTROLLER_PATH;
+import static hackathon.ru.controller.vacancy.VacancyController.ID;
 import static hackathon.ru.controller.vacancy.VacancyController.VACANCY_CONTROLLER_PATH;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
@@ -58,6 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 new AntPathRequestMatcher(baseUrl + USER_CONTROLLER_PATH, POST.toString()),
                 new AntPathRequestMatcher(baseUrl + USER_CONTROLLER_PATH, GET.toString()),
                 new AntPathRequestMatcher(baseUrl + VACANCY_CONTROLLER_PATH, GET.toString()),
+                new AntPathRequestMatcher(baseUrl + VACANCY_CONTROLLER_PATH + ID, GET.toString()),
                 new NegatedRequestMatcher(new AntPathRequestMatcher(baseUrl + "/**"))
         );
 
@@ -82,6 +88,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         );
 
         http.csrf().disable()
+                .cors()
+                .and()
                 .authorizeRequests()
                 .requestMatchers(publicUrls).permitAll()
                 .anyRequest().authenticated()
@@ -93,5 +101,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().disable()
                 .logout().disable()
                 .headers().frameOptions().disable();
+    }
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        return source;
     }
 }
