@@ -39,8 +39,10 @@ public class VacancyServiceImpl implements VacancyService {
 
     @Override
     public Vacancy getVacancyById(Long id) {
+
         return vacancyRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Vacancy with that id is not found"));
+
     }
 
     @Override
@@ -165,7 +167,7 @@ public class VacancyServiceImpl implements VacancyService {
                 .publicSalary(vacancy.getPublicSalary())
                 .description(vacancy.getDescription())
                 .requirements(vacancy.getRequirements())
-                .requirements(vacancy.getResponsibilities())
+                .responsibilities(vacancy.getResponsibilities())
                 .benefits(vacancy.getBenefits())
                 .skills(vacancy.getSkills())
                 .city(vacancy.getCity())

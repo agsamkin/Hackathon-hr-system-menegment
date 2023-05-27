@@ -11,6 +11,8 @@ spring:
   application:
     name: hrManager
 
+  profiles:
+    active: ${APP_ENV:dev}
 
   liquibase:
     enabled: true

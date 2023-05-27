@@ -13,8 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class VacancyDto {
-
-
     @NotBlank(message = "vacancy name should not be Empty")
     private String name;
 
