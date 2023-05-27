@@ -164,7 +164,7 @@ public class VacancyServiceImpl implements VacancyService {
                 .publicSalary(vacancy.getPublicSalary())
                 .description(vacancy.getDescription())
                 .requirements(vacancy.getRequirements())
-                .requirements(vacancy.getResponsibilities())
+                .responsibilities(vacancy.getResponsibilities())
                 .benefits(vacancy.getBenefits())
                 .skills(vacancy.getSkills())
                 .city(vacancy.getCity())

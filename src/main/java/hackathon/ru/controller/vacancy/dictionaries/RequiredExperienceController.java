@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("${base-url}" + RequiredExperienceController.REQUIRED_EXPERIENCE_CONTROLLER_PATH)
 public class RequiredExperienceController {
-    public static final String REQUIRED_EXPERIENCE_CONTROLLER_PATH = "/required-experience";
+    public static final String REQUIRED_EXPERIENCE_CONTROLLER_PATH = "/required-experiences";
     public static final String ID = "/{id}";
 
     private final RequiredExperienceService requiredExperienceService;
