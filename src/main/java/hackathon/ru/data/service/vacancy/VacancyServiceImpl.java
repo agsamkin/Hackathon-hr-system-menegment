@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
@@ -38,7 +39,7 @@ public class VacancyServiceImpl implements VacancyService {
 
     @Override
     public Vacancy getVacancyById(Long id) {
-        return null;
+        return vacancyRepository.findById(id).orElseThrow(() -> new NoSuchElementException("vacancy with that id is not found"));
     }
 
     @Override
