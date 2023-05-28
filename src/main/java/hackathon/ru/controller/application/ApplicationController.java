@@ -26,7 +26,7 @@ public class ApplicationController {
 
     public static final String ID = "/{id}";
     public static final String HR = "/hr";
-
+    public static final String APPLICATION = "/application";
     private final ApplicationService applicationService;
 
 
@@ -73,8 +73,8 @@ public class ApplicationController {
     }
 
 
-    // GET /api/applications/hr/{id} - получение кандидата по id заявки
-    @GetMapping(HR  + ID)
+    // GET /api/applications/hr/application/{id} - получение кандидата по id заявки
+    @GetMapping(HR + APPLICATION + ID)
     public ApplicationForCardDto getApplicationCardById(@PathVariable("id") final Long id) {
         return applicationService.getApplicationForCardDto(id);
     }
