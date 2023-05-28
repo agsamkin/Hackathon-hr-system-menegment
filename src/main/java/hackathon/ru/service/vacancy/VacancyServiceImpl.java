@@ -10,7 +10,7 @@ import hackathon.ru.data.model.vacancy.RequiredExperience;
 import hackathon.ru.data.model.vacancy.Vacancy;
 import hackathon.ru.data.model.vacancy.VacancyStatus;
 import hackathon.ru.data.model.vacancy.WorkFormat;
-import hackathon.ru.repository.VacancyRepository;
+import hackathon.ru.data.repository.VacancyRepository;
 import hackathon.ru.service.CityService;
 import hackathon.ru.service.user.iService.UserService;
 import hackathon.ru.service.vacancy.iService.RequiredExperienceService;
@@ -139,8 +139,8 @@ public class VacancyServiceImpl implements VacancyService {
     //    получить список вакансий для hr(только его вакансии
     @Override
     public List<VacancyForListDto> getVacanciesListForHr() {
-        System.out.println(userService.getCurrentUser().getId());
-        List<Vacancy> vacancies = vacancyRepository.getVacanciesByHrId(userService.getCurrentUser().getId());
+        List<Vacancy> vacancies = vacancyRepository.findVacanciesByHrId(userService.getCurrentUser().getId());
+
         List<VacancyForListDto> listVacancyForListDto = new ArrayList<>();
 
         for (Vacancy vacancy : vacancies) {

@@ -3,7 +3,7 @@ package hackathon.ru.service.user;
 
 import hackathon.ru.data.dto.user.RoleDto;
 import hackathon.ru.data.model.user.Role;
-import hackathon.ru.repository.RoleRepository;
+import hackathon.ru.data.repository.RoleRepository;
 import hackathon.ru.service.user.iService.RoleService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package hackathon.ru.repository;
+package hackathon.ru.data.repository;
 
 import hackathon.ru.data.model.application.ApplicationStatus;
 import org.springframework.data.jpa.repository.JpaRepository;

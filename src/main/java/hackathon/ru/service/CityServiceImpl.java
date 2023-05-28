@@ -3,7 +3,7 @@ package hackathon.ru.service;
 
 import hackathon.ru.data.dto.CityDto;
 import hackathon.ru.data.model.City;
-import hackathon.ru.repository.CityRepository;
+import hackathon.ru.data.repository.CityRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -4,7 +4,7 @@ import hackathon.ru.api.CalendarApi;
 import hackathon.ru.data.dto.calendar.TokenDto;
 import hackathon.ru.data.model.calendar.Calendar;
 import hackathon.ru.data.model.user.User;
-import hackathon.ru.repository.CalendarRepository;
+import hackathon.ru.data.repository.CalendarRepository;
 import hackathon.ru.service.calendar.CalendarService;
 import hackathon.ru.service.user.iService.UserService;
 

@@ -2,7 +2,7 @@ package hackathon.ru.service.vacancy;
 
 import hackathon.ru.data.dto.vacancy.WorkFormatDto;
 import hackathon.ru.data.model.vacancy.WorkFormat;
-import hackathon.ru.repository.WorkFormatRepository;
+import hackathon.ru.data.repository.WorkFormatRepository;
 import hackathon.ru.service.vacancy.iService.WorkFormatService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

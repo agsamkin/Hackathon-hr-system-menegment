@@ -3,7 +3,7 @@ package hackathon.ru.service.application;
 
 import hackathon.ru.data.dto.application.ApplicationStatusDto;
 import hackathon.ru.data.model.application.ApplicationStatus;
-import hackathon.ru.repository.ApplicationStatusRepository;
+import hackathon.ru.data.repository.ApplicationStatusRepository;
 import hackathon.ru.service.application.iService.ApplicationStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

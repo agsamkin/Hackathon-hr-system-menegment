@@ -2,7 +2,7 @@ package hackathon.ru.service.vacancy;
 
 import hackathon.ru.data.dto.vacancy.VacancyStatusDto;
 import hackathon.ru.data.model.vacancy.VacancyStatus;
-import hackathon.ru.repository.VacancyStatusRepository;
+import hackathon.ru.data.repository.VacancyStatusRepository;
 import hackathon.ru.service.vacancy.iService.VacancyStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

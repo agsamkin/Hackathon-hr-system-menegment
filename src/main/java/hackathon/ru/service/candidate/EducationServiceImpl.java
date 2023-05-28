@@ -4,7 +4,7 @@ import hackathon.ru.data.dto.candidate.EducationDto;
 import hackathon.ru.data.model.candidate.Degree;
 import hackathon.ru.data.model.candidate.Education;
 import hackathon.ru.data.model.candidate.Candidate;
-import hackathon.ru.repository.EducationRepository;
+import hackathon.ru.data.repository.EducationRepository;
 import hackathon.ru.service.candidate.iservice.DegreeService;
 import hackathon.ru.service.candidate.iservice.EducationService;
 import hackathon.ru.service.candidate.iservice.CandidateService;

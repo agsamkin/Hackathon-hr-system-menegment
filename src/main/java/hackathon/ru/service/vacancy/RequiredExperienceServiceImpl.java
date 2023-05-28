@@ -2,7 +2,7 @@ package hackathon.ru.service.vacancy;
 
 import hackathon.ru.data.dto.vacancy.RequiredExperienceDto;
 import hackathon.ru.data.model.vacancy.RequiredExperience;
-import hackathon.ru.repository.RequiredExperienceRepository;
+import hackathon.ru.data.repository.RequiredExperienceRepository;
 import hackathon.ru.service.vacancy.iService.RequiredExperienceService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

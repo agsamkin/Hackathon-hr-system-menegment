@@ -19,11 +19,11 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
-
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
+    private static final ObjectMapper MAPPER = new ObjectMapper();
+
     private final JWTHelper jwtHelper;
-    private static final ObjectMapper MAPPER = new ObjectMapper().configure(FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     public JWTAuthenticationFilter(final AuthenticationManager authenticationManager,
                                    final RequestMatcher loginRequest,
@@ -55,7 +55,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             throw new BadCredentialsException("Can't extract login data from request");
         }
     }
-
     @Override
     protected void successfulAuthentication(final HttpServletRequest request,
                                             final HttpServletResponse response,

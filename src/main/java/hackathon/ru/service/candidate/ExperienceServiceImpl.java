@@ -3,7 +3,7 @@ package hackathon.ru.service.candidate;
 import hackathon.ru.data.dto.candidate.ExperienceDto;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.model.candidate.Experience;
-import hackathon.ru.repository.ExperienceRepository;
+import hackathon.ru.data.repository.ExperienceRepository;
 import hackathon.ru.service.candidate.iservice.CandidateService;
 import hackathon.ru.service.candidate.iservice.ExperienceService;
 import lombok.AllArgsConstructor;

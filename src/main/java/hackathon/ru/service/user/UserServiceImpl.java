@@ -4,7 +4,7 @@ package hackathon.ru.service.user;
 import hackathon.ru.config.security.SecurityConfig;
 import hackathon.ru.data.dto.user.UserDto;
 import hackathon.ru.data.model.user.User;
-import hackathon.ru.repository.UserRepository;
+import hackathon.ru.data.repository.UserRepository;
 import hackathon.ru.service.user.iService.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -72,7 +72,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User getCurrentUser() {
-        return userRepository.findByEmail(getCurrentUserName()).get();
+        return userRepository.findByEmail(getCurrentUserName())
+                .orElseThrow(() -> new UsernameNotFoundException("user with that username is not found"));
     }
 
     @Override
