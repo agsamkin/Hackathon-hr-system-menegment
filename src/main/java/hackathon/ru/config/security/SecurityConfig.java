@@ -27,12 +27,13 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
+import static hackathon.ru.controller.CityController.CITIES_CONTROLLER_PATH;
 import static hackathon.ru.controller.application.ApplicationController.APPLICATION_CONTROLLER_PATH;
 import static hackathon.ru.controller.application.ApplicationStatusController.APPLICATION_STATUS_CONTROLLER_PATH;
-import static hackathon.ru.controller.CityController.CITIES_CONTROLLER_PATH;
+import static hackathon.ru.controller.calendar.GoogleOAuth2Controller.GOOGLE_OAUTH2_CONTROLLER_PATH;
+import static hackathon.ru.controller.candidate.DegreeController.DEGREE_CONTROLLER_PATH;
 import static hackathon.ru.controller.userController.UserController.ID;
 import static hackathon.ru.controller.userController.UserController.USER_CONTROLLER_PATH;
-import static hackathon.ru.controller.candidate.DegreeController.DEGREE_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.VacancyController.VACANCY_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.dictionaries.RequiredExperienceController.REQUIRED_EXPERIENCE_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.dictionaries.VacancyStatusController.VACANCY_STATUS_CONTROLLER_PATH;
@@ -76,6 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 new AntPathRequestMatcher(baseUrl + VACANCY_STATUS_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + WORK_FORMAT_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + APPLICATION_STATUS_CONTROLLER_PATH + "/**", GET.toString()),
+                new AntPathRequestMatcher(baseUrl + GOOGLE_OAUTH2_CONTROLLER_PATH + "/**"),
 
                 new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH + ID, GET.toString()),
                 new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH, POST.toString()),

@@ -3,10 +3,7 @@ package hackathon.ru.controller.application;
 import hackathon.ru.data.model.application.ApplicationStatus;
 import hackathon.ru.service.application.iService.ApplicationStatusService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +29,9 @@ public class ApplicationStatusController {
     public List<ApplicationStatus> getAllApplicationStatuses() {
         return applicationStatusService.getAllApplicationStatuses();
     }
+
+/*    @PutMapping(ID)
+    public ApplicationStatus updateApplicationStatus(@PathVariable("id") final Long id)*/
 
 
 }

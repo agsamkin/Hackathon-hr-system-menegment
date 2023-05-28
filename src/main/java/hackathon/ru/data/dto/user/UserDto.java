@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -28,5 +29,9 @@ public class UserDto {
 
     @NotBlank(message = "phone Number should not be Empty")
     private String phone;
+    @NotNull
+    private Long cityId;
+    @NotNull
+    private Long roleId;
 }
 

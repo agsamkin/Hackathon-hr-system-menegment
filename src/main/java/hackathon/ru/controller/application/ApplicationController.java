@@ -66,14 +66,14 @@ public class ApplicationController {
 
 
     //----------------------HR----------------------//
-
+    // GET /api/applications/hr/application/{id} получение всех заявок кондидата
     @GetMapping(HR + ID)
     public List<ApplicationForListDto> getAllApplicationsList(@PathVariable("id") final Long id) {
         return applicationService.getListOfCandidateApplication(id);
     }
 
 
-    // GET /api/applications/hr/application/{id} - получение кандидата по id заявки
+    // GET /api/applications/hr/application/{id} - получение кандидата по id заявке
     @GetMapping(HR + APPLICATION + ID)
     public ApplicationForCardDto getApplicationCardById(@PathVariable("id") final Long id) {
         return applicationService.getApplicationForCardDto(id);

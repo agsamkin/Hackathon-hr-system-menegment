@@ -139,6 +139,7 @@ public class VacancyServiceImpl implements VacancyService {
     //    получить список вакансий для hr(только его вакансии
     @Override
     public List<VacancyForListDto> getVacanciesListForHr() {
+
         List<Vacancy> vacancies = vacancyRepository.findVacanciesByHrId(userService.getCurrentUser().getId());
 
         List<VacancyForListDto> listVacancyForListDto = new ArrayList<>();

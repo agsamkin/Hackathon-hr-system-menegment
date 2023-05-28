@@ -38,11 +38,10 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/current")
+    @PostMapping("/current")
     public User getCurrentUser() {
         return userService.getCurrentUser();
     }
-
 
     @PostMapping()
     public User createUser(@RequestBody @Valid UserDto userDTO) {

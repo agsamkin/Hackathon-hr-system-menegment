@@ -6,6 +6,8 @@ import hackathon.ru.data.dto.user.UserDto;
 import hackathon.ru.data.dto.user.customDto.OwnerDto;
 import hackathon.ru.data.model.user.User;
 import hackathon.ru.data.repository.UserRepository;
+import hackathon.ru.service.CityService;
+import hackathon.ru.service.user.iService.RoleService;
 import hackathon.ru.service.user.iService.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +24,8 @@ import java.util.List;
 @AllArgsConstructor
 public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserRepository userRepository;
+    private final CityService cityService;
+    private final RoleService roleService;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -67,6 +71,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .firstName(userDTO.getFirstName())
                 .lastName(userDTO.getLastName())
                 .phone(userDTO.getPhone())
+                .city(cityService.getCityById(userDTO.getCityId()))
+                .role(roleService.getRoleById(userDTO.getRoleId()))
                 .build();
 
         System.out.println(user.getFirstName());
@@ -99,12 +105,18 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return userRepository.findByEmail(getCurrentUserName())
                 .orElseThrow(() -> new UsernameNotFoundException("user with that username is not found"));
     }
+//    public User getCurrentUser() {
+//        return ((User) SecurityContextHolder.getContext()
+//                .getAuthentication()
+//                .getPrincipal());
+//    }
 
     @Override
     public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
         return userRepository.findByEmail(email)
                 .map(this::buildSpringUser)
                 .orElseThrow(() -> new UsernameNotFoundException("Not found user with 'email': " + email));
+
     }
 
     private UserDetails buildSpringUser(final User user) {
