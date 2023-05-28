@@ -4,6 +4,7 @@ import hackathon.ru.data.dto.application.ApplicationDto;
 import hackathon.ru.data.dto.application.ApplicationForCardDto;
 import hackathon.ru.data.dto.application.customDto.ApplicationForListDto;
 import hackathon.ru.data.dto.application.customDto.ApplicationResponseDto;
+import hackathon.ru.data.dto.application.customDto.CommentDto;
 import hackathon.ru.data.dto.applicationVacancyCandidateDto.ApplicationVacancyCandidateDto;
 import hackathon.ru.data.dto.applicationVacancyCandidateDto.EducationFromFrontDto;
 import hackathon.ru.data.dto.applicationVacancyCandidateDto.ExperienceFromFrontDto;
@@ -98,10 +99,10 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public String updateApplicationComment(Long applicationId, String comment) {
+    public CommentDto updateApplicationComment(Long applicationId, CommentDto commentDto) {
         Application application = getApplicationById(applicationId);
-        application.setComment(comment);
-        return comment;
+        application.setComment(commentDto.getName());
+        return commentDto;
     }
 
     @Override

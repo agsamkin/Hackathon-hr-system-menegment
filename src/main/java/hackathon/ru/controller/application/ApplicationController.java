@@ -4,6 +4,7 @@ import hackathon.ru.data.dto.application.ApplicationDto;
 import hackathon.ru.data.dto.application.ApplicationForCardDto;
 import hackathon.ru.data.dto.application.customDto.ApplicationForListDto;
 import hackathon.ru.data.dto.application.customDto.ApplicationResponseDto;
+import hackathon.ru.data.dto.application.customDto.CommentDto;
 import hackathon.ru.data.dto.applicationVacancyCandidateDto.ApplicationVacancyCandidateDto;
 import hackathon.ru.data.model.application.Application;
 import hackathon.ru.service.application.iService.ApplicationService;
@@ -60,9 +61,9 @@ public class ApplicationController {
     }
 
     @PutMapping(ID + COMMENT)
-    public String updateApplicationComment(@PathVariable("id") final Long id,
-                                          String comment) {
-        return applicationService.updateApplicationComment(id,comment);
+    public CommentDto updateApplicationComment(@PathVariable("id") final Long id,
+                                           @RequestBody CommentDto commentDto) {
+        return applicationService.updateApplicationComment(id, commentDto);
     }
 
 

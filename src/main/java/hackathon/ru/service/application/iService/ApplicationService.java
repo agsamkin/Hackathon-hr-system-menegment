@@ -6,6 +6,7 @@ import hackathon.ru.data.dto.application.ApplicationDto;
 import hackathon.ru.data.dto.application.customDto.ApplicationForListDto;
 import hackathon.ru.data.dto.application.ApplicationForCardDto;
 import hackathon.ru.data.dto.application.customDto.ApplicationResponseDto;
+import hackathon.ru.data.dto.application.customDto.CommentDto;
 import hackathon.ru.data.dto.applicationVacancyCandidateDto.ApplicationVacancyCandidateDto;
 import hackathon.ru.data.model.application.Application;
 import hackathon.ru.data.model.application.ApplicationStatus;
@@ -20,7 +21,7 @@ public interface ApplicationService {
     void deleteApplicationById(Long id);
     List<ApplicationForListDto> getListOfCandidateApplication(Long id);
     ApplicationStatus updateApplicationStatus(Long applicationId, ApplicationStatus applicationStatus);
-    String updateApplicationComment(Long applicationId, String comment);
+    CommentDto updateApplicationComment(Long applicationId, CommentDto commentDto);
 
     ApplicationForCardDto getApplicationForCardDto(Long id);
 }
