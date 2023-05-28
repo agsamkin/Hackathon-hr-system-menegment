@@ -98,6 +98,13 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public String updateApplicationComment(Long applicationId, String comment) {
+        Application application = getApplicationById(applicationId);
+        application.setComment(comment);
+        return comment;
+    }
+
+    @Override
     public ApplicationResponseDto createApplication(ApplicationVacancyCandidateDto applicationVacancyCandidateDto) {
         Vacancy vacancy = vacancyService.getVacancyById(applicationVacancyCandidateDto.getVacancyId());
 

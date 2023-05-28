@@ -20,6 +20,7 @@ public interface ApplicationService {
     void deleteApplicationById(Long id);
     List<ApplicationForListDto> getListOfCandidateApplication(Long id);
     ApplicationStatus updateApplicationStatus(Long applicationId, ApplicationStatus applicationStatus);
+    String updateApplicationComment(Long applicationId, String comment);
 
     ApplicationForCardDto getApplicationForCardDto(Long id);
 }

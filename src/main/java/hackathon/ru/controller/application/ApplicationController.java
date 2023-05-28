@@ -27,6 +27,7 @@ public class ApplicationController {
     public static final String ID = "/{id}";
     public static final String HR = "/hr";
     public static final String APPLICATION = "/application";
+    public static final String COMMENT = "/comment";
     private final ApplicationService applicationService;
 
 
@@ -56,6 +57,12 @@ public class ApplicationController {
     public Application updateApplication(@PathVariable("id") final Long id,
                                          @RequestBody @Valid final ApplicationDto applicationDto) {
         return applicationService.updateApplication(id, applicationDto);
+    }
+
+    @PutMapping(ID + COMMENT)
+    public String updateApplicationStatus(@PathVariable("id") final Long id,
+                                          String comment) {
+        return applicationService.updateApplicationComment(id,comment);
     }
 
 
