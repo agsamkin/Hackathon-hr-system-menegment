@@ -3,6 +3,7 @@ package hackathon.ru.service.user;
 
 import hackathon.ru.config.security.SecurityConfig;
 import hackathon.ru.data.dto.user.UserDto;
+import hackathon.ru.data.dto.user.customDto.OwnerDto;
 import hackathon.ru.data.model.user.User;
 import hackathon.ru.data.repository.UserRepository;
 import hackathon.ru.service.user.iService.UserService;
@@ -36,6 +37,29 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public List<OwnerDto> getOwners() {
+        List<User> users = userRepository.findUsersByRoleName("Заказчик");
+
+        if (users.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        List<OwnerDto> owners = new ArrayList<>();
+        for (User user: users) {
+            OwnerDto ownerDto = OwnerDto.builder()
+                    .id(user.getId())
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .email(user.getEmail())
+                    .phone(user.getPhone())
+                    .build();
+            owners.add(ownerDto);
+        }
+        return owners;
+    }
+
+
+    @Override
     public User createUser(UserDto userDTO) {
         User user = User.builder()
                 .email(userDTO.getEmail())
@@ -61,7 +85,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public void deleteUserById(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new UsernameNotFoundException("Пользователь с таким id не найден"));
+                .orElseThrow(() -> new UsernameNotFoundException("user with that id is not found"));
         userRepository.delete(user);
     }
 

@@ -1,4 +1,4 @@
-package hackathon.ru.controller;
+package hackathon.ru.controller.userController;
 
 
 import hackathon.ru.data.dto.user.UserDto;
