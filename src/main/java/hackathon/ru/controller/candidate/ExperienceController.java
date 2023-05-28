@@ -28,7 +28,7 @@ public class ExperienceController {
 
 
     // POST /api/candidates - добавление места работы
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @Operation(summary = "Create new experience")
     @ApiResponse(responseCode = "201", description = "Experience created")
     @PostMapping()
@@ -41,7 +41,7 @@ public class ExperienceController {
 
 
     // PUT /api/candidates/{id} - обновление места работы
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @Operation(summary = "Update education by ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Education updated"),

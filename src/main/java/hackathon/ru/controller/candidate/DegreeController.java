@@ -4,10 +4,7 @@ import hackathon.ru.data.model.candidate.Degree;
 import hackathon.ru.service.candidate.iservice.DegreeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,12 +18,13 @@ public class DegreeController {
     public static final String ID = "/{id}";
     private final DegreeService degreeService;
 
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping(ID)
     public Degree getCandidateById(@PathVariable("id") final Long id) {
         return degreeService.getDegreeById(id);
     }
 
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping()
     public List<Degree> getAllCandidates() {
         return degreeService.getAllDegrees();

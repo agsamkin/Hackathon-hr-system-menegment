@@ -17,14 +17,13 @@ public class ApplicationStatusController {
     private static final String ID = "/{id}";
 
     private final ApplicationStatusService applicationStatusService;
-
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping(ID)
     public ApplicationStatus getApplicationById(@PathVariable("id") final Long id) {
         return applicationStatusService.getApplicationStatusById(id);
     }
 
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping()
     public List<ApplicationStatus> getAllApplicationStatuses() {
         return applicationStatusService.getAllApplicationStatuses();

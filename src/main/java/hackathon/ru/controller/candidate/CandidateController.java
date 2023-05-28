@@ -27,7 +27,7 @@ public class CandidateController {
     public static final String HR = "/hr";
     private final CandidateService candidateService;
 
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @PostMapping()
     @ResponseStatus(CREATED)
     public Candidate createCandidate(
@@ -40,6 +40,7 @@ public class CandidateController {
 
 
     // PUT /api/candidates/{id} - обновление кандидата
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @PutMapping(ID)
     public Candidate updateCandidate(@PathVariable("id") final Long id,
                                      @RequestBody @Valid final CandidateDto candidateDto) {
@@ -48,6 +49,7 @@ public class CandidateController {
 
 
     // DELETE /api/candidates/{id} - удаление кандидата
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @DeleteMapping(ID)
     public void deleteCandidate(@PathVariable("id") final Long id) {
         candidateService.deleteCandidate(id);
@@ -59,6 +61,7 @@ public class CandidateController {
 
 
     // GET /api/candidates/hr - получение списка кандидатов
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping()
     public List<CandidateForListDto> getAllCandidatesList() {
         return candidateService.getListOfCandidates();
@@ -66,6 +69,7 @@ public class CandidateController {
 
 
     // GET /api/candidates/hr/{id} - получение кандидата по идентификатору
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping(ID)
     public CandidateCardDto getCandidateCardById(@PathVariable("id") final Long id) {
         return candidateService.getCandidateCardById(id);

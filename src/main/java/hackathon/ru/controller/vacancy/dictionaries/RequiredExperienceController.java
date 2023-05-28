@@ -3,10 +3,7 @@ package hackathon.ru.controller.vacancy.dictionaries;
 import hackathon.ru.data.model.vacancy.RequiredExperience;
 import hackathon.ru.service.vacancy.iService.RequiredExperienceService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,11 +16,12 @@ public class RequiredExperienceController {
 
     private final RequiredExperienceService requiredExperienceService;
 
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping(ID)
     public RequiredExperience getWorkFormatById(@PathVariable("id") final long id) {
         return requiredExperienceService.getRequiredExperienceById(id);
     }
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping()
     public List<RequiredExperience> getAllWorkFormats() {
         return requiredExperienceService.getAllRequiredExperiences();

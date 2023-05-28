@@ -27,7 +27,7 @@ public class EducationController {
 
 
     // POST /api/candidates - добавление образования
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @Operation(summary = "Create new education")
     @ApiResponse(responseCode = "201", description = "Education created")
     @PostMapping()
@@ -40,7 +40,7 @@ public class EducationController {
 
 
     // PUT /api/candidates/{id} - обновление образования
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @Operation(summary = "Update education by ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Education updated"),

@@ -22,7 +22,7 @@ public class MailerController {
     public static final String ID = "/{id}";
 
     private final MailerService mail;
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @Operation(summary = "Send Invitation to interview")
     @ApiResponse(responseCode = "201", description = "Message send")
     @ResponseStatus(CREATED)
@@ -30,7 +30,7 @@ public class MailerController {
     public void sendInvitation(@PathVariable("id") final long id) {
         emailSender.send(mail.makeInvitationalMail(id));
     }
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @Operation(summary = "Send Reject message")
     @ApiResponse(responseCode = "201", description = "Message send")
     @ResponseStatus(CREATED)
@@ -38,7 +38,7 @@ public class MailerController {
     public void sendRejection(@PathVariable("id") final long id) {
         emailSender.send(mail.makeRejectMail(id));
     }
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @Operation(summary = "Send Offer")
     @ApiResponse(responseCode = "201", description = "Message send")
     @ResponseStatus(CREATED)
@@ -46,7 +46,7 @@ public class MailerController {
     public void sendOfferMessage(@PathVariable("id") final long id) {
         emailSender.send(mail.makeOfferMail(id, 50));
     }
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @Operation(summary = "Send Offer")
     @ApiResponse(responseCode = "201", description = "Message send")
     @ResponseStatus(CREATED)
@@ -54,7 +54,7 @@ public class MailerController {
     public void sendAgreementMessage(@PathVariable("id") final long id) {
         emailSender.send(mail.makeAgreementMail(id));
     }
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @Operation(summary = "Send Offer")
     @ApiResponse(responseCode = "201", description = "Message send")
     @ResponseStatus(CREATED)
@@ -62,7 +62,7 @@ public class MailerController {
     public void sendAcceptMessage(@PathVariable("id") final long id) {
         emailSender.send(mail.makeAcceptMail(id));
     }
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @Operation(summary = "Send Offer")
     @ApiResponse(responseCode = "201", description = "Message send")
     @ResponseStatus(CREATED)

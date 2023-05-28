@@ -5,11 +5,7 @@ import hackathon.ru.data.model.calendar.Calendar;
 import hackathon.ru.service.calendar.CalendarService;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RequestMapping("${base-url}" + CalendarController.CALENDAR_CONTROLLER_PATH)
@@ -19,12 +15,12 @@ public class CalendarController {
     public static final String ID = "/{id}";
 
     private final CalendarService calendarService;
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping
     public Calendar getMainUsersCalendar(@RequestBody TokenDto tokenDto) {
         return calendarService.getMainUsersCalendar(tokenDto);
     }
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping(ID)
     public Calendar getCalendarById(@PathVariable("id") long id) {
         // TODO: Необходимо огранивать размер выборки, т.к. список Event может быть большим

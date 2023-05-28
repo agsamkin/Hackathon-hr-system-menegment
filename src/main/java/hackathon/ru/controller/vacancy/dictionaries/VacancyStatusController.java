@@ -3,10 +3,7 @@ package hackathon.ru.controller.vacancy.dictionaries;
 import hackathon.ru.data.model.vacancy.VacancyStatus;
 import hackathon.ru.service.vacancy.iService.VacancyStatusService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,12 +16,12 @@ public class VacancyStatusController {
 
     private final VacancyStatusService vacancyStatusService;
 
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping(ID)
     public VacancyStatus getWorkFormatById(@PathVariable("id") final long id) {
         return vacancyStatusService.getVacancyStatusById(id);
     }
-
+    @CrossOrigin(origins = "https://prokhorov97.github.io")
     @GetMapping()
     public List<VacancyStatus> getAllVacancyStatuses() {
         return vacancyStatusService.getAllVacancyStatuses();
