@@ -55,8 +55,34 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public List<Application> getAllApplications() {
-        return new ArrayList<>(applicationRepository.findAll());
+    public List<ApplicationForListDto> getAllApplications() {
+        List<Application> applications =  new ArrayList<>(applicationRepository.findAll());
+        List<ApplicationForListDto> applicationForListDtos = new ArrayList<>();
+        for (Application application: applications) {
+            Candidate candidate = application.getCandidate();
+
+            ApplicationForListDto applicationForSave = ApplicationForListDto.builder()
+                    .candidateId(candidate.getId())
+                    .desiredPosition(candidate.getDesiredPosition())
+                    .expectedSalary(candidate.getExpectedSalary())
+                    .city(candidate.getCity())
+                    .fio(candidate.getFio())
+                    .experience(Utils.calculateExperience(candidate))
+                    .experienceNumber(Utils.calculateExperienceNumber(candidate))
+                    .skills(candidate.getSkills())
+                    .phone(candidate.getPhone())
+                    .email(candidate.getEmail())
+                    .telegram(candidate.getTelegram())
+                    .applicationId(application.getId())
+                    .createdAt(application.getCreatedAt())
+                    .comment(application.getComment())
+                    .vacancyName(application.getVacancy().getName())
+                    .applicationStatus(application.getApplicationStatus())
+                    .build();
+
+            applicationForListDtos.add(applicationForSave);
+        }
+        return applicationForListDtos;
     }
 
     @Override

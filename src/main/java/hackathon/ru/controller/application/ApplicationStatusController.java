@@ -29,7 +29,7 @@ public class ApplicationStatusController {
 
 
     @GetMapping()
-    public List<ApplicationStatus> getAllApplications() {
+    public List<ApplicationStatus> getAllApplicationStatuses() {
         return applicationStatusService.getAllApplicationStatuses();
     }
 

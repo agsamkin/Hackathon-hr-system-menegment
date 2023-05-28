@@ -47,7 +47,7 @@ public class ApplicationController {
 
 
     @GetMapping()
-    public List<Application> getAllApplications() {
+    public List<ApplicationForListDto> getAllApplications() {
         return applicationService.getAllApplications();
     }
 

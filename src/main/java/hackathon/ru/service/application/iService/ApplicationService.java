@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface ApplicationService {
     Application getApplicationById(Long id);
-    List<Application> getAllApplications();
+    List<ApplicationForListDto> getAllApplications();
     ApplicationResponseDto createApplication(ApplicationVacancyCandidateDto applicationVacancyCandidateDto);
     Application updateApplication(Long id, ApplicationDto applicationDto);
     void deleteApplicationById(Long id);
