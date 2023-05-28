@@ -78,7 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 new AntPathRequestMatcher(baseUrl + WORK_FORMAT_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + APPLICATION_STATUS_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + GOOGLE_OAUTH2_CONTROLLER_PATH + "/**"),
-
+                new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH + "/**"),
                 new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH + ID, GET.toString()),
                 new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH, POST.toString()),
 
