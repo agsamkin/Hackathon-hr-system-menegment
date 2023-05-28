@@ -9,5 +9,5 @@ VALUES ('h1@mail.ru', '$2a$12$AUdT9IEeMB/K3uH0uJbPxOZaODyCbZ3/T0AAeOM0JMbDnhHOSe
         'СовКомБанк', '80000000000', 2, 49),
 
        ('o2@mail.ru', '$2a$12$AUdT9IEeMB/K3uH0uJbPxOZaODyCbZ3/T0AAeOM0JMbDnhHOSeXem', 'СовКомБанкБухгалтерия',
-        'СовКомБанк', '80000000000', 2, 49),
+        'СовКомБанк', '80000000000', 2, 49);
 
