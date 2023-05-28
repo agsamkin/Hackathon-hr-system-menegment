@@ -7,12 +7,14 @@ import hackathon.ru.service.mailer.iService.MailerService;
 import lombok.AllArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import static hackathon.ru.config.mailer.MailerConfiguration.GMAIL;
 
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class MailerServiceImpl implements MailerService {
 
 

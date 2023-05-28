@@ -1,4 +1,4 @@
-package hackathon.ru.service;
+package hackathon.ru.service.cityService;
 
 
 import hackathon.ru.data.dto.CityDto;
@@ -20,12 +20,14 @@ public class CityServiceImpl implements CityService {
     private final CityRepository cityRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public City getCityById(Long id) {
         return cityRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("City with this id is not found"));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<City> getAllCities() {
         return new ArrayList<>(cityRepository.findAll());
     }

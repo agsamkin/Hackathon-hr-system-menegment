@@ -1,4 +1,4 @@
-package hackathon.ru.service;
+package hackathon.ru.service.cityService;
 
 
 import hackathon.ru.data.dto.CityDto;

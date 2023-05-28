@@ -1,6 +1,6 @@
 package hackathon.ru.config.component;
 
-import hackathon.ru.service.CityService;
+import hackathon.ru.service.cityService.CityService;
 import hackathon.ru.service.application.iService.ApplicationStatusService;
 import hackathon.ru.service.candidate.iservice.DegreeService;
 import hackathon.ru.service.user.iService.RoleService;

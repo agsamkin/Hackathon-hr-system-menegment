@@ -11,7 +11,7 @@ import hackathon.ru.data.model.vacancy.Vacancy;
 import hackathon.ru.data.model.vacancy.VacancyStatus;
 import hackathon.ru.data.model.vacancy.WorkFormat;
 import hackathon.ru.data.repository.VacancyRepository;
-import hackathon.ru.service.CityService;
+import hackathon.ru.service.cityService.CityService;
 import hackathon.ru.service.user.iService.UserService;
 import hackathon.ru.service.vacancy.iService.RequiredExperienceService;
 import hackathon.ru.service.vacancy.iService.VacancyService;
@@ -38,6 +38,7 @@ public class VacancyServiceImpl implements VacancyService {
     private final RequiredExperienceService requiredExperienceService;
 
     @Override
+    @Transactional(readOnly = true)
     public Vacancy getVacancyById(Long id) {
 
         return vacancyRepository.findById(id)
@@ -46,6 +47,7 @@ public class VacancyServiceImpl implements VacancyService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Vacancy> getAllVacancies() {
         return new ArrayList<>(vacancyRepository.findAll());
     }

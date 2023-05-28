@@ -18,12 +18,14 @@ public class VacancyStatusServiceImpl implements VacancyStatusService {
     private final VacancyStatusRepository vacancyStatusRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public VacancyStatus getVacancyStatusById(Long id) {
         return vacancyStatusRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("vacancy with that id is not found"));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<VacancyStatus> getAllVacancyStatuses() {
         return vacancyStatusRepository.findAll();
     }

@@ -29,6 +29,7 @@ import hackathon.ru.service.candidate.iservice.ExperienceService;
 import hackathon.ru.service.vacancy.iService.VacancyService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class ApplicationServiceImpl implements ApplicationService {
 
     private final ApplicationRepository applicationRepository;
@@ -49,12 +51,14 @@ public class ApplicationServiceImpl implements ApplicationService {
     private final CandidateRepository candidateRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public Application getApplicationById(Long id) {
         return applicationRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Application with that id is not found"));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ApplicationForListDto> getAllApplications() {
         List<Application> applications =  new ArrayList<>(applicationRepository.findAll());
         List<ApplicationForListDto> applicationForListDtos = new ArrayList<>();

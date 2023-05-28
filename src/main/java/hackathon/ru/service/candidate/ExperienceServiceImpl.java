@@ -8,8 +8,8 @@ import hackathon.ru.service.candidate.iservice.CandidateService;
 import hackathon.ru.service.candidate.iservice.ExperienceService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -22,12 +22,14 @@ public class ExperienceServiceImpl implements ExperienceService {
     private ExperienceRepository experienceRepository;
     private CandidateService candidateService;
     @Override
+    @Transactional(readOnly = true)
     public Experience getExperienceById(Long id) {
         return experienceRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Experience with this id is not found"));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Experience> getAllExperiences() {
         return new ArrayList<>(experienceRepository.findAll());
     }

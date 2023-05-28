@@ -1,7 +1,7 @@
 package hackathon.ru.service.candidate;
 
-import hackathon.ru.data.dto.candidate.custom.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
+import hackathon.ru.data.dto.candidate.custom.CandidateCardDto;
 import hackathon.ru.data.dto.candidate.custom.CandidateForListDto;
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.candidate.Candidate;
@@ -10,14 +10,13 @@ import hackathon.ru.data.model.candidate.Experience;
 import hackathon.ru.data.repository.CandidateRepository;
 import hackathon.ru.data.repository.EducationRepository;
 import hackathon.ru.data.repository.ExperienceRepository;
-import hackathon.ru.service.CityService;
 import hackathon.ru.service.Utils;
 import hackathon.ru.service.candidate.iservice.CandidateService;
+import hackathon.ru.service.cityService.CityService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -33,6 +32,7 @@ public class CandidateServiceImpl implements CandidateService {
     private final ExperienceRepository experienceRepository;
 
     @Override
+
     public Candidate getCandidateById(Long id) {
         return candidateRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Candidate with this id is not found"));

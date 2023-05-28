@@ -6,7 +6,7 @@ import hackathon.ru.data.dto.user.UserDto;
 import hackathon.ru.data.dto.user.customDto.OwnerDto;
 import hackathon.ru.data.model.user.User;
 import hackathon.ru.data.repository.UserRepository;
-import hackathon.ru.service.CityService;
+import hackathon.ru.service.cityService.CityService;
 import hackathon.ru.service.user.iService.RoleService;
 import hackathon.ru.service.user.iService.UserService;
 import lombok.AllArgsConstructor;
@@ -16,12 +16,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserRepository userRepository;
     private final CityService cityService;
@@ -30,17 +32,20 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
+    @Transactional(readOnly = true)
     public User getUserById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("Пользователь с таким id не найден"));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> getAllUsers() {
         return new ArrayList<>(userRepository.findAll());
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<OwnerDto> getOwners() {
         List<User> users = userRepository.findUsersByRoleName("Заказчик");
 

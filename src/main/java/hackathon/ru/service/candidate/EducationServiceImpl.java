@@ -1,17 +1,17 @@
 package hackathon.ru.service.candidate;
 
 import hackathon.ru.data.dto.candidate.EducationDto;
+import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.model.candidate.Degree;
 import hackathon.ru.data.model.candidate.Education;
-import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.repository.EducationRepository;
+import hackathon.ru.service.candidate.iservice.CandidateService;
 import hackathon.ru.service.candidate.iservice.DegreeService;
 import hackathon.ru.service.candidate.iservice.EducationService;
-import hackathon.ru.service.candidate.iservice.CandidateService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -26,12 +26,14 @@ public class EducationServiceImpl implements EducationService {
     private DegreeService degreeService;
 
     @Override
+    @Transactional(readOnly = true)
     public Education getEducationById(Long id) {
         return educationRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Education with this id is not found"));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Education> getAllEducations() {
         return new ArrayList<>(educationRepository.findAll());
     }

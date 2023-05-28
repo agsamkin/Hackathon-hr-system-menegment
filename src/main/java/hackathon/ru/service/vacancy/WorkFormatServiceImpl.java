@@ -19,12 +19,14 @@ public class WorkFormatServiceImpl implements WorkFormatService {
     private final WorkFormatRepository workFormatRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public WorkFormat getWorkFormatById(Long id) {
         return workFormatRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("WorkFormat with this id is not found"));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<WorkFormat> getAllWorkFormats() {
         return workFormatRepository.findAll();
     }

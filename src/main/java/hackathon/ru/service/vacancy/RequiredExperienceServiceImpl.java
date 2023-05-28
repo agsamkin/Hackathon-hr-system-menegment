@@ -19,12 +19,14 @@ public class RequiredExperienceServiceImpl implements RequiredExperienceService 
     private final RequiredExperienceRepository requiredExperienceRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public RequiredExperience getRequiredExperienceById(Long id) {
         return requiredExperienceRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("required experience with that id is not found"));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<RequiredExperience> getAllRequiredExperiences() {
         return requiredExperienceRepository.findAll();
     }
