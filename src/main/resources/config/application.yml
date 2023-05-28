@@ -10,10 +10,10 @@ jwt:
 spring:
 
   mail:
-    host: ${host::smtp.gmail.com}
-    port: ${port::587}
-    username: ${username::sbank1270@gmail.com}
-    password: ${password::"mwowawgrycrugkzj"}
+    host: ${HOST_ENV}
+    port: ${PORT_ENV}
+    username: ${USERNAME_ENV}
+    password: ${PASSWORD_ENV}
     test-connection: false
     properties:
       mail:

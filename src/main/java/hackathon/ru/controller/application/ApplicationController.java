@@ -60,7 +60,7 @@ public class ApplicationController {
     }
 
     @PutMapping(ID + COMMENT)
-    public String updateApplicationStatus(@PathVariable("id") final Long id,
+    public String updateApplicationComment(@PathVariable("id") final Long id,
                                           String comment) {
         return applicationService.updateApplicationComment(id,comment);
     }
