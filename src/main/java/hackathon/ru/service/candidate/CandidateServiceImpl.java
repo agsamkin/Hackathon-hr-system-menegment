@@ -106,6 +106,7 @@ public class CandidateServiceImpl implements CandidateService {
 
         for (Candidate candidate : allCandidates) {
             CandidateForListDto candidateForSave = CandidateForListDto.builder()
+                    .id(candidate.getId())
                     .desiredPosition(candidate.getDesiredPosition())
                     .expectedSalary(candidate.getExpectedSalary())
                     .city(candidate.getCity())
@@ -134,6 +135,7 @@ public class CandidateServiceImpl implements CandidateService {
         List<Experience> experiences = experienceRepository.getAllByCandidateId(id);
 
         return CandidateCardDto.builder()
+                .id(candidate.getId())
                 .age(Utils.calculateAge(candidate.getBirthday()))
                 .expectedSalary(candidate.getExpectedSalary())
                 .desiredPosition(candidate.getDesiredPosition())

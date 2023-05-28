@@ -1,7 +1,6 @@
 package hackathon.ru.data.dto.candidate.custom;
 
 import hackathon.ru.data.model.City;
-import hackathon.ru.data.model.candidate.Experience;
 import lombok.*;
 
 import java.util.List;
@@ -12,6 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class CandidateCardDto {
+
+    private Long id;
 
     private String desiredPosition;
 
