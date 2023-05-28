@@ -1,8 +1,10 @@
 package hackathon.ru.service.mailer;
 
 import hackathon.ru.data.model.application.Application;
+import hackathon.ru.data.model.application.ApplicationStatus;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.service.application.iService.ApplicationService;
+import hackathon.ru.service.application.iService.ApplicationStatusService;
 import hackathon.ru.service.mailer.iService.MailerService;
 import lombok.AllArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
@@ -19,8 +21,10 @@ public class MailerServiceImpl implements MailerService {
 
 
     private ApplicationService applicationService;
+    private ApplicationStatusService applicationStatusService;
     @Override
     public SimpleMailMessage makeRejectMail(long id) {
+        updateStatus(id, 4L);
         Application application = applicationService.getApplicationById(id);
         Candidate candidate = application.getCandidate();
         String mail = candidate.getEmail();
@@ -34,6 +38,7 @@ public class MailerServiceImpl implements MailerService {
 
     @Override
     public SimpleMailMessage makeInvitationalMail(long id) {
+        updateStatus(id, 3L);
         Application application = applicationService.getApplicationById(id);
         Candidate candidate = application.getCandidate();
         String mail = candidate.getEmail();
@@ -50,6 +55,7 @@ public class MailerServiceImpl implements MailerService {
 
     @Override
     public SimpleMailMessage makeOfferMail(long id, int offer) {
+        updateStatus(id, 5L);
         Application application = applicationService.getApplicationById(id);
         Candidate candidate = application.getCandidate();
         String mail = candidate.getEmail();
@@ -66,6 +72,7 @@ public class MailerServiceImpl implements MailerService {
 
     @Override
     public SimpleMailMessage makeAcceptMail(long id) {
+        updateStatus(id, 6L);
         Application application = applicationService.getApplicationById(id);
         Candidate candidate = application.getCandidate();
         String mail = candidate.getEmail();
@@ -79,6 +86,7 @@ public class MailerServiceImpl implements MailerService {
 
     @Override
     public SimpleMailMessage makeAgreementMail(long id) {
+        updateStatus(id, 2L);
         Application application = applicationService.getApplicationById(id);
         Candidate candidate = application.getCandidate();
         String email = application.getVacancy().getOwner().getEmail();
@@ -96,6 +104,11 @@ public class MailerServiceImpl implements MailerService {
         simpleMail.setSubject("it's working");
         simpleMail.setText("test");
         return simpleMail;
+    }
+
+    private void updateStatus(Long applicationId, Long statusId) {
+        ApplicationStatus applicationStatus = applicationStatusService.getApplicationStatusById(3L);
+        applicationService.updateApplicationStatus(applicationId, applicationStatus);
     }
 
 }

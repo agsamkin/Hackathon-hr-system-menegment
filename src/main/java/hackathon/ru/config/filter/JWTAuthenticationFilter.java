@@ -8,6 +8,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.RequestMatcher;
@@ -42,7 +43,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 loginData.getPassword()
         );
         setDetails(request, authRequest);
-        return getAuthenticationManager().authenticate(authRequest);
+
+        var authentication = getAuthenticationManager().authenticate(authRequest);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return authentication;
     }
 
     private LoginDto getLoginData(final HttpServletRequest request) throws AuthenticationException {

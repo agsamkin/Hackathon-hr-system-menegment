@@ -30,8 +30,4 @@ public class ApplicationStatusController {
         return applicationStatusService.getAllApplicationStatuses();
     }
 
-/*    @PutMapping(ID)
-    public ApplicationStatus updateApplicationStatus(@PathVariable("id") final Long id)*/
-
-
 }

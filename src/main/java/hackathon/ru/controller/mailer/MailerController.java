@@ -2,7 +2,6 @@ package hackathon.ru.controller.mailer;
 
 
 import hackathon.ru.service.mailer.iService.MailerService;
-import hackathon.ru.service.user.iService.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -19,7 +18,6 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class MailerController {
 
     private JavaMailSender emailSender;
-    private UserService userService;
     public final static String MAIL= "/mail";
     public static final String ID = "/{id}";
 

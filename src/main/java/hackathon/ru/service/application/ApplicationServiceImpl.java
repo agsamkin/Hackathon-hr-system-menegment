@@ -90,6 +90,14 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public ApplicationStatus updateApplicationStatus(Long applicationId, ApplicationStatus applicationStatus) {
+        Application application = getApplicationById(applicationId);
+        application.setApplicationStatus(applicationStatus);
+        applicationRepository.save(application);
+        return applicationStatus;
+    }
+
+    @Override
     public ApplicationResponseDto createApplication(ApplicationVacancyCandidateDto applicationVacancyCandidateDto) {
         Vacancy vacancy = vacancyService.getVacancyById(applicationVacancyCandidateDto.getVacancyId());
 
