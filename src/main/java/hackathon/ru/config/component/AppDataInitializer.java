@@ -77,19 +77,19 @@ public class AppDataInitializer {
             resourceDatabasePopulator.execute(dataSource);
         }
 
-//        if (userService.getAllUsers().isEmpty()) {
-//            ResourceDatabasePopulator resourceDatabasePopulator
-//                    = new ResourceDatabasePopulator(false, false,
-//                    "UTF-8", new ClassPathResource("sql/data/insert_users.sql"));
-//            resourceDatabasePopulator.execute(dataSource);
-//        }
+        if (userService.getAllUsers().isEmpty()) {
+            ResourceDatabasePopulator resourceDatabasePopulator
+                    = new ResourceDatabasePopulator(false, false,
+                    "UTF-8", new ClassPathResource("sql/data/insert_users.sql"));
+            resourceDatabasePopulator.execute(dataSource);
+        }
 
-//        if (vacancyService.getAllVacancies().isEmpty()) {
-//            ResourceDatabasePopulator resourceDatabasePopulator
-//                    = new ResourceDatabasePopulator(false, false,
-//                    "UTF-8", new ClassPathResource("sql/data/insert_vacancy.sql"));
-//            resourceDatabasePopulator.execute(dataSource);
-//        }
+        if (vacancyService.getAllVacancies().isEmpty()) {
+            ResourceDatabasePopulator resourceDatabasePopulator
+                    = new ResourceDatabasePopulator(false, false,
+                    "UTF-8", new ClassPathResource("sql/data/insert_vacancy.sql"));
+            resourceDatabasePopulator.execute(dataSource);
+        }
 
 
     }
