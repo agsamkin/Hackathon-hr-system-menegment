@@ -38,8 +38,7 @@ import static hackathon.ru.controller.vacancy.VacancyController.VACANCY_CONTROLL
 import static hackathon.ru.controller.vacancy.dictionaries.RequiredExperienceController.REQUIRED_EXPERIENCE_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.dictionaries.VacancyStatusController.VACANCY_STATUS_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.dictionaries.WorkFormatController.WORK_FORMAT_CONTROLLER_PATH;
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.*;
 
 @EnableWebSecurity
 @Configuration
@@ -73,12 +72,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 new AntPathRequestMatcher(baseUrl + CITIES_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + DEGREE_CONTROLLER_PATH + "/**", GET.toString()),
-                new AntPathRequestMatcher(baseUrl + REQUIRED_EXPERIENCE_CONTROLLER_PATH+ "/**", GET.toString()),
+                new AntPathRequestMatcher(baseUrl + REQUIRED_EXPERIENCE_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + VACANCY_STATUS_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + WORK_FORMAT_CONTROLLER_PATH + "/**", GET.toString()),
                 new AntPathRequestMatcher(baseUrl + APPLICATION_STATUS_CONTROLLER_PATH + "/**", GET.toString()),
-                new AntPathRequestMatcher(baseUrl + GOOGLE_OAUTH2_CONTROLLER_PATH + "/**"),
-                new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH + "/**"),
+                new AntPathRequestMatcher(baseUrl + GOOGLE_OAUTH2_CONTROLLER_PATH + "/**", POST.toString()),
+                new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH + "/**", PUT.toString()),
                 new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH + ID, GET.toString()),
                 new AntPathRequestMatcher(baseUrl + APPLICATION_CONTROLLER_PATH, POST.toString()),
 
