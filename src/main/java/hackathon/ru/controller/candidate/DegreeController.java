@@ -18,13 +18,13 @@ public class DegreeController {
     public static final String ID = "/{id}";
     private final DegreeService degreeService;
 
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @GetMapping(ID)
     public Degree getCandidateById(@PathVariable("id") final Long id) {
         return degreeService.getDegreeById(id);
     }
 
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @GetMapping()
     public List<Degree> getAllCandidates() {
         return degreeService.getAllDegrees();

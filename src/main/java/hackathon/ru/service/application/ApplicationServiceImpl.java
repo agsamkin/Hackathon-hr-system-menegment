@@ -209,7 +209,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public List<ApplicationForListDto> getListOfCandidateApplication(Long id) {
+    public List<ApplicationForListDto> getListOfCandidateApplicationsByCandidateId(Long id) {
 
         Candidate candidate = candidateService.getCandidateById(id);
         List<Application> applications = applicationRepository.findAllByCandidateId(id);

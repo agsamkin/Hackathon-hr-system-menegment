@@ -27,7 +27,7 @@ public class CandidateController {
     public static final String HR = "/hr";
     private final CandidateService candidateService;
 
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @PostMapping()
     @ResponseStatus(CREATED)
     public Candidate createCandidate(

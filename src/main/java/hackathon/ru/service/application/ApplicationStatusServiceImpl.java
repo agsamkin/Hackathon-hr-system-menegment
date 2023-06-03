@@ -28,7 +28,7 @@ public class ApplicationStatusServiceImpl implements ApplicationStatusService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ApplicationStatus> getAllApplicationStatuses() {
+    public List<ApplicationStatus> getAllApplicationsStatuses() {
         return new ArrayList<>(applicationStatusRepository.findAll());
     }
 

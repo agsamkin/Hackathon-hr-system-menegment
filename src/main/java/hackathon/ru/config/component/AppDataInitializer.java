@@ -40,7 +40,7 @@ public class AppDataInitializer {
                     "UTF-8", new ClassPathResource("sql/dictionaries/insert_vacancy_statuses.sql"));
             resourceDatabasePopulator.execute(dataSource);
         }
-        if (applicationStatusService.getAllApplicationStatuses().isEmpty()) {
+        if (applicationStatusService.getAllApplicationsStatuses().isEmpty()) {
             ResourceDatabasePopulator resourceDatabasePopulator
                     = new ResourceDatabasePopulator(false, false,
                     "UTF-8", new ClassPathResource("sql/dictionaries/insert_application_status.sql"));

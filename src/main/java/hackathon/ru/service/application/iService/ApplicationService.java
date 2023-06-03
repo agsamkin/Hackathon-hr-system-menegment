@@ -19,7 +19,7 @@ public interface ApplicationService {
     ApplicationCreatedDto createApplication(ApplicationVacancyCandidateDto applicationVacancyCandidateDto);
     Application updateApplication(Long id, ApplicationDto applicationDto);
     void deleteApplicationById(Long id);
-    List<ApplicationForListDto> getListOfCandidateApplication(Long id);
+    List<ApplicationForListDto> getListOfCandidateApplicationsByCandidateId(Long id);
     ApplicationStatus updateApplicationStatus(Long applicationId, ApplicationStatus applicationStatus);
     CommentDto updateApplicationComment(Long applicationId, CommentDto commentDto);
     ApplicationForCardDto getApplicationForCardDto(Long id);

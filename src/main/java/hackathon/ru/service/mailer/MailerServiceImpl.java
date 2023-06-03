@@ -25,8 +25,7 @@ public class MailerServiceImpl implements MailerService {
     @Override
     public SimpleMailMessage makeRejectMail(long id) {
         updateStatus(id, 4L);
-        Application application = applicationService.getApplicationById(id);
-        Candidate candidate = application.getCandidate();
+        Candidate candidate = getCandidateByApplicationId(id);
         String mail = candidate.getEmail();
         SimpleMailMessage simpleMail = new SimpleMailMessage();
         simpleMail.setFrom(GMAIL);
@@ -39,15 +38,14 @@ public class MailerServiceImpl implements MailerService {
     @Override
     public SimpleMailMessage makeInvitationalMail(long id) {
         updateStatus(id, 3L);
-        Application application = applicationService.getApplicationById(id);
-        Candidate candidate = application.getCandidate();
+        Candidate candidate = getCandidateByApplicationId(id);
         String mail = candidate.getEmail();
         SimpleMailMessage simpleMail = new SimpleMailMessage();
         StringBuilder stringBuilder = new StringBuilder();
         simpleMail.setFrom(GMAIL);
         simpleMail.setTo(mail);
         simpleMail.setSubject("We like you, but we need more information about you");
-        stringBuilder.append("Hello, " + candidate.getFirstName() + " " + candidate.getLastName() + ".");
+        stringBuilder.append("Hello, ").append(candidate.getFirstName()).append(" ").append(candidate.getLastName()).append(".");
         stringBuilder.append("\n We want to invite you, so our hr will contact with you to set time for meeting.");
         simpleMail.setText(String.valueOf(stringBuilder));
         return simpleMail;
@@ -56,8 +54,7 @@ public class MailerServiceImpl implements MailerService {
     @Override
     public SimpleMailMessage makeOfferMail(long id, int offer) {
         updateStatus(id, 5L);
-        Application application = applicationService.getApplicationById(id);
-        Candidate candidate = application.getCandidate();
+        Candidate candidate = getCandidateByApplicationId(id);
         String mail = candidate.getEmail();
         SimpleMailMessage simpleMail = new SimpleMailMessage();
         StringBuilder stringBuilder = new StringBuilder();
@@ -65,7 +62,7 @@ public class MailerServiceImpl implements MailerService {
         simpleMail.setTo(mail);
         simpleMail.setSubject("Congrats, " + candidate.getFirstName() + " " + candidate.getLastName() + ", You've been accepted");
         stringBuilder.append("We have a good offer for you");
-        stringBuilder.append("\n" + offer);
+        stringBuilder.append("\n").append(offer);
         simpleMail.setText(String.valueOf(stringBuilder));
         return simpleMail;
     }
@@ -73,8 +70,7 @@ public class MailerServiceImpl implements MailerService {
     @Override
     public SimpleMailMessage makeAcceptMail(long id) {
         updateStatus(id, 6L);
-        Application application = applicationService.getApplicationById(id);
-        Candidate candidate = application.getCandidate();
+        Candidate candidate = getCandidateByApplicationId(id);
         String mail = candidate.getEmail();
         SimpleMailMessage simpleMail = new SimpleMailMessage();
         simpleMail.setFrom(GMAIL);
@@ -106,8 +102,13 @@ public class MailerServiceImpl implements MailerService {
         return simpleMail;
     }
 
+    private Candidate getCandidateByApplicationId(long applicationId) {
+        Application application = applicationService.getApplicationById(applicationId);
+        return application.getCandidate();
+    }
+
     private void updateStatus(Long applicationId, Long statusId) {
-        ApplicationStatus applicationStatus = applicationStatusService.getApplicationStatusById(3L);
+        ApplicationStatus applicationStatus = applicationStatusService.getApplicationStatusById(statusId);
         applicationService.updateApplicationStatus(applicationId, applicationStatus);
     }
 

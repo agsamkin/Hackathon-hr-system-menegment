@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ApplicationStatusService {
     ApplicationStatus getApplicationStatusById(Long id);
-    List<ApplicationStatus> getAllApplicationStatuses();
+    List<ApplicationStatus> getAllApplicationsStatuses();
 }
