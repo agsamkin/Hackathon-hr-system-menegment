@@ -37,6 +37,7 @@ public class Education {
     private String specialization;
 
     //связи
+
     @JsonIgnore
     @NotNull(message = "Degree should not be Empty")
     @ManyToOne

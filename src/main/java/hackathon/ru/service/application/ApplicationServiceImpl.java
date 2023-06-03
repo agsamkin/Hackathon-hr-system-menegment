@@ -1,13 +1,13 @@
 package hackathon.ru.service.application;
 
 import hackathon.ru.data.dto.application.ApplicationDto;
-import hackathon.ru.data.dto.application.ApplicationForCardDto;
-import hackathon.ru.data.dto.application.customDto.ApplicationForListDto;
-import hackathon.ru.data.dto.application.customDto.ApplicationResponseDto;
-import hackathon.ru.data.dto.application.customDto.CommentDto;
+import hackathon.ru.data.dto.application.outputDto.ApplicationForCardDto;
+import hackathon.ru.data.dto.application.outputDto.ApplicationForListDto;
+import hackathon.ru.data.dto.application.outputDto.ApplicationCreatedDto;
+import hackathon.ru.data.dto.application.inputDto.CommentDto;
 import hackathon.ru.data.dto.applicationVacancyCandidateDto.ApplicationVacancyCandidateDto;
-import hackathon.ru.data.dto.applicationVacancyCandidateDto.EducationFromFrontDto;
-import hackathon.ru.data.dto.applicationVacancyCandidateDto.ExperienceFromFrontDto;
+import hackathon.ru.data.dto.candidate.inputDto.EducationFromFrontDto;
+import hackathon.ru.data.dto.candidate.inputDto.ExperienceFromFrontDto;
 import hackathon.ru.data.dto.candidate.CandidateDto;
 import hackathon.ru.data.dto.candidate.EducationDto;
 import hackathon.ru.data.dto.candidate.ExperienceDto;
@@ -106,15 +106,15 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public ApplicationResponseDto createApplication(ApplicationVacancyCandidateDto applicationVacancyCandidateDto) {
+    public ApplicationCreatedDto createApplication(ApplicationVacancyCandidateDto applicationVacancyCandidateDto) {
         Vacancy vacancy = vacancyService.getVacancyById(applicationVacancyCandidateDto.getVacancyId());
 
-        ApplicationResponseDto applicationResponseDto = ChainExistCheck(
+        ApplicationCreatedDto applicationCreatedDto = ChainExistCheck(
                 applicationVacancyCandidateDto.getVacancyId(),
                 applicationVacancyCandidateDto.getEmail());
 
-        if (!applicationResponseDto.isCreated()) {
-            return applicationResponseDto;
+        if (!applicationCreatedDto.isCreated()) {
+            return applicationCreatedDto;
         }
 
         CandidateDto candidateDto = CandidateDto.builder()
@@ -181,7 +181,7 @@ public class ApplicationServiceImpl implements ApplicationService {
                 .build();
 
         applicationRepository.save(application);
-        return applicationResponseDto;
+        return applicationCreatedDto;
     }
 
 
@@ -212,7 +212,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<ApplicationForListDto> getListOfCandidateApplication(Long id) {
 
         Candidate candidate = candidateService.getCandidateById(id);
-        List<Application> applications = applicationRepository.getAllByCandidateId(id);
+        List<Application> applications = applicationRepository.findAllByCandidateId(id);
 
         List<ApplicationForListDto> applicationsForListDtos = new ArrayList<>();
 
@@ -250,8 +250,8 @@ public class ApplicationServiceImpl implements ApplicationService {
         Application application = getApplicationById(id);
         Candidate candidate = application.getCandidate();
 
-        List<Education> educations = educationRepository.getAllByCandidateId(candidate.getId());
-        List<Experience> experiences = experienceRepository.getAllByCandidateId(candidate.getId());
+        List<Education> educations = educationRepository.findAllByCandidateId(candidate.getId());
+        List<Experience> experiences = experienceRepository.findAllByCandidateId(candidate.getId());
 
         return ApplicationForCardDto.builder()
                 .candidateId(id)
@@ -281,7 +281,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     }
 
-    private ApplicationResponseDto ChainExistCheck(Long vacancyId, String candidateEmail) {
+    private ApplicationCreatedDto ChainExistCheck(Long vacancyId, String candidateEmail) {
         boolean isExist = false;
         if (candidateRepository.findAllByEmail(candidateEmail).isPresent()) {
             Long candidateId = candidateRepository.findAllByEmail(candidateEmail).get().getId();
@@ -292,7 +292,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         String approve = "Мы обязательно рассмотрим вашу вакансию";
         String fail = "Вы уже откликались на эту вакансию";
 
-        return ApplicationResponseDto.builder()
+        return ApplicationCreatedDto.builder()
                 .isCreated(isExist? false:true)
                 .message(isExist? fail: approve)
                 .build();

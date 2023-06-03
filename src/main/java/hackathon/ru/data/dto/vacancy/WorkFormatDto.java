@@ -3,9 +3,7 @@ package hackathon.ru.data.dto.vacancy;
 
 import lombok.*;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 @Getter
 @Setter
@@ -15,11 +13,7 @@ import java.util.List;
 public class WorkFormatDto {
 
 
-    @NotBlank(message = "Work Format Name should not be Empty")
-    @Column(name = "name")
+    @NotBlank(message = "work format name should not be empty")
     private String name;
 
-    //    связи
-
-    private List<Long> vacanciesIds;
 }

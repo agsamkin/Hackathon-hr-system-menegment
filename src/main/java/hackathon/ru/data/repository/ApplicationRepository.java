@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ApplicationRepository extends JpaRepository<Application, Long> {
 
-    List<Application> getAllByCandidateId(Long id);
+    List<Application> findAllByCandidateId(Long id);
     Optional<Application> findApplicationByCandidateIdAndVacancyId(Long candidateId, Long vacancyId);
 
 }

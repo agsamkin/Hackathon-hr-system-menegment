@@ -37,8 +37,7 @@ public class Application {
     @Column(name = "comment")
     private String comment;
 
-
-//    Под вопросом
+    @NotNull(message = "vacancy should not be empty")
     @ManyToOne
     @JoinColumn(name = "vacancy_id", referencedColumnName = "id")
     private Vacancy vacancy;

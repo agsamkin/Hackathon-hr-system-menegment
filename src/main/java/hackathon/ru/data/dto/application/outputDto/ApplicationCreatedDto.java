@@ -1,4 +1,4 @@
-package hackathon.ru.data.dto.application.customDto;
+package hackathon.ru.data.dto.application.outputDto;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ApplicationResponseDto {
+public class ApplicationCreatedDto {
     boolean isCreated;
     String message;
 }

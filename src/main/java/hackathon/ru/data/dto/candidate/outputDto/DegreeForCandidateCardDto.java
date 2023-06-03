@@ -1,4 +1,4 @@
-package hackathon.ru.data.dto.candidate.custom;
+package hackathon.ru.data.dto.candidate.outputDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,8 +15,4 @@ public class DegreeForCandidateCardDto {
 
     private String name;
 
-/*    //    связи
-    @JsonIgnore
-    @OneToMany(mappedBy = "degree")
-    private List<Education> educations;*/
 }

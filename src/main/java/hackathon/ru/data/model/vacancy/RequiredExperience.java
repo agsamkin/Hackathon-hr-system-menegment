@@ -29,6 +29,7 @@ public class RequiredExperience {
     private String name;
 
     //    связи
+
     @JsonIgnore
     @OneToMany(mappedBy = "requiredExperience")
     private List<Vacancy> vacancies;

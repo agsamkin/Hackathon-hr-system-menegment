@@ -1,4 +1,4 @@
-package hackathon.ru.data.dto.vacancy.customDto;
+package hackathon.ru.data.dto.vacancy.outputDto;
 
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.vacancy.RequiredExperience;

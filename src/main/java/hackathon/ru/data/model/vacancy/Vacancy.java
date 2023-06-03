@@ -29,81 +29,82 @@ public class Vacancy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "vacancy name should not be Empty")
+    @NotBlank(message = "vacancy name should not be empty")
     @Column(name = "name")
     private String name;
 
-    @NotBlank(message = "unit name should not be Empty")
+    @NotBlank(message = "unit name should not be empty")
     @Column(name = "unit_name")
     private String unitName;
 
-    @NotNull(message = "Min Salary should not be Empty")
+    @NotNull(message = "min salary should not be empty")
     @Column(name = "min_salary")
     private Integer minSalary;
 
-    @NotNull(message = "Max Salary should not be Empty")
+    @NotNull(message = "max salary should not be empty")
     @Column(name = "max_salary")
     private Integer maxSalary;
 
-    @NotNull(message = "Public Salary should not be Empty")
+    @NotNull(message = "public salary should not be empty")
     @Column(name = "public_salary")
     private Integer publicSalary;
 
     @Lob
-    @NotBlank(message = "Description should not be Empty")
+    @NotBlank(message = "description should not be empty")
     @Column(name = "description")
     private String description;
 
     @Lob
-    @NotBlank(message = "Requirement should not be Empty")
+    @NotBlank(message = "requirement should not be empty")
     @Column(name = "requirements")
     private String requirements;
 
     @Lob
-    @NotBlank(message = "Responsibility should not be Empty")
+    @NotBlank(message = "responsibility should not be empty")
     @Column(name = "responsibilities")
     private String responsibilities;
 
     @Lob
-    @NotBlank(message = "Benefit should not be Empty")
+    @NotBlank(message = "benefit should not be empty")
     @Column(name = "benefits")
     private String benefits;
 
-    @NotBlank(message = "Skills should not be Empty")
+    @NotBlank(message = "skills should not be empty")
     @Column(name = "skills")
     private String skills;
 
-    @NotNull(message = "City should not be Empty")
+    @NotNull(message = "city should not be empty")
     @ManyToOne
     @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;
 
-    @NotNull(message = "Hr should not be Empty")
+    @NotNull(message = "hr should not be empty")
     @ManyToOne
     @JoinColumn(name = "hr_id", referencedColumnName = "id")
     private User hr;
 
-//    @NotNull(message = "Owner should not be Empty")
+    @NotNull(message = "owner should not be empty")
     @ManyToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private User owner;
 
-//    @NotNull(message = "Vacancy Status should not be Empty")
+    @NotNull(message = "vacancy status should not be empty")
     @ManyToOne()
     @JoinColumn(name = "vacancy_status_id", referencedColumnName = "id")
     private VacancyStatus vacancyStatus;
 
-//    @NotNull(message = "Work Format should not be Empty")
+    @NotNull(message = "work format should not be empty")
     @ManyToOne()
     @JoinColumn(name = "work_format_id", referencedColumnName = "id")
     private WorkFormat workFormat;
 
-//    @NotNull(message = "Required Experience should not be Empty")
+    @NotNull(message = "required experience should not be empty")
     @ManyToOne()
     @JoinColumn(name = "required_experience_id", referencedColumnName = "id")
     private RequiredExperience requiredExperience;
 
 //    связи
+
     @JsonIgnore
     @OneToMany(mappedBy = "vacancy")
     private List<Application> applications;

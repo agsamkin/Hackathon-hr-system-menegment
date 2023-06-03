@@ -28,8 +28,8 @@ public class Degree {
     @Column(name = "name")
     private String name;
 
-
 //    связи
+
     @JsonIgnore
     @OneToMany(mappedBy = "degree")
     private List<Education> educations;

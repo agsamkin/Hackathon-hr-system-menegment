@@ -1,4 +1,4 @@
-package hackathon.ru.data.dto.applicationVacancyCandidateDto;
+package hackathon.ru.data.dto.candidate.inputDto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;

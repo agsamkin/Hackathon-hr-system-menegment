@@ -1,10 +1,10 @@
 package hackathon.ru.controller.application;
 
 import hackathon.ru.data.dto.application.ApplicationDto;
-import hackathon.ru.data.dto.application.ApplicationForCardDto;
-import hackathon.ru.data.dto.application.customDto.ApplicationForListDto;
-import hackathon.ru.data.dto.application.customDto.ApplicationResponseDto;
-import hackathon.ru.data.dto.application.customDto.CommentDto;
+import hackathon.ru.data.dto.application.outputDto.ApplicationForCardDto;
+import hackathon.ru.data.dto.application.outputDto.ApplicationForListDto;
+import hackathon.ru.data.dto.application.outputDto.ApplicationCreatedDto;
+import hackathon.ru.data.dto.application.inputDto.CommentDto;
 import hackathon.ru.data.dto.applicationVacancyCandidateDto.ApplicationVacancyCandidateDto;
 import hackathon.ru.data.model.application.Application;
 import hackathon.ru.service.application.iService.ApplicationService;
@@ -44,7 +44,7 @@ public class ApplicationController {
     @CrossOrigin(origins = "https://prokhorov97.github.io")
     @PostMapping()
     @ResponseStatus(CREATED)
-    public ApplicationResponseDto createApplication(
+    public ApplicationCreatedDto createApplication(
             @RequestBody @Valid ApplicationVacancyCandidateDto applicationVacancyCandidateDto) {
         return applicationService.createApplication(applicationVacancyCandidateDto);
     }

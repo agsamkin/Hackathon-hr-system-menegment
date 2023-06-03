@@ -1,8 +1,8 @@
 package hackathon.ru.controller.candidate;
 
 import hackathon.ru.data.dto.candidate.CandidateDto;
-import hackathon.ru.data.dto.candidate.custom.CandidateCardDto;
-import hackathon.ru.data.dto.candidate.custom.CandidateForListDto;
+import hackathon.ru.data.dto.candidate.outputDto.CandidateCardDto;
+import hackathon.ru.data.dto.candidate.outputDto.CandidateForListDto;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.service.candidate.iservice.CandidateService;
 import io.swagger.v3.oas.annotations.Parameter;
