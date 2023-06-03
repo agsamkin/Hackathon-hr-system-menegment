@@ -61,6 +61,7 @@ public class User {
     private City city;
 
     //    связи
+
     @JsonIgnore
     @OneToMany(mappedBy = "hr")
     private List<Vacancy> vacanciesAuthor;

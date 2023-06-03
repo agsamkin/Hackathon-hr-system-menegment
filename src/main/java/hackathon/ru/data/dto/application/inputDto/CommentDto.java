@@ -1,4 +1,4 @@
-package hackathon.ru.data.dto.application.customDto;
+package hackathon.ru.data.dto.application.inputDto;
 
 import lombok.*;
 

@@ -3,7 +3,6 @@ package hackathon.ru.data.dto.vacancy;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 @Getter
 @Setter
@@ -15,7 +14,4 @@ public class RequiredExperienceDto {
     @NotBlank(message = "required Experience Name should not be Empty")
     private String name;
 
-    //    связи
-
-    private List<Long> vacanciesIds;
 }

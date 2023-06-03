@@ -1,4 +1,4 @@
-package hackathon.ru.data.dto.candidate.custom;
+package hackathon.ru.data.dto.candidate.outputDto;
 
 import hackathon.ru.data.model.City;
 import lombok.*;
@@ -32,8 +32,4 @@ public class CandidateForListDto {
     private String email;
 
     private String telegram;
-
-//    private List<Application> applications;
-
-
 }

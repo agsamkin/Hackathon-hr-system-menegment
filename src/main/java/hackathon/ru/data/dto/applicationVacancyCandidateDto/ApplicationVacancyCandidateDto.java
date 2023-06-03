@@ -1,6 +1,8 @@
 package hackathon.ru.data.dto.applicationVacancyCandidateDto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import hackathon.ru.data.dto.candidate.inputDto.EducationFromFrontDto;
+import hackathon.ru.data.dto.candidate.inputDto.ExperienceFromFrontDto;
 import hackathon.ru.data.model.City;
 import lombok.*;
 

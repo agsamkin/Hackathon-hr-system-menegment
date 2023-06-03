@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Getter
 @Setter
@@ -48,6 +47,7 @@ public class VacancyDto {
     @NotBlank(message = "skills should not be Empty")
     private String skills;
 
+    @NotNull(message = "cityId should not be Empty")
     private Long cityId;
 
     private Long hrId;
@@ -56,13 +56,12 @@ public class VacancyDto {
 
     private Long vacancyStatusId;
 
+    @NotNull(message = "work format id should not be Empty")
     private Long workFormatId;
 
+    @NotNull(message = "required experience id should not be Empty")
     private Long requiredExperienceId;
 
-//    связи
-
-    private List<Long> applicationsIds;
 // Статус вакансии и автор вакансии заполняются
 // автоматически(статус новая, автор текущий пользователь)
 }

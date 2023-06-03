@@ -1,9 +1,9 @@
 package hackathon.ru.service.vacancy;
 
-import hackathon.ru.data.dto.vacancy.customDto.VacancyCardForCandidateDto;
-import hackathon.ru.data.dto.vacancy.customDto.VacancyCardForHrDto;
+import hackathon.ru.data.dto.vacancy.outputDto.VacancyCardForCandidateDto;
+import hackathon.ru.data.dto.vacancy.outputDto.VacancyCardForHrDto;
 import hackathon.ru.data.dto.vacancy.VacancyDto;
-import hackathon.ru.data.dto.vacancy.customDto.VacancyForListDto;
+import hackathon.ru.data.dto.vacancy.outputDto.VacancyForListDto;
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.user.User;
 import hackathon.ru.data.model.vacancy.RequiredExperience;
@@ -120,7 +120,7 @@ public class VacancyServiceImpl implements VacancyService {
     @Override
     public List<VacancyForListDto> getVacanciesListForCandidates() {
 //        получаем только открытые вакансии для кандидатов
-        List<Vacancy> vacancies = vacancyRepository.getVacanciesByVacancyStatusName("Открыта");
+        List<Vacancy> vacancies = vacancyRepository.findVacanciesByVacancyStatusName("Открыта");
         List<VacancyForListDto> listVacancyForListDto = new ArrayList<>();
 
         for (Vacancy vacancy : vacancies) {

@@ -26,29 +26,29 @@ public class UserController {
 
     private final UserService userService;
 
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @GetMapping(ID)
     public User getUserById(@PathVariable("id") final long id) {
         return userService.getUserById(id);
     }
 
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @GetMapping()
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @PostMapping("/current")
     public User getCurrentUser() {
         return userService.getCurrentUser();
     }
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @PostMapping()
     public User createUser(@RequestBody @Valid UserDto userDTO) {
         return userService.createUser(userDTO);
     }
 
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @PutMapping(ID)
     @PreAuthorize(ONLY_OWNER_BY_ID)
     public User updateUser(@PathVariable("id") final long id,

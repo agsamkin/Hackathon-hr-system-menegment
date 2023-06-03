@@ -1,8 +1,8 @@
 package hackathon.ru.service.candidate;
 
 import hackathon.ru.data.dto.candidate.CandidateDto;
-import hackathon.ru.data.dto.candidate.custom.CandidateCardDto;
-import hackathon.ru.data.dto.candidate.custom.CandidateForListDto;
+import hackathon.ru.data.dto.candidate.outputDto.CandidateCardDto;
+import hackathon.ru.data.dto.candidate.outputDto.CandidateForListDto;
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.model.candidate.Education;
@@ -131,8 +131,8 @@ public class CandidateServiceImpl implements CandidateService {
     @Override
     public CandidateCardDto getCandidateCardById(Long id) {
         Candidate candidate = getCandidateById(id);
-        List<Education> educations = educationRepository.getAllByCandidateId(id);
-        List<Experience> experiences = experienceRepository.getAllByCandidateId(id);
+        List<Education> educations = educationRepository.findAllByCandidateId(id);
+        List<Experience> experiences = experienceRepository.findAllByCandidateId(id);
 
         return CandidateCardDto.builder()
                 .id(candidate.getId())
@@ -154,7 +154,4 @@ public class CandidateServiceImpl implements CandidateService {
                 .experienceNumber(Utils.calculateExperienceNumber(candidate))
                 .build();
     }
-
-
-
 }

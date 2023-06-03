@@ -1,8 +1,8 @@
 package hackathon.ru.service;
 
 import hackathon.ru.data.dto.candidate.CandidateDto;
-import hackathon.ru.data.dto.candidate.custom.EducationForCandidateCardDto;
-import hackathon.ru.data.dto.candidate.custom.ExperienceForCandidateCardDto;
+import hackathon.ru.data.dto.candidate.outputDto.EducationForCandidateCardDto;
+import hackathon.ru.data.dto.candidate.outputDto.ExperienceForCandidateCardDto;
 import hackathon.ru.data.model.candidate.Candidate;
 import hackathon.ru.data.model.candidate.Education;
 import hackathon.ru.data.model.candidate.Experience;

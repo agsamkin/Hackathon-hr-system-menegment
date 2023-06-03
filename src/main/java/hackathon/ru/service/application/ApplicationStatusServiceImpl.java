@@ -1,7 +1,6 @@
 package hackathon.ru.service.application;
 
 
-import hackathon.ru.data.dto.application.ApplicationStatusDto;
 import hackathon.ru.data.model.application.ApplicationStatus;
 import hackathon.ru.data.repository.ApplicationStatusRepository;
 import hackathon.ru.service.application.iService.ApplicationStatusService;
@@ -18,9 +17,7 @@ import java.util.NoSuchElementException;
 @Transactional
 public class ApplicationStatusServiceImpl implements ApplicationStatusService {
 
-
     private final ApplicationStatusRepository applicationStatusRepository;
-
 
     @Override
     @Transactional(readOnly = true)
@@ -31,22 +28,8 @@ public class ApplicationStatusServiceImpl implements ApplicationStatusService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ApplicationStatus> getAllApplicationStatuses() {
+    public List<ApplicationStatus> getAllApplicationsStatuses() {
         return new ArrayList<>(applicationStatusRepository.findAll());
     }
 
-    @Override
-    public ApplicationStatus createApplicationStatus(ApplicationStatusDto applicationStatusDto) {
-        return null;
-    }
-
-    @Override
-    public ApplicationStatus updateApplicationStatus(Long id, ApplicationStatusDto applicationStatusDto) {
-        return null;
-    }
-
-    @Override
-    public void deleteApplicationStatusById(Long id) {
-        applicationStatusRepository.deleteById(id);
-    }
 }

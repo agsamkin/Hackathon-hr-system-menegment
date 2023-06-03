@@ -1,4 +1,4 @@
-package hackathon.ru.data.dto.candidate.custom;
+package hackathon.ru.data.dto.candidate.outputDto;
 
 import hackathon.ru.data.model.candidate.Degree;
 import lombok.*;

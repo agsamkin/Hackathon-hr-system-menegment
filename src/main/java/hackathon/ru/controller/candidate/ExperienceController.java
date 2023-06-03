@@ -3,11 +3,8 @@ package hackathon.ru.controller.candidate;
 import hackathon.ru.data.dto.candidate.ExperienceDto;
 import hackathon.ru.data.model.candidate.Experience;
 import hackathon.ru.service.candidate.iservice.ExperienceService;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -28,9 +25,6 @@ public class ExperienceController {
 
 
     // POST /api/candidates - добавление места работы
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
-    @Operation(summary = "Create new experience")
-    @ApiResponse(responseCode = "201", description = "Experience created")
     @PostMapping()
     @ResponseStatus(CREATED)
     public Experience createDegree(
@@ -41,12 +35,6 @@ public class ExperienceController {
 
 
     // PUT /api/candidates/{id} - обновление места работы
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
-    @Operation(summary = "Update education by ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Education updated"),
-            @ApiResponse(responseCode = "404", description = "Education with this ID not found")
-    })
     @PutMapping(ID)
     public Experience updateCandidate(@PathVariable("id") final Long id,
                                       @RequestBody @Valid final ExperienceDto experienceDto) {

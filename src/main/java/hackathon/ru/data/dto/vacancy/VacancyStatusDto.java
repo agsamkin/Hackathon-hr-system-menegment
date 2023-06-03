@@ -1,10 +1,8 @@
 package hackathon.ru.data.dto.vacancy;
 
-import hackathon.ru.data.model.vacancy.Vacancy;
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -13,11 +11,7 @@ import java.util.List;
 @Builder
 public class VacancyStatusDto {
 
-    @Column(name = "name")
+    @NotBlank(message = "cityId should not be Empty")
     private String name;
 
-    //    связи
-
-    @OneToMany(mappedBy = "vacancyStatus")
-    private List<Vacancy> vacancies;
 }

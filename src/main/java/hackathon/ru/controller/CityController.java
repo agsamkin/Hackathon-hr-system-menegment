@@ -21,17 +21,17 @@ public class CityController {
     private final CityService cityService;
 
     @GetMapping(ID)
-    public City getVacanciesById(@PathVariable("id") final long id) {
+    public City getCityById(@PathVariable("id") final long id) {
         return cityService.getCityById(id);
     }
 
     @GetMapping()
-    public List<City> getAllVacancies() {
+    public List<City> getAllCities() {
         return cityService.getAllCities();
     }
 
     @PostMapping()
-    public City createVacancy(@RequestBody @Valid CityDto cityDto) {
+    public City createCity(@RequestBody @Valid CityDto cityDto) {
         return cityService.createCity(cityDto);
     }
 

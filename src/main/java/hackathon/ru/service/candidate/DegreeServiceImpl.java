@@ -20,7 +20,6 @@ public class DegreeServiceImpl implements DegreeService {
     private DegreeRepository degreeRepository;
 
     @Override
-
     public Degree getDegreeById(Long id) {
         return degreeRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Degree with this id is not found"));
@@ -29,28 +28,5 @@ public class DegreeServiceImpl implements DegreeService {
     @Override
     public List<Degree> getAllDegrees() {
         return new ArrayList<>(degreeRepository.findAll());
-    }
-
-    @Override
-    public Degree createDegree(DegreeDto degreeDto) {
-
-        Degree degree = Degree.builder()
-                .name(degreeDto.getName())
-                .build();
-
-        return degreeRepository.save(degree);
-    }
-
-    @Override
-    public Degree updateDegree(Long id, DegreeDto degreeDto) {
-        Degree degreeToUpdate = getDegreeById(id);
-
-        degreeToUpdate.setName(degreeDto.getName());
-        return degreeRepository.save(degreeToUpdate);
-    }
-
-    @Override
-    public void deleteDegreeById(Long id) {
-        degreeRepository.deleteById(id);
     }
 }

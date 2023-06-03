@@ -32,29 +32,29 @@ public class Candidate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "First Name should not be empty")
+    @NotBlank(message = "first Name should not be empty")
     @Column(name = "desired_position")
     private String desiredPosition;
 
-    @NotNull(message = "Expected salary should not be empty")
+    @NotNull(message = "expected salary should not be empty")
     @Column(name = "expected_salary")
     private int expectedSalary;
 
     @Temporal(TIMESTAMP)
-    @NotNull(message = "Birthday should not be Empty")
+    @NotNull(message = "birthday should not be empty")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
     @Column(name = "birthday")
     private Date birthday;
 
-    @NotBlank(message = "First Name should not be empty")
+    @NotBlank(message = "first Name should not be empty")
     @Column(name = "first_name")
     private String firstName;
 
-    @NotBlank(message = "Mid Name should not be empty")
+    @NotBlank(message = "mid Name should not be empty")
     @Column(name = "Mid_name")
     private String midName;
 
-    @NotBlank(message = "Last Name should not be empty")
+    @NotBlank(message = "last Name should not be empty")
     @Column(name = "last_name")
     private String lastName;
 
@@ -62,20 +62,20 @@ public class Candidate {
     @Column(name = "fio")
     private String fio;
 
-    @NotBlank(message = "Email should not be empty")
-    @Email(message = "Incorrect Email")
+    @NotBlank(message = "email should not be empty")
+    @Email(message = "incorrect Email")
     @Column(name = "email")
     private String email;
 
-    @NotBlank(message = "Phone should not be empty")
+    @NotBlank(message = "phone should not be empty")
     @Column(name = "phone")
     private String phone;
 
-    @NotBlank(message = "Telegram should not be empty")
+    @NotBlank(message = "telegram should not be empty")
     @Column(name = "Telegram")
     private String telegram;
 
-    @NotBlank(message = "Skills should not be empty")
+    @NotBlank(message = "skills should not be empty")
     @Column(name = "skills")
     private String skills;
 
@@ -83,7 +83,7 @@ public class Candidate {
     @Column(name = "description")
     private String description;
 
-    @NotNull(message = "City should not be empty")
+    @NotNull(message = "city should not be empty")
     @ManyToOne
     @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;
@@ -101,28 +101,4 @@ public class Candidate {
     @JsonIgnore
     @OneToMany(mappedBy = "candidate")
     private List<Application> applications;
-
-
-    @Override
-    public String toString() {
-        return "Candidate{" +
-                "id=" + id +
-                ", desiredPosition='" + desiredPosition + '\'' +
-                ", expectedSalary=" + expectedSalary +
-                ", birthday=" + birthday +
-                ", firstName='" + firstName + '\'' +
-                ", midName='" + midName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", fio='" + fio + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", telegram='" + telegram + '\'' +
-                ", skills='" + skills + '\'' +
-                ", description='" + description + '\'' +
-                ", city=" + city +
-                ", education=" + education +
-                ", experience=" + experience +
-                ", applications=" + applications +
-                '}';
-    }
 }
