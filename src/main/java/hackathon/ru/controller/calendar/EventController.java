@@ -15,7 +15,7 @@ public class EventController {
     public static final String EVENT_CONTROLLER_PATH = "/events";
 
     private final EventService eventService;
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @PostMapping
     public Event setUsersCalendar(@RequestBody EventDto eventDto) {
         return eventService.createEvent(eventDto);

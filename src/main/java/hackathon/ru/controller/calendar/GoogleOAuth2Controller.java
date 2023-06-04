@@ -23,7 +23,7 @@ public class GoogleOAuth2Controller {
     public static final String GOOGLE_OAUTH2_CONTROLLER_PATH = "/oauth2";
 
     private final GoogleConfig googleConfig;
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @GetMapping("/login")
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<String> SCOPES =
@@ -37,7 +37,7 @@ public class GoogleOAuth2Controller {
 
         response.sendRedirect(url);
     }
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @GetMapping("/callback")
     public void callback() {
         log.info("Google callback received!");

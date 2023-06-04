@@ -2,11 +2,16 @@ package hackathon.ru.controller.vacancy.dictionaries;
 
 import hackathon.ru.data.model.vacancy.RequiredExperience;
 import hackathon.ru.service.vacancy.iService.RequiredExperienceService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Required Experience Controller")
 @AllArgsConstructor
 @RestController
 @RequestMapping("${base-url}" + RequiredExperienceController.REQUIRED_EXPERIENCE_CONTROLLER_PATH)
@@ -16,14 +21,22 @@ public class RequiredExperienceController {
 
     private final RequiredExperienceService requiredExperienceService;
 
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+    @Operation(summary = "Get Required Experience by ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Required Experience with that id was successfully found"),
+            @ApiResponse(responseCode = "404", description = "Required Experience with that id does not exist")
+    })
     @GetMapping(ID)
-    public RequiredExperience getWorkFormatById(@PathVariable("id") final long id) {
+    public RequiredExperience getRequiredExperienceById(@PathVariable("id") final long id) {
         return requiredExperienceService.getRequiredExperienceById(id);
     }
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
+    @Operation(summary = "Get All Required Experiences")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Required Experiences was successfully found"),
+    })
     @GetMapping()
-    public List<RequiredExperience> getAllWorkFormats() {
+    public List<RequiredExperience> getAllRequiredExperiences() {
         return requiredExperienceService.getAllRequiredExperiences();
     }
 

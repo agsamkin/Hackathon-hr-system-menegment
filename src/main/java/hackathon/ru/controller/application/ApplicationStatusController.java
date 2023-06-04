@@ -2,12 +2,13 @@ package hackathon.ru.controller.application;
 
 import hackathon.ru.data.model.application.ApplicationStatus;
 import hackathon.ru.service.application.iService.ApplicationStatusService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@Tag(name = "Application status Controller")
 @AllArgsConstructor
 @RestController
 @RequestMapping("${base-url}" + ApplicationStatusController.APPLICATION_STATUS_CONTROLLER_PATH)

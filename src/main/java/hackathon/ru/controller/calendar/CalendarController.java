@@ -15,12 +15,12 @@ public class CalendarController {
     public static final String ID = "/{id}";
 
     private final CalendarService calendarService;
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @GetMapping
     public Calendar getMainUsersCalendar(@RequestBody TokenDto tokenDto) {
         return calendarService.getMainUsersCalendar(tokenDto);
     }
-    @CrossOrigin(origins = "https://prokhorov97.github.io")
+
     @GetMapping(ID)
     public Calendar getCalendarById(@PathVariable("id") long id) {
         // TODO: Необходимо огранивать размер выборки, т.к. список Event может быть большим
