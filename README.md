@@ -11,6 +11,8 @@ The application is an analogue of CRM-system, but made specifically for HR-speci
 The application solves the problem of automating the recruitment 
 and selection of candidates for the company vacancies.</h5>
 
+<a href="https://github.com/AndreevDan93/Hackathon-hr-system-managment/blob/main/presentation.pdf">Презентация</a>
+
 ### Технологии
 
 1. Java 17
