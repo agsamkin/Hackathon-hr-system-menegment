@@ -7,7 +7,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
@@ -18,13 +22,13 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class MailerController {
 
     private JavaMailSender emailSender;
-    public final static String MAIL= "/mail";
+    public static final String MAIL = "/mail";
     public static final String ID = "/{id}";
-    private final static String INVITATION = "/invitation";
-    private final static String REJECT = "/reject";
-    private final static String OFFER = "/offer";
-    private final static String AGREEMENT = "/agreement";
-    private final static String ACCEPT = "/accept";
+    public static final String INVITATION = "/invitation";
+    private static final String REJECT = "/reject";
+    private static final String OFFER = "/offer";
+    private static final String AGREEMENT = "/agreement";
+    private static final String ACCEPT = "/accept";
 
 
     private final MailerService mail;
@@ -32,7 +36,7 @@ public class MailerController {
     @Operation(summary = "Send Invitation to interview")
     @ApiResponse(responseCode = "201", description = "Message send")
     @ResponseStatus(CREATED)
-    @PostMapping( INVITATION + ID)
+    @PostMapping(INVITATION + ID)
     public void sendInvitation(@PathVariable("id") final long id) {
         emailSender.send(mail.makeInvitationalMail(id));
     }

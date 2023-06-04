@@ -1,4 +1,4 @@
-package hackathon.ru.controller.userController;
+package hackathon.ru.controller.user;
 
 import hackathon.ru.data.dto.user.customDto.OwnerDto;
 import hackathon.ru.service.user.iService.UserService;
@@ -17,8 +17,8 @@ import java.util.List;
 @RestController
 @RequestMapping("${base-url}" + OwnerController.OWNER_CONTROLLER_PATH)
 public class OwnerController {
-    public final static String OWNER_CONTROLLER_PATH = "/owners";
-    public final static String ID = "/{id}";
+    public static final  String OWNER_CONTROLLER_PATH = "/owners";
+    public static final  String ID = "/{id}";
 
     private final UserService userService;
 

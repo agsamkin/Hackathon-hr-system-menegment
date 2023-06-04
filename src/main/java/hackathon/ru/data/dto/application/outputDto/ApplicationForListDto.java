@@ -2,7 +2,11 @@ package hackathon.ru.data.dto.application.outputDto;
 
 import hackathon.ru.data.model.City;
 import hackathon.ru.data.model.application.ApplicationStatus;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 

@@ -49,7 +49,7 @@ public class Calendar {
     @JoinColumn(name = "id", referencedColumnName = "user_id")
     private User user;
 
-//    @JsonIgnore
+    //    @JsonIgnore
     @OneToMany(mappedBy = "calendar", cascade = ALL)
     private List<Event> events;
 }

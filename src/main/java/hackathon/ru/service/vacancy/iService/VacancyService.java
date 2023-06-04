@@ -14,7 +14,7 @@ public interface VacancyService {
 
     List<Vacancy> getAllVacancies();
 
-    Vacancy createVacancy(VacancyDto VacancyDto);
+    Vacancy createVacancy(VacancyDto vacancyDto);
 
     Vacancy updateVacancy(Long id, VacancyDto vacancyDto);
 

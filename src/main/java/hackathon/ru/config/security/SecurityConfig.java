@@ -32,13 +32,15 @@ import static hackathon.ru.controller.application.ApplicationController.APPLICAT
 import static hackathon.ru.controller.application.ApplicationStatusController.APPLICATION_STATUS_CONTROLLER_PATH;
 import static hackathon.ru.controller.calendar.GoogleOAuth2Controller.GOOGLE_OAUTH2_CONTROLLER_PATH;
 import static hackathon.ru.controller.candidate.DegreeController.DEGREE_CONTROLLER_PATH;
-import static hackathon.ru.controller.userController.UserController.ID;
-import static hackathon.ru.controller.userController.UserController.USER_CONTROLLER_PATH;
+import static hackathon.ru.controller.user.UserController.ID;
+import static hackathon.ru.controller.user.UserController.USER_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.VacancyController.VACANCY_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.dictionaries.RequiredExperienceController.REQUIRED_EXPERIENCE_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.dictionaries.VacancyStatusController.VACANCY_STATUS_CONTROLLER_PATH;
 import static hackathon.ru.controller.vacancy.dictionaries.WorkFormatController.WORK_FORMAT_CONTROLLER_PATH;
-import static org.springframework.http.HttpMethod.*;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
 
 @EnableWebSecurity
 @Configuration

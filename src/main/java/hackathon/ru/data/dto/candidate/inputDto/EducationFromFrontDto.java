@@ -1,7 +1,11 @@
 package hackathon.ru.data.dto.candidate.inputDto;
 
 import hackathon.ru.data.model.candidate.Degree;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

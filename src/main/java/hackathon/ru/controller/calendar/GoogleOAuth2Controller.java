@@ -6,7 +6,11 @@ import hackathon.ru.api.GoogleConfig;
 import hackathon.ru.data.dto.calendar.TokenDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,14 +30,14 @@ public class GoogleOAuth2Controller {
 
     @GetMapping("/login")
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<String> SCOPES =
+        List<String> scopes =
                 Collections.singletonList(CalendarScopes.CALENDAR);
 
         String url = new GoogleBrowserClientRequestUrl(googleConfig.getClientId(), googleConfig.getRedirectUrl(),
                 Arrays.asList(
                         "https://www.googleapis.com/auth/userinfo.email",
                         "https://www.googleapis.com/auth/userinfo.profile"))
-                .setState("/profile").setScopes(SCOPES).build();
+                .setState("/profile").setScopes(scopes).build();
 
         response.sendRedirect(url);
     }
