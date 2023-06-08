@@ -1,6 +1,5 @@
 package hackathon.ru.service.candidate;
 
-import hackathon.ru.data.dto.candidate.DegreeDto;
 import hackathon.ru.data.model.candidate.Degree;
 import hackathon.ru.data.repository.DegreeRepository;
 import hackathon.ru.service.candidate.iservice.DegreeService;

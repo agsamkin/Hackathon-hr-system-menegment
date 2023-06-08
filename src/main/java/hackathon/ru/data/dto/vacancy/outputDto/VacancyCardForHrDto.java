@@ -4,7 +4,11 @@ import hackathon.ru.data.model.user.User;
 import hackathon.ru.data.model.vacancy.RequiredExperience;
 import hackathon.ru.data.model.vacancy.VacancyStatus;
 import hackathon.ru.data.model.vacancy.WorkFormat;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter

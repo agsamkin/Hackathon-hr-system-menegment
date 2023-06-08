@@ -128,9 +128,9 @@ public class Utils {
     }
 
     public static String parseFio(CandidateDto candidateDto) {
-        return candidateDto.getLastName() + " " +
-                candidateDto.getFirstName().charAt(0) + ". " +
-                candidateDto.getMidName().charAt(0) + ".";
+        return candidateDto.getLastName() + " "
+                + candidateDto.getFirstName().charAt(0) + ". "
+                + candidateDto.getMidName().charAt(0) + ".";
     }
 
     public static List<EducationForCandidateCardDto> convertEdToEdDto(List<Education> educations) {

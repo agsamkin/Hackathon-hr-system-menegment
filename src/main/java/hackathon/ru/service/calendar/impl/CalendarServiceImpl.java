@@ -33,7 +33,7 @@ public class CalendarServiceImpl implements CalendarService {
 
     private Calendar setMainUsersCalendar(User user, List<Calendar> calendars) {
         Calendar mainCalendar = calendars.stream()
-                .filter(c-> user.getEmail().equals(c.getCalendarId()))
+                .filter(c -> user.getEmail().equals(c.getCalendarId()))
                 .findFirst().get();
 
         if (Objects.isNull(mainCalendar)) {

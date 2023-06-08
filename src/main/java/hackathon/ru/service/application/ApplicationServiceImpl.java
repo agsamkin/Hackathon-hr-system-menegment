@@ -61,9 +61,9 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     @Transactional(readOnly = true)
     public List<ApplicationForListDto> getAllApplications() {
-        List<Application> applications =  new ArrayList<>(applicationRepository.findAll());
+        List<Application> applications = new ArrayList<>(applicationRepository.findAll());
         List<ApplicationForListDto> applicationForListDtos = new ArrayList<>();
-        for (Application application: applications) {
+        for (Application application : applications) {
             Candidate candidate = application.getCandidate();
 
             ApplicationForListDto applicationForSave = ApplicationForListDto.builder()
@@ -109,7 +109,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public ApplicationCreatedDto createApplication(ApplicationVacancyCandidateDto applicationVacancyCandidateDto) {
         Vacancy vacancy = vacancyService.getVacancyById(applicationVacancyCandidateDto.getVacancyId());
 
-        ApplicationCreatedDto applicationCreatedDto = ChainExistCheck(
+        ApplicationCreatedDto applicationCreatedDto = chainExistCheck(
                 applicationVacancyCandidateDto.getVacancyId(),
                 applicationVacancyCandidateDto.getEmail());
 
@@ -281,11 +281,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     }
 
-    private ApplicationCreatedDto ChainExistCheck(Long vacancyId, String candidateEmail) {
+    private ApplicationCreatedDto chainExistCheck(Long vacancyId, String candidateEmail) {
         boolean isExist = false;
         if (candidateRepository.findAllByEmail(candidateEmail).isPresent()) {
             Long candidateId = candidateRepository.findAllByEmail(candidateEmail).get().getId();
-            if (applicationRepository.findApplicationByCandidateIdAndVacancyId(candidateId,vacancyId).isPresent()) {
+            if (applicationRepository.findApplicationByCandidateIdAndVacancyId(candidateId, vacancyId).isPresent()) {
                 isExist = true;
             }
         }
@@ -293,8 +293,8 @@ public class ApplicationServiceImpl implements ApplicationService {
         String fail = "Вы уже откликались на эту вакансию";
 
         return ApplicationCreatedDto.builder()
-                .isCreated(isExist? false:true)
-                .message(isExist? fail: approve)
+                .isCreated(isExist ? false : true)
+                .message(isExist ? fail : approve)
                 .build();
     }
 

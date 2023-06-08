@@ -1,4 +1,6 @@
 # Hackathon-hr-system-management
+[![Maintainability](https://api.codeclimate.com/v1/badges/665f156506173422193e/maintainability)](https://codeclimate.com/github/AndreevDan93/Hackathon-hr-system-managment/maintainability)
+
 The project is being developed for participation in the hackathon Sovcombank Team Challenge 2023.
 
 The application is an analogue of CRM-system, but made specifically for HR-specialists. 

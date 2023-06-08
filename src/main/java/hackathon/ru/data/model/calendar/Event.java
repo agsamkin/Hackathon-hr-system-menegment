@@ -77,7 +77,7 @@ public class Event {
     @Column(name = "updated_at")
     private Date updatedAt;
 
-//    @JsonIgnore
+    //    @JsonIgnore
     @OneToMany(mappedBy = "event", cascade = ALL, fetch = FetchType.EAGER)
     private List<Attendee> attendees;
 

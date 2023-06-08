@@ -4,7 +4,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import hackathon.ru.data.dto.candidate.inputDto.EducationFromFrontDto;
 import hackathon.ru.data.dto.candidate.inputDto.ExperienceFromFrontDto;
 import hackathon.ru.data.model.City;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Lob;
 import javax.validation.constraints.Email;
@@ -19,11 +23,11 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class ApplicationVacancyCandidateDto {
-//    Данные Вакансии.
+    //    Данные Вакансии.
     @NotNull
     private Long vacancyId;
 
-//    Данные Кандидата
+    //    Данные Кандидата
     @NotNull(message = "Expected salary should not be Empty")
     private Integer expectedSalary;
     @NotBlank(message = "desired position should not be empty")
@@ -50,9 +54,9 @@ public class ApplicationVacancyCandidateDto {
     private String description;
     @NotNull(message = "city should not be Empty")
     private City city;
-//    Данные по образованию
-    List<EducationFromFrontDto> educations;
-//    Опыт работы
-    List<ExperienceFromFrontDto> experiences;
+    //    Данные по образованию
+    private List<EducationFromFrontDto> educations;
+    //    Опыт работы
+    private List<ExperienceFromFrontDto> experiences;
 }
 

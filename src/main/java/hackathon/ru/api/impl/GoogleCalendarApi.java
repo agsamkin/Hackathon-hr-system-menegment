@@ -74,9 +74,9 @@ public class GoogleCalendarApi implements CalendarApi {
     @Override
     public Event createEvent(String oauth2token, String calendarId, EventDto eventDto) {
         // TODO: Надо учитывать timezone, для демо берем одну дефолтную
-        final String TIME_ZONE_DEFAULT = "Europe/Moscow";
+        final String timeZoneDefault = "Europe/Moscow";
 
-        final String RESPONSE_STATUS_DEFAULT = "needsAction";
+        final String responseStatusDefault = "needsAction";
 
         com.google.api.services.calendar.Calendar service = null;
         try {
@@ -95,19 +95,19 @@ public class GoogleCalendarApi implements CalendarApi {
         googleEvent.setDescription(eventDto.getDescription());
 
         EventDateTime start = new EventDateTime()
-                .setDateTime(toGoogleDateTime(eventDto.getStart(), TIME_ZONE_DEFAULT))
-                .setTimeZone(TIME_ZONE_DEFAULT);
+                .setDateTime(toGoogleDateTime(eventDto.getStart(), timeZoneDefault))
+                .setTimeZone(timeZoneDefault);
         googleEvent.setStart(start);
 
         EventDateTime end = new EventDateTime()
-                .setDateTime(toGoogleDateTime(eventDto.getEnd(), TIME_ZONE_DEFAULT))
-                .setTimeZone(TIME_ZONE_DEFAULT);
+                .setDateTime(toGoogleDateTime(eventDto.getEnd(), timeZoneDefault))
+                .setTimeZone(timeZoneDefault);
         googleEvent.setEnd(end);
 
         List<String> attendees = eventDto.getAttendees();
         List<EventAttendee> googleAttendees = new ArrayList<>();
         for (String attendee : attendees) {
-            googleAttendees.add(new EventAttendee().setEmail(attendee).setResponseStatus(RESPONSE_STATUS_DEFAULT));
+            googleAttendees.add(new EventAttendee().setEmail(attendee).setResponseStatus(responseStatusDefault));
         }
         googleEvent.setAttendees(googleAttendees);
 
@@ -147,8 +147,9 @@ public class GoogleCalendarApi implements CalendarApi {
 
     private com.google.api.services.calendar.Calendar getGoogleCalendar(String userToken)
             throws GeneralSecurityException, IOException {
-        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        return new com.google.api.services.calendar.Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredential(userToken))
+        final NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+        return new com.google.api.services.calendar.Calendar
+                .Builder(httpTransport, JSON_FACTORY, getCredential(userToken))
                         .setApplicationName(APPLICATION_NAME)
                         .build();
     }

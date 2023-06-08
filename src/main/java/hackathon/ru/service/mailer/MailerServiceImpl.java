@@ -30,7 +30,8 @@ public class MailerServiceImpl implements MailerService {
         SimpleMailMessage simpleMail = new SimpleMailMessage();
         simpleMail.setFrom(GMAIL);
         simpleMail.setTo(mail);
-        simpleMail.setSubject("Sorry, " + candidate.getFirstName() + " " + candidate.getLastName() + ", but you didn't get hired");
+        simpleMail.setSubject("Sorry, " + candidate.getFirstName() + " " + candidate.getLastName()
+                + ", but you didn't get hired");
         simpleMail.setText("Don't feel blue, you will be accepted next time!");
         return simpleMail;
     }
@@ -45,7 +46,8 @@ public class MailerServiceImpl implements MailerService {
         simpleMail.setFrom(GMAIL);
         simpleMail.setTo(mail);
         simpleMail.setSubject("We like you, but we need more information about you");
-        stringBuilder.append("Hello, ").append(candidate.getFirstName()).append(" ").append(candidate.getLastName()).append(".");
+        stringBuilder.append("Hello, ").append(candidate.getFirstName()).append(" ")
+                .append(candidate.getLastName()).append(".");
         stringBuilder.append("\n We want to invite you, so our hr will contact with you to set time for meeting.");
         simpleMail.setText(String.valueOf(stringBuilder));
         return simpleMail;
@@ -60,7 +62,8 @@ public class MailerServiceImpl implements MailerService {
         StringBuilder stringBuilder = new StringBuilder();
         simpleMail.setFrom(GMAIL);
         simpleMail.setTo(mail);
-        simpleMail.setSubject("Congrats, " + candidate.getFirstName() + " " + candidate.getLastName() + ", You've been accepted");
+        simpleMail.setSubject("Congrats, " + candidate.getFirstName() + " "
+                + candidate.getLastName() + ", You've been accepted");
         stringBuilder.append("We have a good offer for you");
         stringBuilder.append("\n").append(offer);
         simpleMail.setText(String.valueOf(stringBuilder));
@@ -75,7 +78,8 @@ public class MailerServiceImpl implements MailerService {
         SimpleMailMessage simpleMail = new SimpleMailMessage();
         simpleMail.setFrom(GMAIL);
         simpleMail.setTo(mail);
-        simpleMail.setSubject("We really happy, " + candidate.getFirstName() + " " + candidate.getLastName() + ", to see you with us");
+        simpleMail.setSubject("We really happy, " + candidate.getFirstName()
+                + " " + candidate.getLastName() + ", to see you with us");
         simpleMail.setText("We are waiting you tomorrow");
         return simpleMail;
     }
